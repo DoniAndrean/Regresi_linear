@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Karyawan</h1>
+                    <h1 class="m-0">DATA KARYAWAN KONTRAK</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -23,9 +23,9 @@
     <section class="content">
         <!-- DataTables Example -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
+            <!-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
-            </div>
+            </div> -->
             <div class="card-body">
                 <a href="{{ url('/karyawan/tambah') }}" class="btn btn-primary mb-2"> Tambah</a>
                 <div class="table-responsive">
@@ -63,10 +63,10 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="/karyawan/detail/{{ $p->id_sap }}" class="btn btn-secondary ">
-                                        <i class='fa fa-pencil'></i> Detail
+                                        <i class='fa fa-address-card'></i> Detail
                                     </a>
                                     <a href="/karyawan/edit/{{ $p->id_sap }}" class="btn btn-success ">
-                                        <i class='fa fa-pencil'></i> Edit
+                                        <i class='fa fa-edit'></i> Edit
                                     </a>
 
                                     <a href="/karyawan/hapus/{{ $p->id_sap }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">

@@ -11,8 +11,9 @@
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Karyawan</a></li>
-						<li class="breadcrumb-item active">Karyawan Kontrak</li>
+						<li class="breadcrumb-item"><a href="/">Home</a></li>
+						<li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+						<li class="breadcrumb-item active">Edit</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -22,7 +23,7 @@
 	<!-- Main content -->
 	<section class="content">
 		<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-		<h3>Edit Data</h3>
+		<h2>Edit Data</h2>
 
 		<a href="/karyawan" class="btn btn-default"> Kembali</a>
 

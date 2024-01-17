@@ -43,3 +43,16 @@ Route::post('/karyawan/update', 'App\Http\Controllers\KaryawanController@update'
 //route Hapus
 Route::get('/karyawan/hapus/{id}', 'App\Http\Controllers\KaryawanController@hapus');
 //end
+
+//route CRUD Menu
+Route::get('/permanen', 'App\Http\Controllers\PermanenController@index');
+//route Tambah
+Route::get('/permanen/tambah', 'App\Http\Controllers\PermanenController@tambah');
+Route::post('/permanen/store', 'App\Http\Controllers\PermanenController@store');
+//route Edit
+Route::get('/permanen/edit/{id}', 'App\Http\Controllers\PermanenController@edit');
+Route::get('/permanen/detail/{id}', 'App\Http\Controllers\PermanenController@detail');
+Route::post('/permanen/update', 'App\Http\Controllers\PermanenController@update');
+//route Hapus
+Route::get('/permanen/hapus/{id}', 'App\Http\Controllers\PermanenController@hapus');
+//end
