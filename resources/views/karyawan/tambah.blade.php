@@ -36,26 +36,26 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="row mb-3">
-						<div class="col-md-2">SAP</div>
-						<div class="col-md-10">
+						<div class="col-md-4">SAP</div>
+						<div class="col-md-8">
 							<input class="form-control" type="text" name="id_sap" required="required" placeholder="Masukkan SAP" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-2">Nama Karyawan</div>
-						<div class="col-md-10">
+						<div class="col-md-4">Nama Karyawan</div>
+						<div class="col-md-8">
 							<input class="form-control" type="text" name="nama" required="required" placeholder="Masukkan Nama Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Tempat Lahir</div>
-						<div class="col-md-12">
+						<div class="col-md-4">Tempat Lahir</div>
+						<div class="col-md-8">
 							<input class="form-control" type="text" name="tempat_lahir" required="required" placeholder="Masukkan Tempat Lahir" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Tanggal Lahir</div>
-						<div class="col-md-12">
+						<div class="col-md-4">Tanggal Lahir</div>
+						<div class="col-md-8">
 							<input class="form-control" type="date" name="tanggal_lahir" required="required" placeholder="Masukkan Tanggal Lahir" value="" autofocus="on">
 						</div>
 					</div>
@@ -63,57 +63,61 @@
 				<div class="col-md-6">
 
 					<div class="row mb-3">
-						<div class="col-md-2">Agama</div>
-						<div class="col-md-10">
+						<div class="col-md-4">Agama</div>
+						<div class="col-md-8">
 							<select class="option form-control" name="agama" required="required">
-								<option value="islam">Islam</option>
-								<option value="kristen">Kristen</option>
-								<option value="katolik">Katolik</option>
-								<option value="hindu">Hindu</option>
-								<option value="buddha">Buddha</option>
-								<option value="konghucu">Konghucu</option>
+								<option value="">--Pilih Agama--</option>
+								<option value="Islam">Islam</option>
+								<option value="Kristen">Kristen</option>
+								<option value="Katolik">Katolik</option>
+								<option value="Hindu">Hindu</option>
+								<option value="Buddha">Buddha</option>
+								<option value="Konghucu">Konghucu</option>
 							</select>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Pendidikan</div>
-						<div class="col-md-12">
-							<select class="option" name="pendidikan" required="required">
-								<option value="sd">SD</option>
-								<option value="smp">SMP</option>
-								<option value="sma">SMA</option>
-								<option value="smk">SMK</option>
-								<option value="diploma1">Diploma 1</option>
-								<option value="diploma">Diploma 2</option>
-								<option value="diploma3">Diploma 3</option>
-								<option value="diploma4">Diploma 4</option>
-								<option value="strata1">Strata 1</option>
-								<option value="strata2">Strata 2</option>
+						<div class="col-md-4">Pendidikan</div>
+						<div class="col-md-8">
+							<select class="option form-control" name="pendidikan" required="required">
+								<option value="">--Pilih Pendidikan--</option>
+								<option value="SD">SD</option>
+								<option value="SMP">SMP</option>
+								<option value="SMA">SMA</option>
+								<option value="SMK">SMK</option>
+								<option value="Diploma 1">Diploma 1</option>
+								<option value="Diploma 2">Diploma 2</option>
+								<option value="Diploma 3">Diploma 3</option>
+								<option value="Diploma 4">Diploma 4</option>
+								<option value="Strata 1">Strata 1</option>
+								<option value="Strata 2">Strata 2</option>
 							</select>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Jurusan Pendidikan Terakhir</div>
-						<div class="col-md-12">
+						<div class="col-md-4">Jurusan Pendidikan Terakhir</div>
+						<div class="col-md-8">
 							<input class="form-control" type="text" name="jurusan_pendidikan" required="required" placeholder="Masukkan Jurusan Pendidikan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Level Karyawan</div>
-						<div class="col-md-12">
-							<select class="option" name="level_karyawan" required="required">
-								<option value="gm">General Manager</option>
-								<option value="hod">Head Of Department</option>
-								<option value="assthod">Assistant Head Department</option>
-								<option value="spv">Supervisor</option>
-								<option value="rnf">Rank n File</option>
+						<div class="col-md-4">Level Karyawan</div>
+						<div class="col-md-8">
+							<select class="option form-control" name="level_karyawan" required="required">
+								<option value="">--Pilih Level Karyawan--</option>
+								<option value="General Manager">General Manager</option>
+								<option value="Head Of Department">Head Of Department</option>
+								<option value="Assistant Head Department">Assistant Head Department</option>
+								<option value="Supervisor">Supervisor</option>
+								<option value="Rank n File">Rank n File</option>
 							</select>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Departemen</div>
-						<div class="col-md-12">
-							<select class="option" name="departemen" required="required">
+						<div class="col-md-4">Departemen</div>
+						<div class="col-md-8">
+							<select class="option form-control" name="departemen" required="required">
+								<option value="">--Pilih Departemen--</option>
 								<option value="GMO">GMO</option>
 								<option value="HRD">HRD</option>
 								<option value="Food And Beverage Service">Food And Beverage Service</option>
@@ -126,17 +130,18 @@
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Posisi</div>
-						<div class="col-md-12">
+						<div class="col-md-4">Posisi</div>
+						<div class="col-md-8">
 							<input class="form-control" type="text" name="posisi" required="required" placeholder="Masukkan Jurusan Pendidikan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Status Karyawan</div>
-						<div class="col-md-12">
-							<select class="option" name="status_karyawan" required="required">
-								<option value="kontrak">Kontrak</option>
-								<option value="permanen">Permanen</option>
+						<div class="col-md-4">Status Karyawan</div>
+						<div class="col-md-8">
+							<select class="option form-control" name="status_karyawan" required="required">
+								<option value="">--Pilih Departemen--</option>	
+								<option value="Kontrak">Kontrak</option>
+								<option value="Permanen">Permanen</option>
 							</select>
 						</div>
 					</div>
