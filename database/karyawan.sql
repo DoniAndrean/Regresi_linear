@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2024 at 04:49 AM
+-- Generation Time: Jan 17, 2024 at 09:11 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `karyawan` (
-  `id_sap` int(11) NOT NULL,
+  `id_sap` int(8) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -46,9 +46,17 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_sap`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan`, `jurusan_pendidikan`, `level_karyawan`, `departemen`, `posisi`, `status_karyawan`) VALUES
-(10012321, 'imam', '', '0000-00-00', '', '', '', '', '', '', ''),
-(10045678, 'Mahriyah', '', '0000-00-00', '', '', '', '', '', '', ''),
-(10045677, 'nabila', 'Pangkalan Kerinci', '2024-01-17', 'islam', 'smk', 'Tata Boga', 'rnf', 'Food And Beverage Service', 'Waitress', 'kontrak');
+(10000001, 'Imam Ahmad Ferdiansyah', 'Pangkalan Kerinci', '2000-05-16', 'Islam', 'SMA', 'IPS', 'Rank n File', 'House Keeping', 'Room Attendant', 'Kontrak');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD PRIMARY KEY (`id_sap`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
