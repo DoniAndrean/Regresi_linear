@@ -2,11 +2,11 @@
 
 <!-- Untuk buat contoller -->
 https://www.malasngoding.com/tutorial-membuat-crud-dengan-laravel/
-php artisan make:controller PegawaiController
+<p>php artisan make:controller PegawaiController</p>
 
 https://www.malasngoding.com/seeding-dan-faker-pada-laravel/
-php artisan make:seeder PegawaiSeeder
-php artisan db:seed --class=PegawaiSeeder
+<p>php artisan make:seeder PegawaiSeeder</p>
+<p>php artisan db:seed --class=PegawaiSeeder</p>
 
 
 

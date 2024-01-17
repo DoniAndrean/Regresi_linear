@@ -29,7 +29,7 @@
 		<br />
 		<br />
 
-		<form action="/karyawan/update" method="POST" enctype="multipart/form-data">
+		<form action="/karyawan/update" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
 			<div class="row">
 				<div class="col-md-6">
@@ -62,7 +62,7 @@
 								<option value="kristen">Kristen</option>
 								<option value="katolik">Katolik</option>
 								<option value="hindu">Hindu</option>
-								<option value="buddha">Buddha</option>    
+								<option value="buddha">Buddha</option>
 								<option value="konghucu">Konghucu</option>
 							</select>
 						</div>
@@ -107,13 +107,13 @@
 						<div class="col-md-8">
 							<select class="option form-control" name="departemen" value="{{ $model->departemen }}" required="required">
 								<option value="GMO">GMO</option>
-							<option value="HRD">HRD</option>
-							<option value="Food And Beverage Service">Food And Beverage Service</option>
-							<option value="Food And Beverage Product">Food And Beverage Product</option>
-							<option value="Front Office & Health Club">Front Office & Health Club</option>    
-							<option value="House Keeping">House Keeping</option>
-							<option value="Eco Camp">Eco Camp</option>
-							<option value="Engineering">Engineering</option>
+								<option value="HRD">HRD</option>
+								<option value="Food And Beverage Service">Food And Beverage Service</option>
+								<option value="Food And Beverage Product">Food And Beverage Product</option>
+								<option value="Front Office & Health Club">Front Office & Health Club</option>
+								<option value="House Keeping">House Keeping</option>
+								<option value="Eco Camp">Eco Camp</option>
+								<option value="Engineering">Engineering</option>
 							</select>
 						</div>
 					</div>
@@ -133,7 +133,7 @@
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 			<div class="row mb-3">
 				<div class="col-md-6">
 					<input type="submit" value="Simpan Data" class="btn btn-success">
