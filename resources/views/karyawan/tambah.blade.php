@@ -11,8 +11,8 @@
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Dashboard</li>
+						<li class="breadcrumb-item"><a href="#">Karyawan</a></li>
+						<li class="breadcrumb-item active">Karyawan Kontrak</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -73,16 +73,16 @@
 				<div class="col-md-12">Pendidikan</div>
 				<div class="col-md-12">
 					<select class="option" name="pendidikan" required="required">
-						<option value="sd">SD</option>
-	                   	<option value="smp">SMP</option>
-	                   	<option value="sma">SMA</option>
-	                   	<option value="smk">SMK</option>
-	                   	<option value="diploma1">Diploma 1</option>    
-	                   	<option value="diploma">Diploma 2</option>
-						<option value="diploma3">Diploma 3</option>
-	                   	<option value="diploma4">Diploma 4</option>
-	                   	<option value="strata1">Strata 1</option>    
-	                   	<option value="strata2">Strata 2</option>
+						<option value="SD">SD</option>
+	                   	<option value="SMP">SMP</option>
+	                   	<option value="SMA">SMA</option>
+	                   	<option value="SMK">SMK</option>
+	                   	<option value="Diploma 1">Diploma 1</option>
+	                   	<option value="Diploma 2">Diploma 2</option>
+						<option value="Diploma 3">Diploma 3</option>
+	                   	<option value="Diploma 4">Diploma 4</option>
+	                   	<option value="Strata 1">Strata 1</option>
+	                   	<option value="Strata 2">Strata 2</option>
 	                </select>
 				</div>
 			</div>
@@ -96,11 +96,11 @@
 				<div class="col-md-12">Level Karyawan</div>
 				<div class="col-md-12">
 					<select class="option" name="level_karyawan" required="required">
-						<option value="gm">General Manager</option>
-	                   	<option value="hod">Head Of Department</option>
-	                   	<option value="assthod">Assistant Head Department</option>
-	                   	<option value="spv">Supervisor</option>
-	                   	<option value="rnf">Rank n File</option>
+						<option value="General Manager">General Manager</option>
+	                   	<option value="Head Of Department">Head Of Department</option>
+	                   	<option value="Assistant Head Department">Assistant Head Department</option>
+	                   	<option value="Supervisor">Supervisor</option>
+	                   	<option value="Rank n File">Rank n File</option>
 					</select>
 				</div>
 			</div>

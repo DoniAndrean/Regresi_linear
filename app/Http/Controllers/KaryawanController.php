@@ -70,8 +70,16 @@ class KaryawanController extends Controller
 	{
 		// update data berita
 		$data = [
-			'nama' => $request->nama_nama,
-			'alamat' => $request->alamat,
+			'nama' => $request->nama,
+			'tempat_lahir' => $request->tempat_lahir,
+			'tanggal_lahir' => $request->tanggal_lahir,
+			'agama' => $request->agama,
+			'pendidikan' => $request->pendidikan,
+			'jurusan_pendidikan' => $request->jurusan_pendidikan,
+			'level_karyawan' => $request->level_karyawan,
+			'departemen' => $request->departemen,
+			'posisi' => $request->posisi,
+			'status_karyawan' => $request->status_karyawan
 		];
 
 		DB::table('karyawan')->where('id_sap', $request->id_sap)->update($data);
