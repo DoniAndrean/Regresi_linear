@@ -38,6 +38,7 @@ Route::get('/karyawan/tambah', 'App\Http\Controllers\KaryawanController@tambah')
 Route::post('/karyawan/store', 'App\Http\Controllers\KaryawanController@store');
 //route Edit
 Route::get('/karyawan/edit/{id}', 'App\Http\Controllers\KaryawanController@edit');
+Route::get('/karyawan/detail/{id}', 'App\Http\Controllers\KaryawanController@detail');
 Route::post('/karyawan/update', 'App\Http\Controllers\KaryawanController@update');
 //route Hapus
 Route::get('/karyawan/hapus/{id}', 'App\Http\Controllers\KaryawanController@hapus');

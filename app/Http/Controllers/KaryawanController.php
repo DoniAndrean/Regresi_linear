@@ -96,4 +96,15 @@ class KaryawanController extends Controller
 		// alihkan halaman ke halaman berita
 		return redirect('/karyawan');
 	}
+
+	public function detail($id)
+	{
+		// mengambil data berita berdasarkan id yang dipilih
+		$model = DB::table('karyawan')->where('id_sap', $id)->get()[0];
+		// print_r($model[0]);
+		// exit();
+
+		// passing data model yang didapat ke view edit.blade.php
+		return view('/karyawan/detail', ['model' => $model]);
+	}
 }

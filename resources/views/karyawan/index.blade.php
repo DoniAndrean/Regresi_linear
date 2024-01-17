@@ -36,9 +36,9 @@
                             <th>Nama Karyawan</th>
                             <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
-                            <th>Agama</th>
-                            <th>Pendidikan</th>
-                            <th>Jurusan Pendidikan Terakhir</th>
+                            <!-- <th>Agama</th> -->
+                            <!-- <th>Pendidikan</th> -->
+                            <!-- <th>Jurusan Pendidikan Terakhir</th> -->
                             <th>Level Karyawan</th>
                             <th>Departemen</th>
                             <th>Posisi</th>
@@ -53,15 +53,18 @@
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->tempat_lahir }}</td>
                             <td>{{ $p->tanggal_lahir }}</td>
-                            <td>{{ $p->agama }}</td>
+                            <!-- <td>{{ $p->agama }}</td>
                             <td>{{ $p->pendidikan }}</td>
-                            <td>{{ $p->jurusan_pendidikan }}</td>
+                            <td>{{ $p->jurusan_pendidikan }}</td> -->
                             <td>{{ $p->level_karyawan }}</td>
                             <td>{{ $p->departemen }}</td>
                             <td>{{ $p->posisi }}</td>
                             <td>{{ $p->status_karyawan }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="/karyawan/detail/{{ $p->id_sap }}" class="btn btn-secondary ">
+                                        <i class='fa fa-pencil'></i> Detail
+                                    </a>
                                     <a href="/karyawan/edit/{{ $p->id_sap }}" class="btn btn-success ">
                                         <i class='fa fa-pencil'></i> Edit
                                     </a>
