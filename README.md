@@ -4,6 +4,10 @@
 https://www.malasngoding.com/tutorial-membuat-crud-dengan-laravel/
 php artisan make:controller PegawaiController
 
+https://www.malasngoding.com/seeding-dan-faker-pada-laravel/
+php artisan make:seeder PegawaiSeeder
+php artisan db:seed --class=PegawaiSeeder
+
 
 
 
