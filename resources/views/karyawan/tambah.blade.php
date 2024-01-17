@@ -11,8 +11,9 @@
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Dashboard</li>
+						<li class="breadcrumb-item"><a href="/">Home</a></li>
+						<li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+						<li class="breadcrumb-item active">Tambah</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -30,17 +31,17 @@
 		<br />
 		<br />
 
-		<form action="/karyawan/store" method="POST" enctype="multipart/form-data">
+		<form action="/karyawan/store" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
 			<div class="row mb-3">
-				<div class="col-md-12">SAP</div>
-				<div class="col-md-12">
+				<div class="col-md-2">SAP</div>
+				<div class="col-md-10">
 					<input class="form-control" type="text" name="id_sap" required="required" placeholder="Masukkan SAP" value="" autofocus="on">
 				</div>
 			</div>
 			<div class="row mb-3">
-				<div class="col-md-12">Nama Karyawan</div>
-				<div class="col-md-12">
+				<div class="col-md-2">Nama Karyawan</div>
+				<div class="col-md-10">
 					<input class="form-control" type="text" name="nama" required="required" placeholder="Masukkan Nama Karyawan" value="" autofocus="on">
 				</div>
 			</div>
