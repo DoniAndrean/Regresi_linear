@@ -38,7 +38,16 @@ class KaryawanController extends Controller
 		//array
 		$data = [
 			'id_sap' => $request->id_sap,
-			'nama' => $request->nama
+			'nama' => $request->nama,
+			'tempat_lahir' => $request->tempat_lahir,
+			'tanggal_lahir' => $request->tanggal_lahir,
+			'agama' => $request->agama,
+			'pendidikan' => $request->pendidikan,
+			'jurusan_pendidikan' => $request->jurusan_pendidikan,
+			'level_karyawan' => $request->level_karyawan,
+			'departemen' => $request->departemen,
+			'posisi' => $request->posisi,
+			'status_karyawan' => $request->status_karyawan
 		];
 		$id =	DB::table('karyawan')->insertGetId($data);
 

@@ -34,6 +34,15 @@
                             <th>No</th>
                             <th>SAP</th>
                             <th>Nama Karyawan</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Agama</th>
+                            <th>Pendidikan</th>
+                            <th>Jurusan Pendidikan Terakhir</th>
+                            <th>Level Karyawan</th>
+                            <th>Departemen</th>
+                            <th>Posisi</th>
+                            <th>Status Karyawan</th>
                             <th>Opsi</th>
                         </tr>
                         @php $no = 1 @endphp
@@ -42,6 +51,15 @@
                             <td>{{ $no }}</td>
                             <td>{{ $p->id_sap }}</td>
                             <td>{{ $p->nama }}</td>
+                            <td>{{ $p->tempat_lahir }}</td>
+                            <td>{{ $p->tanggal_lahir }}</td>
+                            <td>{{ $p->agama }}</td>
+                            <td>{{ $p->pendidikan }}</td>
+                            <td>{{ $p->jurusan_pendidikan }}</td>
+                            <td>{{ $p->level_karyawan }}</td>
+                            <td>{{ $p->departemen }}</td>
+                            <td>{{ $p->posisi }}</td>
+                            <td>{{ $p->status_karyawan }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="/karyawan/edit/{{ $p->id_sap }}" class="btn btn-success ">
