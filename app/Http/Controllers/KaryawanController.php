@@ -38,16 +38,30 @@ class KaryawanController extends Controller
 		//array
 		$data = [
 			'id_sap' => $request->id_sap,
+			'id_nikkaryawan' => $request->id_nikkaryawan,
 			'nama' => $request->nama,
+			'no_ktp' => $request->no_ktp,
 			'tempat_lahir' => $request->tempat_lahir,
 			'tanggal_lahir' => $request->tanggal_lahir,
 			'agama' => $request->agama,
 			'pendidikan' => $request->pendidikan,
 			'jurusan_pendidikan' => $request->jurusan_pendidikan,
+			'nama_sekolahasal' => $request->nama_sekolahasal,
+			'tahun_lulus' => $request->tahun_lulus,
 			'level_karyawan' => $request->level_karyawan,
 			'departemen' => $request->departemen,
 			'posisi' => $request->posisi,
-			'status_karyawan' => $request->status_karyawan
+			'status_karyawan' => $request->status_karyawan,
+			'email_pribdi' => $request->email_pribdi,
+			'jenis_kelamin' => $request->jenis_kelamin,
+			'suku' => $request->suku,
+			'status_kawin' => $request->status_kawin,
+			'jmlh_tanggung' => $request->jmlh_tanggung,
+			'no_hp' => $request->no_hp,
+			'no_wa' => $request->no_wa,
+			'riwayat_pelatihan' => $request->riwayat_pelatihan,
+			'kelas_bpjs' => $request->kelas_bpjs,
+			'foto' => $request->foto
 		];
 		$id =	DB::table('karyawan')->insertGetId($data);
 
@@ -70,16 +84,30 @@ class KaryawanController extends Controller
 	{
 		// update data berita
 		$data = [
+			'id_nikkaryawan' => $request->id_nikkaryawan,
 			'nama' => $request->nama,
+			'no_ktp' => $request->no_ktp,
 			'tempat_lahir' => $request->tempat_lahir,
 			'tanggal_lahir' => $request->tanggal_lahir,
 			'agama' => $request->agama,
 			'pendidikan' => $request->pendidikan,
 			'jurusan_pendidikan' => $request->jurusan_pendidikan,
+			'nama_sekolahasal' => $request->nama_sekolahasal,
+			'tahun_lulus' => $request->tahun_lulus,
 			'level_karyawan' => $request->level_karyawan,
 			'departemen' => $request->departemen,
 			'posisi' => $request->posisi,
-			'status_karyawan' => $request->status_karyawan
+			'status_karyawan' => $request->status_karyawan,
+			'email_pribdi' => $request->email_pribdi,
+			'jenis_kelamin' => $request->jenis_kelamin,
+			'suku' => $request->suku,
+			'status_kawin' => $request->status_kawin,
+			'jmlh_tanggung' => $request->jmlh_tanggung,
+			'no_hp' => $request->no_hp,
+			'no_wa' => $request->no_wa,
+			'riwayat_pelatihan' => $request->riwayat_pelatihan,
+			'kelas_bpjs' => $request->kelas_bpjs,
+			'foto' => $request->foto
 		];
 
 		DB::table('karyawan')->where('id_sap', $request->id_sap)->update($data);
