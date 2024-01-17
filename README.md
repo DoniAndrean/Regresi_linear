@@ -1,9 +1,11 @@
-## Programming School by Flashsoft
+## Programming School by Flashsoft Indonesia
 
+### CRUD
 <!-- Untuk buat contoller -->
 https://www.malasngoding.com/tutorial-membuat-crud-dengan-laravel/
 <p>php artisan make:controller PegawaiController</p>
 
+### Seeder dan Faker
 https://www.malasngoding.com/seeding-dan-faker-pada-laravel/
 <p>php artisan make:seeder PegawaiSeeder</p>
 <p>php artisan db:seed --class=PegawaiSeeder</p>
