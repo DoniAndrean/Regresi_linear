@@ -177,6 +177,12 @@
 						</div>
 					</div>
 					<div class="row mb-3">
+						<div class="col-md-4">Email Kantor</div>
+						<div class="col-md-8">
+							<input class="form-control" type="email" name="email_kantor" required="required" placeholder="Masukkan Email" value="" autofocus="on">
+						</div>
+					</div>
+					<div class="row mb-3">
 						<div class="col-md-4">Jenis Kelamin</div>
 						<div class="col-md-8">
 							<select class="option form-control" name="jenis_kelamin" required="required">

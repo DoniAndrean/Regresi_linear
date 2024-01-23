@@ -12,7 +12,7 @@
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="/">Home</a></li>
-						<li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+						<li class="breadcrumb-item"><a href="/permanen">Karyawan</a></li>
 						<li class="breadcrumb-item active">Edit</li>
 					</ol>
 				</div><!-- /.col -->
@@ -25,7 +25,7 @@
 		<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 		<h2>Edit Data</h2>
 
-		<a href="/karyawan" class="btn btn-default"> Kembali</a>
+		<a href="/permanen" class="btn btn-default"> Kembali</a>
 
 		<br />
 		<br />
@@ -167,6 +167,12 @@
 						<div class="col-md-4">Email Pribadi</div>
 						<div class="col-md-8">
 							<input class="form-control" type="email" name="email_pribdi" required="required" placeholder="Masukkan Email" value="{{ $model->email_pribdi }}" autofocus="on">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Email Kantor</div>
+						<div class="col-md-8">
+							<input class="form-control" type="email" name="email_kantor" required="required" placeholder="Masukkan Email" value="{{ $model->email_kantor }}" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
