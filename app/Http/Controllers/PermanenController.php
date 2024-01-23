@@ -38,7 +38,7 @@ class PermanenController extends Controller
 		//array
 		$data = [
 			'id_sap' => $request->id_sap,
-			'id_nikkaryawan' => $request->id_nikkaryawan,
+			'id_nik' => $request->id_nik,
 			'nama' => $request->nama,
 			'no_ktp' => $request->no_ktp,
 			'tempat_lahir' => $request->tempat_lahir,
@@ -84,7 +84,7 @@ class PermanenController extends Controller
 	{
 		// update data berita
 		$data = [
-			'id_nikkaryawan' => $request->id_nikkaryawan,
+			'id_nik' => $request->id_nik,
 			'nama' => $request->nama,
 			'no_ktp' => $request->no_ktp,
 			'tempat_lahir' => $request->tempat_lahir,

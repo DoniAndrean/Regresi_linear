@@ -247,7 +247,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Kelas BPJS</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="kela_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="" autofocus="on">
+							<input class="form-control" type="text" name="kelas_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="" autofocus="on">
 						</div>
 					</div>
 				</div>

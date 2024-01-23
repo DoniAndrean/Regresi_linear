@@ -44,7 +44,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">NIK Karyawan</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nikkaryawan" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -246,7 +246,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Kelas BPJS</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="kela_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="" autofocus="on">
+							<input class="form-control" type="text" name="kelas_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">

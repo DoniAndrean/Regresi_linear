@@ -30,7 +30,7 @@
 		<br />
 		<br />
 
-		<form action="/karyawan/update" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
+		<form action="/permanen/update" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
 			<div class="row">
 				<div class="col-md-6">
@@ -38,7 +38,7 @@
 						<div class="col-md-4">NIK Karyawan</div>
 						<div class="col-md-8">
 							<input class="form-control" type="hidden" name="id_sap" required="required" placeholder="Masukkan SAP" value="{{ $model->id_sap }}" autofocus="on">
-							<input class="form-control" type="number" name="id_nikkaryawan" required="required" placeholder="Masukkan NIK Karyawan" value="{{ $model->id_nikkaryawan }}" autofocus="on">
+							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="{{ $model->id_nik }}" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -239,7 +239,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Kelas BPJS</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="kela_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="{{ $model->kelas_bpjs }}" value="{{ $model->kelas_bpjs }}" autofocus="on">
+							<input class="form-control" type="text" name="kelas_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="{{ $model->kelas_bpjs }}" value="{{ $model->kelas_bpjs }}" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">

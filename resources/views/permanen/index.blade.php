@@ -34,8 +34,8 @@
                             <th>No</th>
                             <th>SAP</th>
                             <th>Nama Karyawan</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
+                            <th>NIK</th>
+                            <th>Jurusan Pendidikan</th>
                             <!-- <th>Agama</th> -->
                             <!-- <th>Pendidikan</th> -->
                             <!-- <th>Jurusan Pendidikan Terakhir</th> -->
@@ -51,8 +51,8 @@
                             <td>{{ $no }}</td>
                             <td>{{ $p->id_sap }}</td>
                             <td>{{ $p->nama }}</td>
-                            <td>{{ $p->tempat_lahir }}</td>
-                            <td>{{ $p->tanggal_lahir }}</td>
+                            <td>{{ $p->id_nik }}</td>
+                            <td>{{ $p->jurusan_pendidikan }}</td>
                             <!-- <td>{{ $p->agama }}</td>
                             <td>{{ $p->pendidikan }}</td>
                             <td>{{ $p->jurusan_pendidikan }}</td> -->
