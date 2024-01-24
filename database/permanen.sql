@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 05:30 AM
+-- Generation Time: Jan 24, 2024 at 07:15 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -57,6 +57,13 @@ CREATE TABLE `permanen` (
   `kelas_bpjs` varchar(50) NOT NULL,
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `permanen`
+--
+
+INSERT INTO `permanen` (`id_sap`, `id_nik`, `nama`, `id_badge`, `join_date`, `no_ktp`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan`, `jurusan_pendidikan`, `nama_sekolahasal`, `tahun_lulus`, `level_karyawan`, `departemen`, `posisi`, `status_karyawan`, `email_pribdi`, `email_kantor`, `jenis_kelamin`, `suku`, `status_kawin`, `jmlh_tanggung`, `no_hp`, `no_wa`, `riwayat_pelatihan`, `kelas_bpjs`, `foto`) VALUES
+(10000002, '10000002', 'Dynda', 10000002, '2024-02-01', '1405020000000002', 'Guntung', '2000-09-12', 'Islam', 'Strata 1', 'Sistem Informasi', 'Universitas Riau', '2023', 'Rank n File', 'House Keeping', 'Laundry', 'Permanen', 'dynda14@gmail.com', 'dynda14@gmail.com', 'Perempuan', 'Minang', 'Belum Kawin', 'Belum Menikah', '082387652345', '081276452987', 'Training Hospitality', 'Kelas 1', 'C:\\xampp\\tmp\\phpCDF8.tmp');
 
 --
 -- Indexes for dumped tables
