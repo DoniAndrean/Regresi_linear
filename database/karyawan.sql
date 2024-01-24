@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 05:29 AM
+-- Generation Time: Jan 24, 2024 at 07:15 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -57,6 +57,13 @@ CREATE TABLE `karyawan` (
   `kelas_bpjs` varchar(50) NOT NULL,
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `karyawan`
+--
+
+INSERT INTO `karyawan` (`id_sap`, `id_nik`, `nama`, `id_badge`, `join_date`, `no_ktp`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan`, `jurusan_pendidikan`, `nama_sekolahasal`, `tahun_lulus`, `level_karyawan`, `departemen`, `posisi`, `status_karyawan`, `email_pribdi`, `email_kantor`, `jenis_kelamin`, `suku`, `status_kawin`, `jmlh_tanggung`, `no_hp`, `no_wa`, `riwayat_pelatihan`, `kelas_bpjs`, `foto`) VALUES
+(10000001, '14050214', 'Imam Ahmad Ferdiansyah', 10000001, '2024-01-24', '1405021400000002', 'Pangkalan Kerinci', '2000-05-15', 'Islam', 'Strata 1', 'Sistem Informasi', 'Universitas Riau', '2024', 'Rank n File', 'Food And Beverage Service', 'Waiter', 'Kontrakk', 'ferdiimam14@gmail.com', 'ferdiimam14@gmail.com', 'Laki-Laki', 'Jawa', 'Belum Kawin', 'Belum Menikah', '081377683339', '081377683339', 'Training Hospitality', 'Kelas 2', 'C:\\xampp\\tmp\\php5D8F.tmp');
 
 --
 -- Indexes for dumped tables
