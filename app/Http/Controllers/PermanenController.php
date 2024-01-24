@@ -40,6 +40,8 @@ class PermanenController extends Controller
 			'id_sap' => $request->id_sap,
 			'id_nik' => $request->id_nik,
 			'nama' => $request->nama,
+			'id_badge' => $request->id_badge,
+			'join_date' => $request->join_date,
 			'no_ktp' => $request->no_ktp,
 			'tempat_lahir' => $request->tempat_lahir,
 			'tanggal_lahir' => $request->tanggal_lahir,
@@ -87,6 +89,8 @@ class PermanenController extends Controller
 		$data = [
 			'id_nik' => $request->id_nik,
 			'nama' => $request->nama,
+			'id_badge' => $request->id_badge,
+			'join_date' => $request->join_date,
 			'no_ktp' => $request->no_ktp,
 			'tempat_lahir' => $request->tempat_lahir,
 			'tanggal_lahir' => $request->tanggal_lahir,

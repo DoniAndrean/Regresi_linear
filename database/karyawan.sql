@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 04:55 AM
+-- Generation Time: Jan 24, 2024 at 05:29 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -32,7 +32,7 @@ CREATE TABLE `karyawan` (
   `id_nik` varchar(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `id_badge` int(11) NOT NULL,
-  `join_date` varchar(100) NOT NULL,
+  `join_date` date NOT NULL,
   `no_ktp` char(16) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -57,13 +57,6 @@ CREATE TABLE `karyawan` (
   `kelas_bpjs` varchar(50) NOT NULL,
   `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `karyawan`
---
-
-INSERT INTO `karyawan` (`id_sap`, `id_nik`, `nama`, `id_badge`, `join_date`, `no_ktp`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan`, `jurusan_pendidikan`, `nama_sekolahasal`, `tahun_lulus`, `level_karyawan`, `departemen`, `posisi`, `status_karyawan`, `email_pribdi`, `email_kantor`, `jenis_kelamin`, `suku`, `status_kawin`, `jmlh_tanggung`, `no_hp`, `no_wa`, `riwayat_pelatihan`, `kelas_bpjs`, `foto`) VALUES
-(10000001, '', 'Imam Ahmad Ferdiansyah', 0, '', '', 'Pangkalan Kerinci', '2000-05-16', 'Islam', 'SMA', 'IPS', '', '', 'Rank n File', 'House Keeping', 'Room Attendant', 'Kontrak', '', '', '', '', '', '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables

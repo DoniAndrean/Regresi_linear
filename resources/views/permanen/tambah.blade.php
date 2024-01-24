@@ -42,6 +42,18 @@
 						</div>
 					</div>
 					<div class="row mb-3">
+						<div class="col-md-4">No ID Badge</div>
+						<div class="col-md-8">
+							<input class="form-control" type="number" name="id_badge" required="required" placeholder="Masukkan No ID Badge" value="" autofocus="on">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Join Date</div>
+						<div class="col-md-8">
+							<input class="form-control" type="date" name="join_date" required="required" placeholder="" value="" autofocus="on">
+						</div>
+					</div>
+					<div class="row mb-3">
 						<div class="col-md-4">NIK Karyawan</div>
 						<div class="col-md-8">
 							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">

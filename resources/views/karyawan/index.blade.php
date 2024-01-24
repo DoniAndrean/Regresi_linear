@@ -27,39 +27,35 @@
                 <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
             </div> -->
             <div class="card-body">
-                <a href="{{ url('/karyawan/tambah') }}" class="btn btn-primary mb-2"> Tambah</a>
+                <a href="{{ url('/karyawan/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
                             <th>No</th>
+                            <th>Nama</th>
+                            <th>Join Date</th>
                             <th>SAP</th>
-                            <th>Nama Karyawan</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
-                            <!-- <th>Agama</th> -->
-                            <!-- <th>Pendidikan</th> -->
-                            <!-- <th>Jurusan Pendidikan Terakhir</th> -->
-                            <th>Level Karyawan</th>
+                            <th>NIK</th>
                             <th>Departemen</th>
                             <th>Posisi</th>
-                            <th>Status Karyawan</th>
+                            <th>Level Karyawan</th>
+                            <th>Pendidikan</th>
                             <th>Opsi</th>
                         </tr>
                         @php $no = 1 @endphp
                         @foreach($model as $p)
                         <tr>
-                        <td>{{ $no }}</td>
-                            <td>{{ $p->id_sap }}</td>
+                            <td>{{ $no }}</td>
                             <td>{{ $p->nama }}</td>
+                            <td>{{ $p->join_date }}</td>
+                            <td>{{ $p->id_sap }}</td>
+
                             <td>{{ $p->id_nik }}</td>
-                            <td>{{ $p->jurusan_pendidikan }}</td>
-                            <!-- <td>{{ $p->agama }}</td>
-                            <td>{{ $p->pendidikan }}</td>
-                            <td>{{ $p->jurusan_pendidikan }}</td> -->
-                            <td>{{ $p->level_karyawan }}</td>
+
                             <td>{{ $p->departemen }}</td>
                             <td>{{ $p->posisi }}</td>
-                            <td>{{ $p->status_karyawan }}</td>
+                            <td>{{ $p->level_karyawan }}</td>
+                            <td>{{ $p->pendidikan }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="/karyawan/detail/{{ $p->id_sap }}" class="btn btn-secondary ">

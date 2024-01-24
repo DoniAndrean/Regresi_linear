@@ -42,6 +42,18 @@
 						</div>
 					</div>
 					<div class="row mb-3">
+						<div class="col-md-4">No ID Badge</div>
+						<div class="col-md-8">
+							<input class="form-control" type="number" name="id_badge" required="required" placeholder="Masukkan No ID Badge" value="{{ $model->id_badge }}" autofocus="on">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Join Date</div>
+						<div class="col-md-8">
+							<input class="form-control" type="date" name="join_date" required="required" placeholder="" value="{{ $model->join_date }}" autofocus="on">
+						</div>
+					</div>
+					<div class="row mb-3">
 						<div class="col-md-4">Nama Karyawan</div>
 						<div class="col-md-8">
 							<input class="form-control" type="text" name="nama" required="required" placeholder="Masukkan Nama Karyawan" value="{{ $model->nama }}" autofocus="on">
@@ -62,7 +74,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Tanggal Lahir</div>
 						<div class="col-md-8">
-							<input class="form-control" type="date" name="tanggal_lahir" required="required" placeholder="Masukkan Tanggal Lahir" value="{{ $model->tanggal_lahir }}" autofocus="on">
+							<input class="form-control" type="date" name="tanggal_lahir" required="required" placeholder="" value="{{ $model->tanggal_lahir }}" autofocus="on">
 						</div>
 					</div>
 					
