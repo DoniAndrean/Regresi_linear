@@ -22,7 +22,7 @@
 	<!-- Main content -->
 	<section class="content">
 		<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-		<h3>Detail</h3>
+		<h4>Detail</h4>
 
 		<a href="/karyawan" class="btn btn-default"> Kembali</a>
 
@@ -32,26 +32,64 @@
 		<form action="/karyawan/store" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
 			<div class="row">
-				<div class="col-5">
+				<div class="col-12 col-md-4" style="background:#c3c5c4;">
 					<img src="https://i.pinimg.com/564x/8d/be/20/8dbe2091b0bbee50cf55fac6bf58f4ab.jpg" width="100%">
+					<div class="col-12">
+						<div class="row mb-3">
+							<div class="col-md-12 text-center">
+								<h1>{{ $model->nama }}</h1>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-4">Join Date</div>
+							<div class="col-md-8">
+								: {{ $model->join_date }}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-4">NIK</div>
+							<div class="col-md-8">
+								: {{ $model->id_nik }}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-4">SAP</div>
+							<div class="col-md-8">
+								: {{ $model->id_sap }}
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-4">No ID Badge</div>
+							<div class="col-md-8">
+								: {{ $model->id_badge }}
+							</div>
+						</div>
+						<div class="row mb-3 text-center">
+							<div class="col-md-12">Status Karyawan</div>
+							<div class="col-md-12">
+								{{ $model->status_karyawan }}
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="col-7">
+				<div class="col-12 col-md-4">
+					<h4>DATA PRIBADI</h4>
 					<div class="row mb-3">
-						<div class="col-md-12">
-							<h1>{{ $model->nama }}</h1>
-						</div>
-					</div>
-					<h3>Profil</h3>
-					<div class="row mb-3">
-						<div class="col-md-4">Tempat Tanggal lahir</div>
+						<div class="col-md-4">No KTP</div>
 						<div class="col-md-8">
-							: {{ $model->tempat_lahir }}, {{ $model->tanggal_lahir }}
+							: {{ $model->no_ktp }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Jenis Kelamin</div>
+						<div class="col-md-4">Tempat Lahir</div>
 						<div class="col-md-8">
 							: {{ $model->tempat_lahir }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Tanggal Lahir</div>
+						<div class="col-md-8">
+							: {{ $model->tanggal_lahir }}
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -61,91 +99,119 @@
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Kewarganegaraan</div>
+						<div class="col-md-4">Jenis Kelamin</div>
 						<div class="col-md-8">
-							: {{ $model->agama }}
+							: {{ $model->jenis_kelamin }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Alamat</div>
+						<div class="col-md-4">Suku</div>
 						<div class="col-md-8">
-							: {{ $model->agama }}
+							: {{ $model->suku }}
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-5">
-					<h3>RIWAYAT PENDIDIKAN</h3>
+					<div class="row mb-3">
+						<div class="col-md-4">Status Perkawinan</div>
+						<div class="col-md-8">
+							: {{ $model->status_kawin }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Jumlah Tanggungan</div>
+						<div class="col-md-8">
+							: {{ $model->jmlh_tanggung }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Kelas BPJS</div>
+						<div class="col-md-8">
+							: {{ $model->kelas_bpjs }}
+						</div>
+					</div>
 
+					<h4>PENGALAMAN</h4>
 					<div class="row mb-3">
-						<div class="col-md-12">Pendidikan</div>
-						<div class="col-md-12">
-							<select class="option" name="pendidikan" value="{{ $model->pendidikan }}" required="required">
-								<option value="SD">SD</option>
-								<option value="SMP">SMP</option>
-								<option value="SMA">SMA</option>
-								<option value="SMK">SMK</option>
-								<option value="Diploma 1">Diploma 1</option>
-								<option value="Diploma 2">Diploma 2</option>
-								<option value="Diploma 3">Diploma 3</option>
-								<option value="Diploma 4">Diploma 4</option>
-								<option value="Strata 1">Strata 1</option>
-								<option value="Strata 2">Strata 2</option>
-							</select>
+						<div class="col-md-4">Level Karyawan</div>
+						<div class="col-md-8">
+							: {{ $model->level_karyawan }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Jurusan Pendidikan Terakhir</div>
-						<div class="col-md-12">
-							<input class="form-control" type="text" name="jurusan_pendidikan" required="required" placeholder="Masukkan Jurusan Pendidikan" value="{{ $model->jurusan_pendidikan }}" autofocus="on">
+						<div class="col-md-4">Departemen</div>
+						<div class="col-md-8">
+							: {{ $model->departemen }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Level Karyawan</div>
-						<div class="col-md-12">
-							<select class="option" name="level_karyawan" value="{{ $model->level_karyawan }}" required="required">
-								<option value="General Manager">General Manager</option>
-								<option value="Head Of Department">Head Of Department</option>
-								<option value="Assistant Head Department">Assistant Head Department</option>
-								<option value="Supervisor">Supervisor</option>
-								<option value="Rank n File">Rank n File</option>
-							</select>
+						<div class="col-md-4">Posisi</div>
+						<div class="col-md-8">
+							: {{ $model->posisi }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Departemen</div>
-						<div class="col-md-12">
-							<select class="option" name="departemen" value="{{ $model->departemen }}" required="required">
-								<option value="GMO">GMO</option>
-								<option value="HRD">HRD</option>
-								<option value="Food And Beverage Service">Food And Beverage Service</option>
-								<option value="Food And Beverage Product">Food And Beverage Product</option>
-								<option value="Front Office & Health Club">Front Office & Health Club</option>
-								<option value="House Keeping">House Keeping</option>
-								<option value="Eco Camp">Eco Camp</option>
-								<option value="Engineering">Engineering</option>
-							</select>
+						<div class="col-md-4">No HP</div>
+						<div class="col-md-8">
+							: {{ $model->no_hp }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Posisi</div>
-						<div class="col-md-12">
-							<input class="form-control" type="text" name="posisi" required="required" placeholder="Masukkan Jurusan Pendidikan" value="{{ $model->posisi }}" autofocus="on">
+						<div class="col-md-4">No WA</div>
+						<div class="col-md-8">
+							: {{ $model->no_wa }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-12">Status Karyawan</div>
-						<div class="col-md-12">
-							<select class="option" name="status_karyawan" value="{{ $model->status_karyawan }}" required="required">
-								<option value="Kontrak">Kontrak</option>
-								<option value="Permanen">Permanen</option>
-							</select>
+						<div class="col-md-4">Email Pribadi</div>
+						<div class="col-md-8">
+							: {{ $model->email_pribdi }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Email Kantor</div>
+						<div class="col-md-8">
+							: {{ $model->email_kantor }}
 						</div>
 					</div>
 				</div>
-				<div class="col-7">
-					<h3>PENGALAMAN</h3>
+				<div class="col-12 col-md-4">
+					<h4>PENGALAMAN</h4>
+					<div class="row mb-3">
+						<div class="col-md-4">Pendidikan Terakhir</div>
+						<div class="col-md-8">
+							: {{ $model->pendidikan }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Jurusan Pendidikan</div>
+						<div class="col-md-8">
+							: {{ $model->jurusan_pendidikan }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Tahun Kelulusan</div>
+						<div class="col-md-8">
+							: {{ $model->tahun_lulus }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-4">Nama Sekolah / Universitas</div>
+						<div class="col-md-8">
+							: {{ $model->nama_sekolahasal }}
+						</div>
+					</div>
+					<h4>RIWAYAT PELATIHAN</h4>
+					<div class="row mb-3">
+						<div class="col-md-12">1. Training Hospitality</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-12">2. Training Complain Resolution</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-12">3. Training Complimentary</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-12">4. Training Supervisor</div>
+					</div>
 				</div>
 			</div>
 		</form>

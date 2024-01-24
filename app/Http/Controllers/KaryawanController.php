@@ -12,7 +12,18 @@ class KaryawanController extends Controller
 	public function index()
 	{
 		$model = DB::table('karyawan')
-			// ->where('id_kecamatan', $id_kecamatan)
+			->where('status_karyawan', 'Kontrak')
+			// ->orderBy('tanggal_terbit', 'DESC')
+			->get();
+
+		// mengirim data model ke view index
+		return view('/karyawan/index', ['model' => $model]);
+	}
+
+	public function permanen()
+	{
+		$model = DB::table('karyawan')
+			->where('status_karyawan', 'Permanen')
 			// ->orderBy('tanggal_terbit', 'DESC')
 			->get();
 
