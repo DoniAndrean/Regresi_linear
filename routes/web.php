@@ -46,13 +46,27 @@ Route::get('/karyawan/hapus/{id}', 'App\Http\Controllers\KaryawanController@hapu
 
 //route CRUD Menu
 Route::get('/permanen', 'App\Http\Controllers\KaryawanController@permanen');
+// //route Tambah
+// Route::get('/permanen/tambah', 'App\Http\Controllers\PermanenController@tambah');
+// Route::post('/permanen/store', 'App\Http\Controllers\PermanenController@store');
+// //route Edit
+// Route::get('/permanen/edit/{id}', 'App\Http\Controllers\PermanenController@edit');
+// Route::get('/permanen/detail/{id}', 'App\Http\Controllers\PermanenController@detail');
+// Route::post('/permanen/update', 'App\Http\Controllers\PermanenController@update');
+// //route Hapus
+// Route::get('/permanen/hapus/{id}', 'App\Http\Controllers\PermanenController@hapus');
+// //end
+
+
+//route CRUD Menu
+Route::get('/cuti', 'App\Http\Controllers\CutiController@index');
 //route Tambah
-Route::get('/permanen/tambah', 'App\Http\Controllers\PermanenController@tambah');
-Route::post('/permanen/store', 'App\Http\Controllers\PermanenController@store');
+Route::get('/cuti/tambah', 'App\Http\Controllers\CutiController@tambah');
+Route::post('/cuti/store', 'App\Http\Controllers\CutiController@store');
 //route Edit
-Route::get('/permanen/edit/{id}', 'App\Http\Controllers\PermanenController@edit');
-Route::get('/permanen/detail/{id}', 'App\Http\Controllers\PermanenController@detail');
-Route::post('/permanen/update', 'App\Http\Controllers\PermanenController@update');
+Route::get('/cuti/edit/{id}', 'App\Http\Controllers\CutiController@edit');
+Route::get('/cuti/detail/{id}', 'App\Http\Controllers\CutiController@detail');
+Route::post('/cuti/update', 'App\Http\Controllers\CutiController@update');
 //route Hapus
-Route::get('/permanen/hapus/{id}', 'App\Http\Controllers\PermanenController@hapus');
+Route::get('/cuti/hapus/{id}', 'App\Http\Controllers\CutiController@hapus');
 //end
