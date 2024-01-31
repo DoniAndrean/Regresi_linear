@@ -12,8 +12,11 @@ class CutiController extends Controller
 	public function index()
 	{
 		$model = DB::table('cuti')
+			->select('*', 'master_cuti.jenis_cuti as jenis_cuti', 'cuti.id_cuti as id_cuti')
+			->join('master_cuti', 'master_cuti.id_cuti', '=', 'cuti.jenis_cuti')
+			->join('karyawan', 'karyawan.id_sap', '=', 'cuti.id_sap')
 			// ->where('status_karyawan', 'Kontrak')
-			// ->orderBy('tanggal_terbit', 'DESC')
+			->orderBy('karyawan.nama', 'ASC')
 			->get();
 
 		// mengirim data model ke view index
@@ -23,12 +26,15 @@ class CutiController extends Controller
 	// method untuk menampilkan view form tambah berita
 	public function tambah()
 	{
-		// memanggil view tambah
-		// $berita = DB::table('berita')->where('id_berita',$id)->get()[0];
-		// $kecamatan = DB::table('kecamatan')->get();
-		// $data['berita'] = $berita;
-		// $data['kecamatan'] = $kecamatan;
 		$data = [];
+		$model = DB::table('karyawan')
+			->orderBy('nama', 'ASC')
+			->get();
+		$modelMasterCuti = DB::table('master_cuti')
+			->orderBy('jenis_cuti', 'ASC')
+			->get();
+		$data['model'] = $model;
+		$data['modelMasterCuti'] = $modelMasterCuti;
 		return view('/cuti/tambah', $data);
 	}
 
@@ -38,107 +44,75 @@ class CutiController extends Controller
 		//array
 		$data = [
 			'id_sap' => $request->id_sap,
-			'id_nik' => $request->id_nik,
-			'nama' => $request->nama,
-			'id_badge' => $request->id_badge,
-			'join_date' => $request->join_date,
-			'no_ktp' => $request->no_ktp,
-			'tempat_lahir' => $request->tempat_lahir,
-			'tanggal_lahir' => $request->tanggal_lahir,
-			'agama' => $request->agama,
-			'pendidikan' => $request->pendidikan,
-			'jurusan_pendidikan' => $request->jurusan_pendidikan,
-			'nama_sekolahasal' => $request->nama_sekolahasal,
-			'tahun_lulus' => $request->tahun_lulus,
-			'level_karyawan' => $request->level_karyawan,
-			'departemen' => $request->departemen,
-			'posisi' => $request->posisi,
-			'status_karyawan' => $request->status_karyawan,
-			'email_pribdi' => $request->email_pribdi,
-			'email_kantor' => $request->email_kantor,
-			'jenis_kelamin' => $request->jenis_kelamin,
-			'suku' => $request->suku,
-			'status_kawin' => $request->status_kawin,
-			'jmlh_tanggung' => $request->jmlh_tanggung,
-			'no_hp' => $request->no_hp,
-			'no_wa' => $request->no_wa,
-			'riwayat_pelatihan' => $request->riwayat_pelatihan,
-			'kelas_bpjs' => $request->kelas_bpjs,
-			'foto' => $request->foto
+			'jenis_cuti' => $request->jenis_cuti,
+			'jumlah_cuti' => $request->jumlah_cuti,
+			'start_cuti' => $request->start_cuti,
+			'end_cuti' => $request->end_cuti,
+			'alasan_cuti' => $request->alasan_cuti,
 		];
 		$id =	DB::table('cuti')->insertGetId($data);
 
 		// alihkan halaman ke halaman berita
-		return redirect('/karyawan');
+		return redirect('/cuti');
 	}
 	// method untuk edit data berita
 	public function edit($id)
 	{
+		// DEKLARASI
 		// mengambil data berita berdasarkan id yang dipilih
-		$model = DB::table('cuti')->where('id_sap', $id)->get()[0];
-		// print_r($model[0]);
-		// exit();
+		$model = DB::table('cuti')->where('id_cuti', $id)->get()[0];
+		//karyawan
+		$modelKaryawan = DB::table('karyawan')
+			->orderBy('nama', 'ASC')
+			->get();
+		$temp = [];
+		foreach ($modelKaryawan as $key => $value) {
+			$temp[$value->id_sap] = $value;
+		}
+		$modelKaryawan = $temp;
+		//master cuti
+		$modelMasterCuti = DB::table('master_cuti')
+			->orderBy('jenis_cuti', 'ASC')
+			->get();
+		$temp = [];
+		foreach ($modelMasterCuti as $key => $value) {
+			$temp[$value->id_cuti] = $value;
+		}
+		$modelMasterCuti = $temp;
+
+		//PARSING/KIRIM DATA
+		$data['model'] = $model;
+		$data['modelKaryawan'] = $modelKaryawan;
+		$data['modelMasterCuti'] = $modelMasterCuti;
 
 		// passing data model yang didapat ke view edit.blade.php
-		return view('/cuti/edit', ['model' => $model]);
+		return view('/cuti/edit', $data);
 	}
 	// update data berita
 	public function update(Request $request)
 	{
 		// update data berita
 		$data = [
-			'id_nik' => $request->id_nik,
-			'nama' => $request->nama,
-			'id_badge' => $request->id_badge,
-			'join_date' => $request->join_date,
-			'no_ktp' => $request->no_ktp,
-			'tempat_lahir' => $request->tempat_lahir,
-			'tanggal_lahir' => $request->tanggal_lahir,
-			'agama' => $request->agama,
-			'pendidikan' => $request->pendidikan,
-			'jurusan_pendidikan' => $request->jurusan_pendidikan,
-			'nama_sekolahasal' => $request->nama_sekolahasal,
-			'tahun_lulus' => $request->tahun_lulus,
-			'level_karyawan' => $request->level_karyawan,
-			'departemen' => $request->departemen,
-			'posisi' => $request->posisi,
-			'status_karyawan' => $request->status_karyawan,
-			'email_pribdi' => $request->email_pribdi,
-			'email_kantor' => $request->email_kantor,
-			'jenis_kelamin' => $request->jenis_kelamin,
-			'suku' => $request->suku,
-			'status_kawin' => $request->status_kawin,
-			'jmlh_tanggung' => $request->jmlh_tanggung,
-			'no_hp' => $request->no_hp,
-			'no_wa' => $request->no_wa,
-			'riwayat_pelatihan' => $request->riwayat_pelatihan,
-			'kelas_bpjs' => $request->kelas_bpjs,
-			'foto' => $request->foto
+			'id_sap' => $request->id_sap,
+			'jenis_cuti' => $request->jenis_cuti,
+			'jumlah_cuti' => $request->jumlah_cuti,
+			'start_cuti' => $request->start_cuti,
+			'end_cuti' => $request->end_cuti,
+			'alasan_cuti' => $request->alasan_cuti,
 		];
 
-		DB::table('cuti')->where('id_sap', $request->id_sap)->update($data);
+		DB::table('cuti')->where('id_cuti', $request->id_cuti)->update($data);
 
 		// alihkan halaman ke halaman berita
-		return redirect('/karyawan');
+		return redirect('/cuti');
 	}
 	// method untuk hapus data berita
 	public function hapus($id)
 	{
 		// menghapus data berita berdasarkan id yang dipilih
-		DB::table('cuti')->where('id_sap', $id)->delete();
+		DB::table('cuti')->where('id_cuti', $id)->delete();
 
 		// alihkan halaman ke halaman berita
-		return redirect('/karyawan');
-	}
-
-	public function detail($id)
-	{
-		// mengambil data berita berdasarkan id yang dipilih
-		$model = DB::table('cuti')->where('id_sap', $id)->get()[0];
-		// print_r($model[0]);
-		// exit();
-
-		// passing data model yang didapat ke view edit.blade.php
-		return view('/cuti/detail', ['model' => $model]);
+		return redirect('/cuti');
 	}
 }

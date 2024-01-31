@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ url('') }}/backend/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ url('') }}/backend/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="{{ url('') }}/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -685,10 +686,44 @@
     <script src="{{ url('') }}/backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('') }}/backend/dist/js/adminlte.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{ url('') }}/backend/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="{{ url('') }}/backend/dist/js/demo.js"></script> -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ url('') }}/backend/dist/js/pages/dashboard.js"></script>
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "paging": true,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 
 </html>

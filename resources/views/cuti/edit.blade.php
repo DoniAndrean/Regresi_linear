@@ -7,13 +7,13 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0">Data Karyawan Kontrak</h1>
+					<h1 class="m-0">Data Cuti</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="/">Home</a></li>
-						<li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
-						<li class="breadcrumb-item active">Edit</li>
+						<li class="breadcrumb-item"><a href="/cuti">Cuti</a></li>
+						<li class="breadcrumb-item active">Tambah</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -22,256 +22,76 @@
 
 	<!-- Main content -->
 	<section class="content">
+		<!-- /.content-header -->
 		<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-		<h2>Edit Data</h2>
+		<h3>Edit Cuti</h3>
 
-		<a href="/karyawan" class="btn btn-default"> Kembali</a>
+		<a href="/cuti" class="btn btn-default"> Kembali</a>
 
 		<br />
 		<br />
 
-		<form action="/karyawan/update" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
+		<form action="/cuti/update" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
+			<input class="form-control" type="hidden" name="id_cuti" required="required" placeholder="" value="{{ $model->id_cuti }}" autofocus="on">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="row mb-3">
-						<div class="col-md-4">NIK Karyawan</div>
+						<div class="col-md-4">Karyawan</div>
 						<div class="col-md-8">
-							<input class="form-control" type="hidden" name="id_sap" required="required" placeholder="Masukkan SAP" value="{{ $model->id_sap }}" autofocus="on">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="{{ $model->id_nik }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">No ID Badge</div>
-						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_badge" required="required" placeholder="Masukkan No ID Badge" value="{{ $model->id_badge }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Join Date</div>
-						<div class="col-md-8">
-							<input class="form-control" type="date" name="join_date" required="required" placeholder="Masukkan Tanggal Join" value="{{ $model->join_date }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Nama Karyawan</div>
-						<div class="col-md-8">
-							<input class="form-control" type="text" name="nama" required="required" placeholder="Masukkan Nama Karyawan" value="{{ $model->nama }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">No KTP</div>
-						<div class="col-md-8">
-							<input class="form-control" type="number" name="no_ktp" required="required" placeholder="Masukkan Nomor KTP" value="{{ $model->no_ktp }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Tempat Lahir</div>
-						<div class="col-md-8">
-							<input class="form-control" type="text" name="tempat_lahir" required="required" placeholder="Masukkan Tempat Lahir" value="{{ $model->tempat_lahir }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Tanggal Lahir</div>
-						<div class="col-md-8">
-							<input class="form-control" type="date" name="tanggal_lahir" required="required" placeholder="Masukkan Tanggal Lahir" value="{{ $model->tanggal_lahir }}" autofocus="on">
-						</div>
-					</div>
-					
-					<div class="row mb-3">
-						<div class="col-md-4">Agama</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="agama" value="{{ $model->agama }}" required="required">
-								<option value="islam">Islam</option>
-								<option value="kristen">Kristen</option>
-								<option value="katolik">Katolik</option>
-								<option value="hindu">Hindu</option>
-								<option value="buddha">Buddha</option>
-								<option value="konghucu">Konghucu</option>
+							<select class="option form-control" name="id_sap" required="required">
+								<option value="{{ $model->id_sap }}">-- {{ $modelKaryawan[$model->id_sap]->nama }} --</option>
+								@foreach($modelKaryawan as $key => $value)
+								<option value="{{ $value->id_sap }}">{{ $value->nama }} ({{ $value->id_sap }})</option>
+								@endforeach
 							</select>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Pendidikan</div>
+						<div class="col-md-4">Jenis Cuti</div>
 						<div class="col-md-8">
-							<select class="option form-control" name="pendidikan" value="{{ $model->pendidikan }}" required="required">
-								<option value="SD">SD</option>
-								<option value="SMP">SMP</option>
-								<option value="SMA">SMA</option>
-								<option value="SMK">SMK</option>
-								<option value="Diploma 1">Diploma 1</option>
-								<option value="Diploma 2">Diploma 2</option>
-								<option value="Diploma 3">Diploma 3</option>
-								<option value="Diploma 4">Diploma 4</option>
-								<option value="Strata 1">Strata 1</option>
-								<option value="Strata 2">Strata 2</option>
+							<select class="option form-control" name="jenis_cuti" required="required">
+								<option value="{{ $model->jenis_cuti }}">-- {{ $modelMasterCuti[$model->jenis_cuti]->jenis_cuti }} --</option>
+								@foreach($modelMasterCuti as $key => $value)
+								<option value="{{ $value->id_cuti }}">{{ $value->jenis_cuti }}</option>
+								@endforeach
 							</select>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Jurusan Pendidikan Terakhir</div>
+						<div class="col-md-4">Jumlah Cuti</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="jurusan_pendidikan" required="required" placeholder="Masukkan Jurusan Pendidikan" value="{{ $model->jurusan_pendidikan }}" autofocus="on">
+							<input class="form-control" type="number" name="jumlah_cuti" required="required" placeholder="" value="{{ $model->jumlah_cuti }}" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Nama Sekolah / Universitas Pendidikan Terakhir</div>
+						<div class="col-md-4">Start Cuti</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="nama_sekolahasal" required="required" placeholder="Masukkan Nama Sekolah/Universitas" value="{{ $model->nama_sekolahasal }}"  autofocus="on">
-							<!-- <textarea class="form-control" type="text" name="nama_sekolahasal" required="required" placeholder="Masukkan Nama Sekolah/Universitas" value="" autofocus="on"> -->
+							<input class="form-control" type="date" name="start_cuti" required="required" placeholder="Masukkan Start Cuti" value="{{ $model->start_cuti }}" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Tahun Lulus</div>
+						<div class="col-md-4">End Cuti</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="tahun_lulus" required="required" placeholder="Masukkan Tahun Lulus" value="{{ $model->tahun_lulus }}"  autofocus="on">
+							<input class="form-control" type="date" name="end_cuti" required="required" placeholder="Masukkan End Cuti" value="{{ $model->end_cuti }}" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-md-4">Level Karyawan</div>
+						<div class="col-md-4">Alasan Cuti</div>
 						<div class="col-md-8">
-							<select class="option form-control" name="level_karyawan" value="{{ $model->level_karyawan }}" required="required">
-								<option value="General Manager">General Manager</option>
-								<option value="Head Of Department">Head Of Department</option>
-								<option value="Assistant Head Department">Assistant Head Department</option>
-								<option value="Supervisor">Supervisor</option>
-								<option value="Rank n File">Rank n File</option>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Departemen</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="departemen" value="{{ $model->departemen }}" required="required">
-								<option value="GMO">GMO</option>
-								<option value="HRD">HRD</option>
-								<option value="Food And Beverage Service">Food And Beverage Service</option>
-								<option value="Food And Beverage Product">Food And Beverage Product</option>
-								<option value="Front Office & Health Club">Front Office & Health Club</option>
-								<option value="House Keeping">House Keeping</option>
-								<option value="Eco Camp">Eco Camp</option>
-								<option value="Engineering">Engineering</option>
-							</select>
-						</div>
-					</div>
-				</div>	
-				<div class="col-md-6">
-					<div class="row mb-3">
-						<div class="col-md-4">Posisi</div>
-						<div class="col-md-8">
-							<input class="form-control" type="text" name="posisi" required="required" placeholder="Masukkan Jurusan Pendidikan" value="{{ $model->posisi }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Status Karyawan</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="status_karyawan" value="{{ $model->status_karyawan }}" required="required">
-								<option value="Kontrak">Kontrak</option>
-								<option value="Permanen">Permanen</option>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Email Pribadi</div>
-						<div class="col-md-8">
-							<input class="form-control" type="email" name="email_pribdi" required="required" placeholder="Masukkan Email" value="{{ $model->email_pribdi }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Email Kantor</div>
-						<div class="col-md-8">
-							<input class="form-control" type="email" name="email_kantor" required="required" placeholder="Masukkan Email" value="{{ $model->email_kantor }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Jenis Kelamin</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="jenis_kelamin" value="{{ $model->jenis_kelamin }}" required="required">
-								<option value="">--Pilih Jenis Kelamin--</option>
-								<option value="Laki-Laki">Laki-Laki</option>
-								<option value="Perempuan">Perempuan</option>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Suku</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="suku" value="{{ $model->suku }}" required="required">
-								<option value="">--Pilih Suku--</option>
-								<option value="Jawa">Jawa</option>
-								<option value="Melayu">Melayu</option>
-								<option value="Sunda">Sunda</option>
-								<option value="Batak">Batak</option>
-								<option value="Minang">Minang</option>
-								<option value="Tionghoa">Tionghoa</option>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Status Perkawinan</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="status_kawin" value="{{ $model->status_kawin }}" required="required">
-								<option value="">--Pilih Status Perkawinan--</option>
-								<option value="Sudah Kawin">Sudah Kawin</option>
-								<option value="Belum Kawin">Belum Kawin</option>
-								<option value="Cerai Hidup">Cerai Hidup</option>
-								<option value="Cerai Mati">Cerai Mati</option>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Jumlah Tanggungan</div>
-						<div class="col-md-8">
-							<select class="option form-control" name="jmlh_tanggung" value="{{ $model->jmlh_tanggung }}" required="required">
-								<option value="">--Pilih Jumlah Tanggungan--</option>
-								<option value="1 Orang">1 Orang</option>
-								<option value="2 Orang">2 Orang</option>
-								<option value="3 Orang">3 Orang</option>
-								<option value="4 Orang">4 Orang</option>
-								<option value="Belum Menikah">Belum Menikah</option>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Nomor HP</div>
-						<div class="col-md-8">
-							<input class="form-control" type="number" name="no_hp" required="required" placeholder="Masukkan Nomor Handphone" value="{{ $model->no_hp }}"  autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Nomor WhatsApp</div>
-						<div class="col-md-8">
-							<input class="form-control" type="number" name="no_wa" required="required" placeholder="Masukkan Nomor WhatsApp" value="{{ $model->no_wa }}"  autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Riwayat Pelatihan</div>
-						<div class="col-md-8">
-							<input class="form-control" type="text" name="riwayat_pelatihan" required="required" placeholder="Masukkan Riwayat Pelatihan" value="{{ $model->riwayat_pelatihan }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Kelas BPJS</div>
-						<div class="col-md-8">
-							<input class="form-control" type="text" name="kelas_bpjs" required="required" placeholder="Masukkan Kelas BPJS" value="{{ $model->kelas_bpjs }}" value="{{ $model->kelas_bpjs }}" autofocus="on">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<div class="col-md-4">Upload Foto</div>
-						<div class="col-md-8">
-							<input class="form-control" type="file" name="foto" required="required" value="{{ $model->foto }}" autofocus="on">
+							<input class="form-control" type="text" name="alasan_cuti" required="required" placeholder="Masukkan Alasan Cuti" value="{{ $model->alasan_cuti }}" autofocus="on">
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row mb-3">
-				<div class="col-md-6">
-					<input type="submit" value="Simpan Data" class="btn btn-success">
 
-				</div>
+				<input type="submit" value="Simpan Data" class="btn btn-success">
+
 			</div>
 
 		</form>
 	</section>
 </div>
+
 @endsection

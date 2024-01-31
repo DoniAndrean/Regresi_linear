@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-						<li class="breadcrumb-item active">Cuti</li>
+                        <li class="breadcrumb-item active">Cuti</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -21,7 +21,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- DataTables Example -->
+
         <div class="card shadow mb-4">
             <!-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
@@ -29,42 +29,49 @@
             <div class="card-body">
                 <a href="{{ url('/cuti/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <tr>
-                            <th>No</th>
-                            <th>Jenis Cuti</th>
-                            <th>SAP</th>
-                            <th>Jumlah Cuti</th>
-                            <th>Start Cuti</th>
-                            <th>Posisi</th>
-                            <th>Level Karyawan</th>
-                            <th>Pendidikan</th>
-                            <th>Opsi</th>
-                        </tr>
-                        @php $no = 1 @endphp
-                        @foreach($model as $p)
-                        <tr>
-                            <td>{{ $no }}</td>
-                            <td>{{ $p->jenis_cuti }}</td>
-                            <td>{{ $p->id_sap }}</td>
-                            <td>{{ $p->jumlah_cuti }}</td>
-                            <td>{{ $p->start_cuti }}</td>
-                            <td>{{ $p->end_cuti }}</td>
-                            <td>{{ $p->alasan_cuti }}</td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="/cuti/edit/{{ $p->id_cuti }}" class="btn btn-success ">
-                                        <i class='fa fa-edit'></i> Edit
-                                    </a>
+                    <table class="table table-bordered" id="example2" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Karyawan</th>
+                                <th>Jenis Cuti</th>
+                                <th>Jumlah Cuti</th>
+                                <th>Start Cuti</th>
+                                <th>End Cuti</th>
+                                <th>Alasan Cuti</th>
+                                <th>Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $no = 1 @endphp
+                            @foreach($model as $p)
+                            <tr>
+                                <td>{{ $no }}</td>
+                                <td>{{ $p->nama }}</td>
+                                <td>{{ $p->jenis_cuti }}</td>
+                                <td class="text-center">
+                                    <span class="btn btn-xs btn-info rounded-circle" style="min-width:20px;">
+                                        {{ $p->jumlah_cuti }}
+                                    </span>
+                                </td>
+                                <td><span class="btn btn-xs btn-secondary">{{ date('d-m-Y', strtotime($p->start_cuti)) }}</span></td>
+                                <td><span class="btn btn-xs btn-warning">{{ date('d-m-Y', strtotime($p->end_cuti)) }}</span></td>
+                                <td>{{ $p->alasan_cuti }}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="/cuti/edit/{{ $p->id_cuti }}" class="btn btn-success ">
+                                            <i class='fa fa-edit'></i>
+                                        </a>
 
-                                    <a href="/cuti/hapus/{{ $p->id_cuti }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
-                                        <i class='fa fa-trash'></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        @php $no++ @endphp
-                        @endforeach
+                                        <a href="/cuti/hapus/{{ $p->id_cuti }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
+                                            <i class='fa fa-trash'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            @php $no++ @endphp
+                            @endforeach
+                        </tbody>
                     </table>
 
                 </div>
