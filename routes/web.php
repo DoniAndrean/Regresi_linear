@@ -69,4 +69,5 @@ Route::get('/cuti/detail/{id}', 'App\Http\Controllers\CutiController@detail');
 Route::post('/cuti/update', 'App\Http\Controllers\CutiController@update');
 //route Hapus
 Route::get('/cuti/hapus/{id}', 'App\Http\Controllers\CutiController@hapus');
+Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@status');
 //end

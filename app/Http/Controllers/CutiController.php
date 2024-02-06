@@ -49,6 +49,7 @@ class CutiController extends Controller
 			'start_cuti' => $request->start_cuti,
 			'end_cuti' => $request->end_cuti,
 			'alasan_cuti' => $request->alasan_cuti,
+			'status_cuti' => "Pengajuan",
 		];
 		$id =	DB::table('cuti')->insertGetId($data);
 
@@ -111,6 +112,17 @@ class CutiController extends Controller
 	{
 		// menghapus data berita berdasarkan id yang dipilih
 		DB::table('cuti')->where('id_cuti', $id)->delete();
+
+		// alihkan halaman ke halaman berita
+		return redirect('/cuti');
+	}
+	public function status($id, $status)
+	{
+		$data = [
+			'status_cuti' => $status,
+		];
+
+		DB::table('cuti')->where('id_cuti', $id)->update($data);
 
 		// alihkan halaman ke halaman berita
 		return redirect('/cuti');

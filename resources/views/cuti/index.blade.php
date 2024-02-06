@@ -58,17 +58,66 @@
                                 <td><span class="btn btn-xs btn-warning">{{ date('d-m-Y', strtotime($p->end_cuti)) }}</span></td>
                                 <td>{{ $p->alasan_cuti }}</td>
                                 <td>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal{{ $p->id_cuti }}">Detail</button>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="/cuti/edit/{{ $p->id_cuti }}" class="btn btn-success ">
+                                        <a href="/cuti/edit/{{ $p->id_cuti }}" class="btn btn-success btn-xs">
                                             <i class='fa fa-edit'></i>
                                         </a>
 
-                                        <a href="/cuti/hapus/{{ $p->id_cuti }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
+                                        <a href="/cuti/hapus/{{ $p->id_cuti }}" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin?')">
                                             <i class='fa fa-trash'></i>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
+
+                            <div id="myModal{{ $p->id_cuti }}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-3">Nama</div>
+                                                <div class="col-9">: {{ $p->nama }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Jenis Cuti</div>
+                                                <div class="col-9">: {{ $p->jenis_cuti }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Jumlah Cuti</div>
+                                                <div class="col-9">: {{ $p->jumlah_cuti }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Jadwal Cuti</div>
+                                                <div class="col-9">: {{ date('d-m-Y', strtotime($p->start_cuti)) }} - {{ date('d-m-Y', strtotime($p->end_cuti)) }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Alasan Cuti</div>
+                                                <div class="col-9">: {{ $p->alasan_cuti }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Status Cuti</div>
+                                                <div class="col-9">: {{ $p->status_cuti }}
+                                                    @if($p->status_cuti != "selesai")
+                                                    <a href="/cuti/status/{{ $p->id_cuti }}/selesai" class="btn btn-success btn-xs" onclick="return confirm('Apakah anda yakin?')">
+                                                        Selesai
+                                                    </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                             @php $no++ @endphp
                             @endforeach
                         </tbody>
