@@ -71,3 +71,17 @@ Route::post('/cuti/update', 'App\Http\Controllers\CutiController@update');
 Route::get('/cuti/hapus/{id}', 'App\Http\Controllers\CutiController@hapus');
 Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@status');
 //end
+
+
+//route CRUD Menu
+Route::get('/kandidat', 'App\Http\Controllers\KandidatController@index');
+//route Tambah
+Route::get('/kandidat/tambah', 'App\Http\Controllers\KandidatController@tambah');
+Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
+//route Edit
+Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
+Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');
+Route::post('/kandidat/update', 'App\Http\Controllers\KandidatController@update');
+//route Hapus
+Route::get('/kandidat/hapus/{id}', 'App\Http\Controllers\KandidatController@hapus');
+//end

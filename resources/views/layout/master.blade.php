@@ -201,13 +201,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="{{ url('') }}/kandidat" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Karyawan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="{{ url('') }}/kandidat" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Outsourcing</p>
                                     </a>
