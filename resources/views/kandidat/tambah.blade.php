@@ -38,103 +38,105 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Alamat</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="id_sap" required="required" placeholder="Masukkan Data" value="" autofocus="on">
+							<input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Data" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">No Telp</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_badge" required="required" placeholder="Masukkan No ID Badge" value="" autofocus="on">
+							<input class="form-control" type="text" name="no_telp" required="required" placeholder="Masukkan No ID Badge" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Email</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="join_date" required="required" placeholder="" value="" autofocus="on">
+							<input class="form-control" type="text" name="email" required="required" placeholder="Masukkan Email" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Bahasa Pertama</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="bahasa_pertama" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Bahasa Lain</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Riwayat Sekolah</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="riwayat_sekolah" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Pernah Pelatihan</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="pernah_pelatihan" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Kontak Darurat</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="kontak_darurat" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Izin Mengemudi</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="izin_mengemudi" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Bentuk Transportasi</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="bentuk_transportasi" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
+				</div>
+				<div class="col-md-6">
 					<div class="row mb-3">
 						<div class="col-md-4">Availibility</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="availibility" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Pengalaman Kerja</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="pengalaman_kerja" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Basic Gaji</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="basic_gaji" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Uang Saku</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="uang_saku" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Take Home Pay Salary</div>
 						<div class="col-md-8">
-							<input class="form-control" type="number" name="id_nik" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+							<input class="form-control" type="text" name="take_home_pay_salary" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Skill Tambahan</div>
 						<div class="col-md-8">
-							<textarea name="skill" id="" cols="30" rows="10"></textarea>
+							<textarea name="skill_tambahan" id="" cols="30" rows="5" class="form-control"></textarea>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Harapan Di Pekerjaan Baru</div>
 						<div class="col-md-8">
-							<textarea name="skill" id="" cols="30" rows="10"></textarea>
+							<textarea name="harapan" id="" cols="30" rows="5" class="form-control"></textarea>
 						</div>
 					</div>
 
