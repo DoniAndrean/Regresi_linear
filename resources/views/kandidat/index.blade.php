@@ -57,12 +57,12 @@
                             <td>{{ $p->level_karyawan }}</td>
                             <td>{{ $p->pendidikan }}</td>
                             <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
+                                <!-- <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="/kandidat/detail/{{ $p->id_sap }}" class="btn btn-secondary ">
                                         <i class='fa fa-address-card'></i> Detail
-                                    </a>
-                                    <a href="/kandidat/edit/{{ $p->id_sap }}" class="btn btn-success ">
-                                        <i class='fa fa-edit'></i> Edit
+                                    </a> -->
+                                    <a href="/kandidat/edit/{{ $p->id_sap }}" class="btn btn-info ">
+                                        <i class='fa fa-edit'></i> Interview
                                     </a>
 
                                     <a href="/kandidat/hapus/{{ $p->id_sap }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
