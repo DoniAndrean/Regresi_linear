@@ -25,12 +25,12 @@
 		<!-- /.content-header -->
 		<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
-		<a href="/kandidat" class="btn btn-default"> Kembali</a>
+		<a href="/karyawan" class="btn btn-default"> Kembali</a>
 
 		<br />
 		<br />
 
-		<form action="/kandidat/store" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
+		<form action="/karyawan/store" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
 			<div class="row">
 				<div class="col-md-12">
@@ -40,7 +40,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Posisi</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="posisi" placeholder="Masukkan Posisi" required="required" value="" autofocus="on">
+							<input class="form-control" type="text" name="posisi" required="required" placeholder="Masukkan Posisi" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -155,9 +155,54 @@
 					<div class="col-md-6">
 					</div>
 				</div>
-
+				<div class="col-md-12 row">
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Bahasa Lain</div>
+							<div class="col-md-12">
+								<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Bahasa Lain" value="" autofocus="on">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Membaca</div>
+							<div class="col-md-12">
+								<select name="read" id="" class="form-control">
+									<option value="cukup">Cukup</option>
+									<option value="baik">Baik</option>
+									<option value="fasih">Fasih</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Menulis</div>
+							<div class="col-md-12">
+								<select name="write" id="" class="form-control">
+									<option value="cukup">Cukup</option>
+									<option value="baik">Baik</option>
+									<option value="fasih">Fasih</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Berbicara</div>
+							<div class="col-md-12">
+								<select name="speak" id="" class="form-control">
+									<option value="cukup">Cukup</option>
+									<option value="baik">Baik</option>
+									<option value="fasih">Fasih</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- #4 -->
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Pendidikan Formal</h4>
 					</div>
@@ -217,7 +262,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">GPA</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -225,7 +270,7 @@
 				</div>
 
 				<!-- #5 -->
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Pendidikan Informal</h4>
 					</div>
@@ -236,7 +281,7 @@
 								<div class="col-md-12">Institusi</div>
 								<div class="col-md-12">
 									<textarea name="skill_tambahan" id="" cols="30" rows="5" class="form-control" placeholder="Masukkan Institusi"></textarea>
-									<!-- <input class="form-control" type="text" name="bahasa_lain"  placeholder="Masukkan NIK Karyawan" value="" autofocus="on"> -->
+									<!-- <input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on"> -->
 								</div>
 							</div>
 						</div>
@@ -244,7 +289,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Major</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Major" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Major" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -276,7 +321,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">GPA</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan NIK Karyawan" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -284,7 +329,7 @@
 				</div>
 
 				<!-- #6 -->
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Informasi Keluarga</h4>
 					</div>
@@ -294,7 +339,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Nama</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Nama" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Nama" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -316,7 +361,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Umur</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Umur" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Umur" value="" autofocus="on">
 									<!-- <select name="write" id="" class="form-control">
 										@for($i=date('Y');$i>=2000;$i--)
 										<option>{{$i}}</option>
@@ -329,7 +374,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Alamat</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Alamat" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Alamat" value="" autofocus="on">
 									<!-- <select name="write" id="" class="form-control">
 										@for($i=date('Y');$i>=2000;$i--)
 										<option>{{$i}}</option>
@@ -343,7 +388,7 @@
 
 				<!-- #7 -->
 
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Kontak Darurat</h4>
 					</div>
@@ -352,7 +397,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Nama</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Nama" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Nama" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -360,7 +405,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Hubungan</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Hubungan" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Hubungan" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -368,7 +413,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">No HP</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan No HP" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan No HP" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -376,13 +421,13 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Alamat</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Alamat" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Alamat" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Bersedia Bekerja</h4>
 					</div>
@@ -432,7 +477,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Pengalaman Kerja</h4>
 					</div>
@@ -442,8 +487,8 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Nama Perusahaan</div>
 								<div class="col-md-12">
-									<textarea name="harapan" id="" cols="30" rows="5" class="form-control" placeholder="Masukkan Nama Perusahaan"></textarea>
-									<!-- <input class="form-control" type="text" name="bahasa_lain"  placeholder="Masukkan Nama Perusahaan" value="" autofocus="on"> -->
+									<textarea name="harapan" id="" cols="30" rows="5" class="form-control" placeholder="Masukkan Nama Perusahaan"></textarea>		
+									<!-- <input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Nama Perusahaan" value="" autofocus="on"> -->
 								</div>
 							</div>
 						</div>
@@ -451,7 +496,7 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Posisi</div>
 								<div class="col-md-12">
-									<input class="form-control" type="text" name="bahasa_lain" placeholder="Masukkan Posisi" value="" autofocus="on">
+									<input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Posisi" value="" autofocus="on">
 								</div>
 							</div>
 						</div>
@@ -483,8 +528,8 @@
 							<div class="row mb-3">
 								<div class="col-md-12">Tugas Utama</div>
 								<div class="col-md-12">
-									<textarea name="harapan" id="" cols="30" rows="5" class="form-control" placeholder="Masukkan Tugas Utama"></textarea>
-									<!-- <input class="form-control" type="text" name="bahasa_lain"  placeholder="Masukkan Alamat" value="" autofocus="on"> -->
+									<textarea name="harapan" id="" cols="30" rows="5" class="form-control" placeholder="Masukkan Tugas Utama"></textarea>	
+									<!-- <input class="form-control" type="text" name="bahasa_lain" required="required" placeholder="Masukkan Alamat" value="" autofocus="on"> -->
 								</div>
 							</div>
 						</div>
@@ -492,7 +537,7 @@
 				</div>
 
 				<!-- #? -->
-				<div class="col-md-12 row d-none">
+				<div class="col-md-12 row">
 					<div class="col-md-12">
 						<h4>Lainnya</h4>
 					</div>
@@ -500,25 +545,25 @@
 						<div class="row mb-3">
 							<div class="col-md-4">Izin Mengemudi</div>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="izin_mengemudi" placeholder="Masukkan Jenis Izin Mengemudi" value="" autofocus="on">
+								<input class="form-control" type="text" name="izin_mengemudi" required="required" placeholder="Masukkan Jenis Izin Mengemudi" value="" autofocus="on">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-4">Bentuk Transportasi</div>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="bentuk_transportasi" placeholder="Masukkan Bentuk Transportasi" value="" autofocus="on">
+								<input class="form-control" type="text" name="bentuk_transportasi" required="required" placeholder="Masukkan Bentuk Transportasi" value="" autofocus="on">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-4">Basic Gaji</div>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="basic_gaji" placeholder="Masukkan Nominal" value="" autofocus="on">
+								<input class="form-control" type="text" name="basic_gaji" required="required" placeholder="Masukkan Nominal" value="" autofocus="on">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-4">Uang Saku</div>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="uang_saku" placeholder="Masukkan Nominal" value="" autofocus="on">
+								<input class="form-control" type="text" name="uang_saku" required="required" placeholder="Masukkan Nominal" value="" autofocus="on">
 							</div>
 						</div>
 					</div>
@@ -526,7 +571,7 @@
 						<div class="row mb-3">
 							<div class="col-md-4">Gaji Bersih</div>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="gaji_bersih" placeholder="Masukkan Nominal" value="" autofocus="on">
+								<input class="form-control" type="text" name="gaji_bersih" required="required" placeholder="Masukkan Nominal" value="" autofocus="on">
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -547,7 +592,7 @@
 			</div>
 			<!-- Submit -->
 			<div class="row mb-3">
-				<input type="submit" value="Selanjutnya" class="btn btn-success float-right">
+				<input type="submit" value="Simpan Data" class="btn btn-success">
 
 			</div>
 
