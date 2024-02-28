@@ -46,7 +46,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Informasi Lowongan</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="info_loker" required="required" placeholder="Masukkan Informasi Lowongan" value="" autofocus="on">
+							<input class="form-control" type="text" name="informasi_lowongan" required="required" placeholder="Masukkan Informasi Lowongan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -64,7 +64,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Tempat Lahir</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Tempat Lahir" value="" autofocus="on">
+							<input class="form-control" type="text" name="tempat_lahir" required="required" placeholder="Masukkan Tempat Lahir" value="" autofocus="on">
 						</div>
 					</div>
 				</div>
@@ -72,14 +72,14 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Tanggal Lahir</div>
 						<div class="col-md-8">
-							<input class="form-control" type="date" name="alamat" required="required" placeholder="Masukkan Tanggal Lahir" value="" autofocus="on">
+							<input class="form-control" type="date" name="tanggal_lahir" required="required" placeholder="Masukkan Tanggal Lahir" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Status Perkawinan</div>
 						<div class="col-md-8">
 							<!-- <input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Data" value="" autofocus="on"> -->
-							<select class="option form-control" name="status_kawin" required="required">
+							<select class="option form-control" name="status_perkawinan" required="required">
 								<option value="">--Pilih Status Perkawinan--</option>
 								<option value="Sudah Kawin">Sudah Kawin</option>
 								<option value="Belum Kawin">Belum Kawin</option>
@@ -102,13 +102,13 @@
 					<div class="row mb-3">
 						<div class="col-md-4">Berat Badan</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Berat Badan" value="" autofocus="on">
+							<input class="form-control" type="text" name="berat_badan" required="required" placeholder="Masukkan Berat Badan" value="" autofocus="on">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-md-4">Tinggi Badan</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Tinggi Badan" value="" autofocus="on">
+							<input class="form-control" type="text" name="tinggi_badan" required="required" placeholder="Masukkan Tinggi Badan" value="" autofocus="on">
 						</div>
 					</div>
 				</div>
@@ -127,7 +127,7 @@
 					<div class="row mb-3">
 						<div class="col-md-4">No HP</div>
 						<div class="col-md-8">
-							<input class="form-control" type="text" name="no_telp" required="required" placeholder="Masukkan No HP" value="" autofocus="on">
+							<input class="form-control" type="text" name="no_hp" required="required" placeholder="Masukkan No HP" value="" autofocus="on">
 						</div>
 					</div>
 				</div>
