@@ -11,19 +11,8 @@ class KandidatController extends Controller
 {
 	public function index()
 	{
-		$model = DB::table('karyawan')
-			->where('status_karyawan', 'Kontrak')
-			// ->orderBy('tanggal_terbit', 'DESC')
-			->get();
-
-		// mengirim data model ke view index
-		return view('/kandidat/index', ['model' => $model]);
-	}
-
-	public function permanen()
-	{
-		$model = DB::table('karyawan')
-			->where('status_karyawan', 'Permanen')
+		$model = DB::table('kandidat')
+			// ->where('status_karyawan', 'Kontrak')
 			// ->orderBy('tanggal_terbit', 'DESC')
 			->get();
 
@@ -41,17 +30,6 @@ class KandidatController extends Controller
 		// $data['kecamatan'] = $kecamatan;
 		$data = [];
 		return view('/kandidat/tambah', $data);
-	}
-
-	public function tambahBahasa($id)
-	{
-		// memanggil view tambah
-		// $berita = DB::table('berita')->where('id_berita',$id)->get()[0];
-		// $kecamatan = DB::table('kecamatan')->get();
-		// $data['berita'] = $berita;
-		// $data['kecamatan'] = $kecamatan;
-		$data = [];
-		return view('/kandidat/tambah_bahasa', $data);
 	}
 
 	// method untuk insert data ke table berita
@@ -79,6 +57,34 @@ class KandidatController extends Controller
 		// echo $id;
 		// alihkan halaman ke halaman berita
 		return redirect('/kandidat/tambah-bahasa/' . $id);
+	}
+
+	public function tambahBahasa($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$bahasa = DB::table('bahasa')->where('id_kandidat',$id)->get();
+		$data['bahasa'] = $bahasa;
+		// print_r($bahasa);
+
+		return view('/kandidat/tambah_bahasa', $data);
+	}
+	// method untuk insert data ke table berita
+	public function tambahBahasaProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'bahasa_lain' => $request->bahasa_lain,
+			'membaca' => $request->membaca,
+			'menulis' => $request->menulis,
+			'berbicara' => $request->berbicara,
+		];
+		// print_r($data);
+		$id =	DB::table('bahasa')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-bahasa/' . $request->id_kandidat);
 	}
 	// method untuk edit data berita
 	public function edit($id)

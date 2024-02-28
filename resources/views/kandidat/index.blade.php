@@ -32,40 +32,35 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Join Date</th>
-                            <th>SAP</th>
-                            <th>NIK</th>
-                            <th>Departemen</th>
                             <th>Posisi</th>
-                            <th>Level Karyawan</th>
-                            <th>Pendidikan</th>
+                            <th>Informasi Lowongan</th>
+                            <th>Nama</th>
+                            <th>Umur</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
                             <th>Opsi</th>
                         </tr>
                         @php $no = 1 @endphp
                         @foreach($model as $p)
                         <tr>
                             <td>{{ $no }}</td>
-                            <td>{{ $p->nama }}</td>
-                            <td>{{ $p->join_date }}</td>
-                            <td>{{ $p->id_sap }}</td>
-
-                            <td>{{ $p->id_nik }}</td>
-
-                            <td>{{ $p->departemen }}</td>
                             <td>{{ $p->posisi }}</td>
-                            <td>{{ $p->level_karyawan }}</td>
-                            <td>{{ $p->pendidikan }}</td>
+                            <td>{{ $p->informasi_lowongan }}</td>
+                            <td>{{ $p->nama }}</td>
+                            <td>{{ $p->umur }}</td>
+                            <td>{{ $p->tempat_lahir }}</td>
+                            <td>{{ $p->tanggal_lahir }}</td>
                             <td>
                                 <!-- <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="/kandidat/detail/{{ $p->id_sap }}" class="btn btn-secondary ">
-                                        <i class='fa fa-address-card'></i> Detail
-                                    </a> -->
-                                    <a href="/kandidat/edit/{{ $p->id_sap }}" class="btn btn-info ">
+                                    -->
+                                    <a href="/kandidat/tambah-bahasa/{{ $p->id_kandidat }}" class="btn btn-info ">
+                                        <i class='fa fa-edit'></i> Detail
+                                    </a>
+                                    <a href="/kandidat/edit/{{ $p->id_kandidat }}" class="btn btn-info ">
                                         <i class='fa fa-edit'></i> Interview
                                     </a>
 
-                                    <a href="/kandidat/hapus/{{ $p->id_sap }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
+                                    <a href="/kandidat/hapus/{{ $p->id_kandidat }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
                                         <i class='fa fa-trash'></i>
                                     </a>
                                 </div>

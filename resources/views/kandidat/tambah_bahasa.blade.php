@@ -30,8 +30,9 @@
 		<br />
 		<br />
 
-		<form action="/kandidat/store" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
+		<form action="/kandidat/tambah-bahasa-proses" method="POST" enctype="multipart/form-data" style="background: #FFFFFF;border-radius:20px;" class="p-4">
 			{{ csrf_field() }}
+			<input class="form-control" type="hidden" name="id_kandidat" required="required" placeholder="Masukkan Bahasa Lain" autofocus="on" value="{{ $id }}">
 			<div class="row">
 				<div class="col-md-12">
 					<h4>Bahasa</h4>
@@ -50,7 +51,7 @@
 						<div class="row mb-3">
 							<div class="col-md-12">Membaca</div>
 							<div class="col-md-12">
-								<select name="read" id="" class="form-control">
+								<select name="membaca" id="" class="form-control">
 									<option value="cukup">Cukup</option>
 									<option value="baik">Baik</option>
 									<option value="fasih">Fasih</option>
@@ -62,7 +63,7 @@
 						<div class="row mb-3">
 							<div class="col-md-12">Menulis</div>
 							<div class="col-md-12">
-								<select name="write" id="" class="form-control">
+								<select name="menulis" id="" class="form-control">
 									<option value="cukup">Cukup</option>
 									<option value="baik">Baik</option>
 									<option value="fasih">Fasih</option>
@@ -74,7 +75,7 @@
 						<div class="row mb-3">
 							<div class="col-md-12">Berbicara</div>
 							<div class="col-md-12">
-								<select name="speak" id="" class="form-control">
+								<select name="berbicara" id="" class="form-control">
 									<option value="cukup">Cukup</option>
 									<option value="baik">Baik</option>
 									<option value="fasih">Fasih</option>
@@ -83,6 +84,43 @@
 						</div>
 					</div>
 				</div>
+				<!-- #3 -->
+				@foreach($bahasa as $key => $value):
+				<div class="col-md-12 row">
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Bahasa Lain</div>
+							<div class="col-md-12">
+								<input class="form-control" type="text"  value="{{ $value->bahasa_lain }}" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Membaca</div>
+							<div class="col-md-12">
+								<input class="form-control" type="text"  value="{{ $value->membaca }}" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Menulis</div>
+							<div class="col-md-12">
+								<input class="form-control" type="text"  value="{{ $value->menulis }}" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="row mb-3">
+							<div class="col-md-12">Berbicara</div>
+							<div class="col-md-12">
+								<input class="form-control" type="text"  value="{{ $value->berbicara }}" disabled>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
 
 			</div>
 			<!-- Submit -->
