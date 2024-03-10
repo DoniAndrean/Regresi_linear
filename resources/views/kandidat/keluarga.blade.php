@@ -79,110 +79,110 @@
             <br />
             <br />
 
-            <form action="/kandidat/tambah-bahasa-proses" method="POST" enctype="multipart/form-data"
+            <form action="/kandidat/tambah-pendidikan-proses" method="POST" enctype="multipart/form-data"
                 style="background: #FFFFFF;border-radius:20px;" class="p-4">
                 {{ csrf_field() }}
                 <input class="form-control" type="hidden" name="id_kandidat" required="required"
                     placeholder="Masukkan Bahasa Lain" autofocus="on" value="{{ $id }}">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>Bahasa</h4>
+                        <h4>Keluarga</h4>
                     </div>
                     <!-- #3 -->
                     <div class="col-md-12 row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="row mb-3">
-                                <div class="col-md-12">Bahasa Lain</div>
+                                <div class="col-md-12">Nama Keluarga</div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="bahasa_lain" required="required"
-                                        placeholder="Masukkan Bahasa Lain" value="" autofocus="on">
+                                    <input class="form-control" type="text" name="nama_keluarga" required="required"
+                                        placeholder="Masukkan Nama Keluarga" value="" autofocus="on">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="row mb-3">
-                                <div class="col-md-12">Membaca</div>
+                                <div class="col-md-12">Relation</div>
                                 <div class="col-md-12">
-                                    <select name="membaca" id="" class="form-control">
-                                        <option value="cukup">Cukup</option>
-                                        <option value="baik">Baik</option>
-                                        <option value="fasih">Fasih</option>
-                                    </select>
+                                    <input class="form-control" type="text" name="relation" required="required"
+                                    placeholder="Masukkan Relation" value="" autofocus="on">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="row mb-3">
-                                <div class="col-md-12">Menulis</div>
+                                <div class="col-md-12">Age</div>
                                 <div class="col-md-12">
-                                    <select name="menulis" id="" class="form-control">
-                                        <option value="cukup">Cukup</option>
-                                        <option value="baik">Baik</option>
-                                        <option value="fasih">Fasih</option>
-                                    </select>
+                                    <input class="form-control" type="text" name="age" required="required"
+                                    placeholder="Masukkan Relation" value="" autofocus="on">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="row mb-3">
-                                <div class="col-md-12">Berbicara</div>
+                                <div class="col-md-12">Address</div>
                                 <div class="col-md-12">
-                                    <select name="berbicara" id="" class="form-control">
-                                        <option value="cukup">Cukup</option>
-                                        <option value="baik">Baik</option>
-                                        <option value="fasih">Fasih</option>
-                                    </select>
+                                    <input class="form-control" type="text" name="address" required="required"
+                                    placeholder="Masukkan Relation" value="" autofocus="on">
                                 </div>
                             </div>
+                        </div>
+                        <!-- Submit -->
+                        <div class="col-12 mb-3">
+                            <input type="submit" value="Simpan Data" class="btn btn-success">
+
                         </div>
                     </div>
+
                     <!-- #3 -->
-                    @foreach ($bahasa as $key => $value)
+                    @foreach ($pendidikan as $key => $value)
                         <div class="col-md-12 row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Bahasa Lain</div>
+                                    <div class="col-md-12">Nama Sekolah</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->bahasa_lain }}"
+                                        <input class="form-control" type="text" value="{{ $value->nama_sekolah }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Membaca</div>
+                                    <div class="col-md-12">Jenjang</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->membaca }}"
+                                        <input class="form-control" type="text" value="{{ $value->jenjang }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Menulis</div>
+                                    <div class="col-md-12">From</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->menulis }}"
+                                        <input class="form-control" type="text" value="{{ $value->tahun_from }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Berbicara</div>
+                                    <div class="col-md-12">To</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->berbicara }}"
+                                        <input class="form-control" type="text" value="{{ $value->tahun_to }}"
                                             disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="row mb-3">
+                                    <div class="col-md-12">GPA</div>
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="text" value="{{ $value->gpa }}" disabled>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
-                </div>
-                <!-- Submit -->
-                <div class="row mb-3">
-                    <input type="submit" value="Simpan Data" class="btn btn-success">
-
                 </div>
 
             </form>

@@ -90,7 +90,7 @@ class KandidatController extends Controller
 	public function edit($id)
 	{
 		// mengambil data berita berdasarkan id yang dipilih
-		$model = DB::table('karyawan')->where('id_sap', $id)->get()[0];
+		$model = DB::table('kandidat')->where('id_kandidat', $id)->get()[0];
 		// print_r($model[0]);
 		// exit();
 
@@ -204,5 +204,58 @@ class KandidatController extends Controller
 		// echo $id;
 		// alihkan halaman ke halaman berita
 		return redirect('/kandidat/tambah-pendidikan/' . $request->id_kandidat);
+	}
+	
+	public function tambahKeluarga($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
+		$data['pendidikan'] = $pendidikan;
+		// informal
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$data['pendidikan_informal'] = $pendidikan_informal;
+		// print_r($pendidikan);
+
+		return view('/kandidat/keluarga', $data);
+	}
+	public function tambahKontakDarurat($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
+		$data['pendidikan'] = $pendidikan;
+		// informal
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$data['pendidikan_informal'] = $pendidikan_informal;
+		// print_r($pendidikan);
+
+		return view('/kandidat/pendidikan', $data);
+	}
+	public function tambahPengalaman($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
+		$data['pendidikan'] = $pendidikan;
+		// informal
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$data['pendidikan_informal'] = $pendidikan_informal;
+		// print_r($pendidikan);
+
+		return view('/kandidat/pendidikan', $data);
+	}
+	public function tambahLainnya($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
+		$data['pendidikan'] = $pendidikan;
+		// informal
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$data['pendidikan_informal'] = $pendidikan_informal;
+		// print_r($pendidikan);
+
+		return view('/kandidat/pendidikan', $data);
 	}
 }
