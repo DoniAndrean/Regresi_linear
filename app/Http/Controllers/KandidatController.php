@@ -230,7 +230,7 @@ class KandidatController extends Controller
 		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
-		return view('/kandidat/pendidikan', $data);
+		return view('/kandidat/kontak_darurat', $data);
 	}
 	public function tambahPengalaman($id)
 	{
@@ -243,7 +243,7 @@ class KandidatController extends Controller
 		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
-		return view('/kandidat/pendidikan', $data);
+		return view('/kandidat/pengalaman', $data);
 	}
 	public function tambahLainnya($id)
 	{
@@ -256,6 +256,6 @@ class KandidatController extends Controller
 		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
-		return view('/kandidat/pendidikan', $data);
+		return view('/kandidat/lainnya', $data);
 	}
 }
