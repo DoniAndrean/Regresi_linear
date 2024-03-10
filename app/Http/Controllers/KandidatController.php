@@ -156,4 +156,33 @@ class KandidatController extends Controller
 		// passing data model yang didapat ke view edit.blade.php
 		return view('/kandidat/detail', ['model' => $model]);
 	}
+
+	
+	public function tambahPendidikan($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
+		$data['pendidikan'] = $pendidikan;
+		// print_r($pendidikan);
+
+		return view('/kandidat/pendidikan', $data);
+	}
+	public function tambahPendidikanProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'nama_sekolah' => $request->nama_sekolah,
+			'jenjang' => $request->jenjang,
+			'tahun_from' => $request->tahun_from,
+			'tahun_to' => $request->tahun_to,
+			'gpa' => $request->gpa,
+		];
+		// print_r($data);
+		$id =	DB::table('pendidikan')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-pendidikan/' . $request->id_kandidat);
+	}
 }

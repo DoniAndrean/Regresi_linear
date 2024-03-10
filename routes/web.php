@@ -77,9 +77,11 @@ Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@st
 Route::get('/kandidat', 'App\Http\Controllers\KandidatController@index');
 //route Tambah
 Route::get('/kandidat/tambah', 'App\Http\Controllers\KandidatController@tambah');
-Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatController@tambahBahasa');
 Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
+Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatController@tambahBahasa');
 Route::post('/kandidat/tambah-bahasa-proses', 'App\Http\Controllers\KandidatController@tambahBahasaProses');
+Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
+Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
 //route Edit
 Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
 Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');

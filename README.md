@@ -84,3 +84,45 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+## vscode json
+
+{
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.fontSize": 12,
+  "editor.inlayHints.fontSize": 11,
+  "php.validate.executablePath": "E:/xampp82/php/php.exe",
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "Default Dark+",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "redhat.telemetry.enabled": true,
+  "cmake.configureOnOpen": false,
+  "git.autofetch": true,
+  "yaml.schemas": {
+    "file:///c%3A/Users/A28/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.jira.jqlList": [
+    {
+      "id": "7ead161e-1fb9-496b-bcf9-819772e4adfe",
+      "enabled": true,
+      "name": "My kloverkres Issues",
+      "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId": "c3e228f1-83e7-4340-9a3a-ddb0b1c1c75b",
+      "monitor": true
+    }
+  ],
+  "window.zoomLevel": -1,
+  "explorer.confirmDragAndDrop": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
