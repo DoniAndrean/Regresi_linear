@@ -164,6 +164,9 @@ class KandidatController extends Controller
 		$data['id'] = $id;
 		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
 		$data['pendidikan'] = $pendidikan;
+		// informal
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
 		return view('/kandidat/pendidikan', $data);
@@ -181,6 +184,23 @@ class KandidatController extends Controller
 		];
 		// print_r($data);
 		$id =	DB::table('pendidikan')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-pendidikan/' . $request->id_kandidat);
+	}
+	public function tambahPendidikanInformalProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'institusi' => $request->institusi,
+			'major' => $request->major,
+			'tahun_from' => $request->tahun_from,
+			'tahun_to' => $request->tahun_to,
+			'gpa' => $request->gpa,
+		];
+		// print_r($data);
+		$id =	DB::table('pendidikan_informal')->insertGetId($data);
 		// echo $id;
 		// alihkan halaman ke halaman berita
 		return redirect('/kandidat/tambah-pendidikan/' . $request->id_kandidat);

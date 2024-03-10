@@ -82,6 +82,7 @@ Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatControl
 Route::post('/kandidat/tambah-bahasa-proses', 'App\Http\Controllers\KandidatController@tambahBahasaProses');
 Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
 Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
+Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanInformalProses');
 //route Edit
 Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
 Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');
