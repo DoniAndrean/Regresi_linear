@@ -210,27 +210,56 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
-		$data['pendidikan'] = $pendidikan;
-		// informal
-		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
-		$data['pendidikan_informal'] = $pendidikan_informal;
+		$keluarga = DB::table('keluarga')->where('id_kandidat',$id)->get();
+		$data['keluarga'] = $keluarga;
 		// print_r($pendidikan);
 
 		return view('/kandidat/keluarga', $data);
+	}
+	public function tambahKeluargaProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'nama_keluarga' => $request->nama_keluarga,
+			'relation' => $request->relation,
+			'age' => $request->age,
+			'address' => $request->address,
+		];
+		// print_r($data);
+		$id =	DB::table('keluarga')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-keluarga/' . $request->id_kandidat);
 	}
 	public function tambahKontakDarurat($id)
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
-		$data['pendidikan'] = $pendidikan;
+		$kontak_darurat = DB::table('kontak_darurat')->where('id_kandidat',$id)->get();
+		$data['kontak_darurat'] = $kontak_darurat;
 		// informal
 		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
 		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
 		return view('/kandidat/kontak_darurat', $data);
+	}
+	public function tambahKontakDaruratProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'nama_kontak_darurat' => $request->nama_kontak_darurat,
+			'relation' => $request->relation,
+			'age' => $request->age,
+			'address' => $request->address,
+		];
+		// print_r($data);
+		$id =	DB::table('kontak_darurat')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-kontak-darurat/' . $request->id_kandidat);
 	}
 	public function tambahPengalaman($id)
 	{

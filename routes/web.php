@@ -87,8 +87,10 @@ Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\Kandidat
 Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanInformalProses');
 // keluarga
 Route::get('/kandidat/tambah-keluarga/{id}', 'App\Http\Controllers\KandidatController@tambahKeluarga');
+Route::post('/kandidat/tambah-keluarga-proses', 'App\Http\Controllers\KandidatController@tambahKeluargaProses');
 // kontak-darurat
 Route::get('/kandidat/tambah-kontak-darurat/{id}', 'App\Http\Controllers\KandidatController@tambahKontakDarurat');
+Route::post('/kandidat/tambah-kontak-darurat-proses', 'App\Http\Controllers\KandidatController@tambahKontakDaruratProses');
 // pengalaman
 Route::get('/kandidat/tambah-pengalaman/{id}', 'App\Http\Controllers\KandidatController@tambahPengalaman');
 // lainnya

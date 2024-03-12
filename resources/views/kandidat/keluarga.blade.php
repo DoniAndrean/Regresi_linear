@@ -79,7 +79,7 @@
             <br />
             <br />
 
-            <form action="/kandidat/tambah-pendidikan-proses" method="POST" enctype="multipart/form-data"
+            <form action="/kandidat/tambah-keluarga-proses" method="POST" enctype="multipart/form-data"
                 style="background: #FFFFFF;border-radius:20px;" class="p-4">
                 {{ csrf_field() }}
                 <input class="form-control" type="hidden" name="id_kandidat" required="required"
@@ -134,50 +134,41 @@
                     </div>
 
                     <!-- #3 -->
-                    @foreach ($pendidikan as $key => $value)
+                    @foreach ($keluarga as $key => $value)
                         <div class="col-md-12 row">
                             <div class="col-md-4">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Nama Sekolah</div>
+                                    <div class="col-md-12">Nama Keluarga</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->nama_sekolah }}"
+                                        <input class="form-control" type="text" value="{{ $value->nama_keluarga }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Jenjang</div>
+                                    <div class="col-md-12">Relation</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->jenjang }}"
+                                        <input class="form-control" type="text" value="{{ $value->relation }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">From</div>
+                                    <div class="col-md-12">Age</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->tahun_from }}"
+                                        <input class="form-control" type="text" value="{{ $value->age }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">To</div>
+                                    <div class="col-md-12">Address</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->tahun_to }}"
+                                        <input class="form-control" type="text" value="{{ $value->address }}"
                                             disabled>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="row mb-3">
-                                    <div class="col-md-12">GPA</div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->gpa }}" disabled>
                                     </div>
                                 </div>
                             </div>
