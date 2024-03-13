@@ -79,7 +79,7 @@
             <br />
             <br />
 
-            <form action="/kandidat/tambah-pendidikan-proses" method="POST" enctype="multipart/form-data"
+            <form action="/kandidat/tambah-pengalaman-proses" method="POST" enctype="multipart/form-data"
                 style="background: #FFFFFF;border-radius:20px;" class="p-4">
                 {{ csrf_field() }}
                 <input class="form-control" type="hidden" name="id_kandidat" required="required"
@@ -94,7 +94,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-12">Company Name</div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="nama_keluarga" required="required"
+                                    <input class="form-control" type="text" name="company_name" required="required"
                                         placeholder="Masukkan Nama Keluarga" value="" autofocus="on">
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-12">Position</div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="relation" required="required"
+                                    <input class="form-control" type="text" name="position" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-12">Periode</div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="age" required="required"
+                                    <input class="form-control" type="text" name="periode" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-12">Salary</div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="address" required="required"
+                                    <input class="form-control" type="text" name="salary" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
                                 </div>
                             </div>
@@ -151,40 +151,40 @@
                     </div>
 
                     <!-- #3 -->
-                    @foreach ($pendidikan as $key => $value)
+                    @foreach ($pengalaman as $key => $value)
                         <div class="col-md-12 row">
                             <div class="col-md-4">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Nama Sekolah</div>
+                                    <div class="col-md-12">Company Name</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->nama_sekolah }}"
+                                        <input class="form-control" type="text" value="{{ $value->company_name }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">Jenjang</div>
+                                    <div class="col-md-12">Position</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->jenjang }}"
+                                        <input class="form-control" type="text" value="{{ $value->position }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">From</div>
+                                    <div class="col-md-12">Periode</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->tahun_from }}"
+                                        <input class="form-control" type="text" value="{{ $value->periode }}"
                                             disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">To</div>
+                                    <div class="col-md-12">Salary</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->tahun_to }}"
+                                        <input class="form-control" type="text" value="{{ $value->salary }}"
                                             disabled>
                                     </div>
                                 </div>
@@ -192,9 +192,9 @@
 
                             <div class="col-md-2">
                                 <div class="row mb-3">
-                                    <div class="col-md-12">GPA</div>
+                                    <div class="col-md-12">Main</div>
                                     <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->gpa }}" disabled>
+                                        <input class="form-control" type="text" value="{{ $value->main_duties }}" disabled>
                                     </div>
                                 </div>
                             </div>

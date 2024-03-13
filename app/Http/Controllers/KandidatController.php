@@ -265,14 +265,28 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
-		$data['pendidikan'] = $pendidikan;
-		// informal
-		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
-		$data['pendidikan_informal'] = $pendidikan_informal;
-		// print_r($pendidikan);
+		$pengalaman = DB::table('pengalaman')->where('id_kandidat',$id)->get();
+		$data['pengalaman'] = $pengalaman;
 
 		return view('/kandidat/pengalaman', $data);
+	}
+	public function tambahPengalamanProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'company_name' => $request->company_name,
+			'position' => $request->position,
+			'periode' => $request->periode,
+			'salary' => $request->salary,
+			'main_duties' => $request->main_duties,
+			'reason_for_leaving' => $request->reason_for_leaving,
+		];
+		// print_r($data);
+		$id =	DB::table('pengalaman')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-pengalaman/' . $request->id_kandidat);
 	}
 	public function tambahLainnya($id)
 	{

@@ -93,6 +93,7 @@ Route::get('/kandidat/tambah-kontak-darurat/{id}', 'App\Http\Controllers\Kandida
 Route::post('/kandidat/tambah-kontak-darurat-proses', 'App\Http\Controllers\KandidatController@tambahKontakDaruratProses');
 // pengalaman
 Route::get('/kandidat/tambah-pengalaman/{id}', 'App\Http\Controllers\KandidatController@tambahPengalaman');
+Route::post('/kandidat/tambah-pengalaman-proses', 'App\Http\Controllers\KandidatController@tambahPengalamanProses');
 // lainnya
 Route::get('/kandidat/tambah-lainnya/{id}', 'App\Http\Controllers\KandidatController@tambahLainnya');
 //route Edit
