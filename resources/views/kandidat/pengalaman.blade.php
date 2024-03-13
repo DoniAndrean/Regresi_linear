@@ -92,7 +92,7 @@
                     <div class="col-md-12 row">
                         <div class="col-md-4">
                             <div class="row mb-3">
-                                <div class="col-md-12">Nama Kontak Darurat</div>
+                                <div class="col-md-12">Company Name</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="nama_keluarga" required="required"
                                         placeholder="Masukkan Nama Keluarga" value="" autofocus="on">
@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="row mb-3">
-                                <div class="col-md-12">Relation</div>
+                                <div class="col-md-12">Position</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="relation" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
@@ -110,7 +110,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="row mb-3">
-                                <div class="col-md-12">Age</div>
+                                <div class="col-md-12">Periode</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="age" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
@@ -119,10 +119,27 @@
                         </div>
                         <div class="col-md-4">
                             <div class="row mb-3">
-                                <div class="col-md-12">Address</div>
+                                <div class="col-md-12">Salary</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="address" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row mb-3">
+                                <div class="col-md-12">Main Duties</div>
+                                <div class="col-md-12">
+                                    <textarea name="main_duties" id="" cols="100" rows="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row mb-3">
+                                <div class="col-md-12">Reason For Leaving</div>
+                                <div class="col-md-12">
+                                    <textarea name="reason_for_leaving" id="" cols="100" rows="4" class="form-control"></textarea>
+
                                 </div>
                             </div>
                         </div>

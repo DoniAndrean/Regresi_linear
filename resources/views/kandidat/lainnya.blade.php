@@ -92,7 +92,7 @@
                     <div class="col-md-12 row">
                         <div class="col-md-4">
                             <div class="row mb-3">
-                                <div class="col-md-12">Nama Kontak Darurat</div>
+                                <div class="col-md-12">Expected Basic</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="nama_keluarga" required="required"
                                         placeholder="Masukkan Nama Keluarga" value="" autofocus="on">
@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="row mb-3">
-                                <div class="col-md-12">Relation</div>
+                                <div class="col-md-12">Expected Allowence</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="relation" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
@@ -110,7 +110,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="row mb-3">
-                                <div class="col-md-12">Age</div>
+                                <div class="col-md-12">Total Salary</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="age" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
@@ -119,7 +119,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="row mb-3">
-                                <div class="col-md-12">Address</div>
+                                <div class="col-md-12">Your Wishes</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="address" required="required"
                                     placeholder="Masukkan Relation" value="" autofocus="on">
@@ -132,57 +132,6 @@
 
                         </div>
                     </div>
-
-                    <!-- #3 -->
-                    @foreach ($pendidikan as $key => $value)
-                        <div class="col-md-12 row">
-                            <div class="col-md-4">
-                                <div class="row mb-3">
-                                    <div class="col-md-12">Nama Sekolah</div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->nama_sekolah }}"
-                                            disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="row mb-3">
-                                    <div class="col-md-12">Jenjang</div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->jenjang }}"
-                                            disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="row mb-3">
-                                    <div class="col-md-12">From</div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->tahun_from }}"
-                                            disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="row mb-3">
-                                    <div class="col-md-12">To</div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->tahun_to }}"
-                                            disabled>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="row mb-3">
-                                    <div class="col-md-12">GPA</div>
-                                    <div class="col-md-12">
-                                        <input class="form-control" type="text" value="{{ $value->gpa }}" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
 
             </form>
