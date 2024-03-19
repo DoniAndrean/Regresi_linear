@@ -26,13 +26,66 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
         <a href="/kandidat" class="btn btn-default"> Kembali</a>
+        <div class="pull-right float-end float-right d-flex">
+            <div class="mx-3">
+                <a href="/kandidat/personal-data/{{ $id }}" class="text-black">
+                    <span class=""
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">1.</span>
+                    Personal Data
+                </a>
+            </div>
+            <div class="mx-3">
+                <a href="/kandidat/tambah-bahasa/{{ $id }}" class="text-black">
+                    <span class="text-black"
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">2.</span>
+                    Bahasa
+                </a>
+            </div>
+            <div class="mx-3">
+                <a href="/kandidat/tambah-pendidikan/{{ $id }}">
+                    <span class=""
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">3.</span>
+                    Pendidikan
+                </a>
+            </div>
+            <div class="mx-3">
+                <a href="/kandidat/tambah-keluarga/{{ $id }}">
+                    <span class=""
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">4.</span>
+                    Keluarga
+                </a>
+            </div>
+            <div class="mx-3">
+                <a href="/kandidat/tambah-kontak-darurat/{{ $id }}">
+                    <span class=""
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">5.</span>
+                    Kontak Darurat
+                </a>
+            </div>
+            <div class="mx-3">
+                <a href="/kandidat/tambah-pengalaman/{{ $id }}">
+                    <span class=""
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">6.</span>
+                    Pengalaman
+                </a>
+            </div>
+            <div class="mx-3">
+                <a href="/kandidat/tambah-lainnya/{{ $id }}">
+                    <span class="rounded-circle"
+                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">7.</span>
+                    Lainnya
+                </a>
+            </div>
+        </div>
 
         <br />
         <br />
 
-        <form action="/kandidat/store" method="POST" enctype="multipart/form-data"
+        <form action="/kandidat/personal-data-proses" method="POST" enctype="multipart/form-data"
             style="background: #FFFFFF;border-radius:20px;" class="p-4">
             {{ csrf_field() }}
+            <input class="form-control" type="hidden" name="id_kandidat" required="required"
+                placeholder="Masukkan Bahasa Lain" autofocus="on" value="{{ $id }}">
             <div class="row">
                 <div class="col-md-12">
                     <h4>Personal Data</h4>
@@ -42,35 +95,37 @@
                         <div class="col-md-4">Posisi</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="posisi" placeholder="Masukkan Posisi"
-                                required="required" value="" autofocus="on">
+                                required="required" value="{{ $kandidat->posisi }}" autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">Informasi Lowongan</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="informasi_lowongan" required="required"
-                                placeholder="Masukkan Informasi Lowongan" value="" autofocus="on">
+                                placeholder="Masukkan Informasi Lowongan" value="{{ $kandidat->informasi_lowongan }}"
+                                autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">Nama</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="nama" required="required"
-                                placeholder="Masukkan Nama Lengkap" value="" autofocus="on">
+                                placeholder="Masukkan Nama Lengkap" value="{{ $kandidat->nama }}" autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">Umur</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="umur" required="required"
-                                placeholder="Masukkan Umur" value="" autofocus="on">
+                                placeholder="Masukkan Umur" value="{{ $kandidat->umur }}" autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">Tempat Lahir</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="tempat_lahir" required="required"
-                                placeholder="Masukkan Tempat Lahir" value="" autofocus="on">
+                                placeholder="Masukkan Tempat Lahir" value="{{ $kandidat->tempat_lahir }}"
+                                autofocus="on">
                         </div>
                     </div>
                 </div>
@@ -79,7 +134,8 @@
                         <div class="col-md-4">Tanggal Lahir</div>
                         <div class="col-md-8">
                             <input class="form-control" type="date" name="tanggal_lahir" required="required"
-                                placeholder="Masukkan Tanggal Lahir" value="" autofocus="on">
+                                placeholder="Masukkan Tanggal Lahir" value="{{ $kandidat->tanggal_lahir }}"
+                                autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -87,7 +143,8 @@
                         <div class="col-md-8">
                             <!-- <input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Data" value="" autofocus="on"> -->
                             <select class="option form-control" name="status_perkawinan" required="required">
-                                <option value="">--Pilih Status Perkawinan--</option>
+                                <option value="{{ $kandidat->status_perkawinan }}">{{ $kandidat->status_perkawinan }}
+                                </option>
                                 <option value="Sudah Kawin">Sudah Kawin</option>
                                 <option value="Belum Kawin">Belum Kawin</option>
                                 <option value="Cerai Hidup">Cerai Hidup</option>
@@ -100,7 +157,7 @@
                         <div class="col-md-8">
                             <!-- <input class="form-control" type="text" name="alamat" required="required" placeholder="Masukkan Data" value="" autofocus="on"> -->
                             <select class="option form-control" name="jenis_kelamin" required="required">
-                                <option value="">--Pilih Jenis Kelamin--</option>
+                                <option value="{{ $kandidat->jenis_kelamin }}">{{ $kandidat->jenis_kelamin }}</option>
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
@@ -110,14 +167,15 @@
                         <div class="col-md-4">Berat Badan</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="berat_badan" required="required"
-                                placeholder="Masukkan Berat Badan" value="" autofocus="on">
+                                placeholder="Masukkan Berat Badan" value="{{ $kandidat->berat_badan }}" autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">Tinggi Badan</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="tinggi_badan" required="required"
-                                placeholder="Masukkan Tinggi Badan" value="" autofocus="on">
+                                placeholder="Masukkan Tinggi Badan" value="{{ $kandidat->tinggi_badan }}"
+                                autofocus="on">
                         </div>
                     </div>
                 </div>
@@ -131,14 +189,14 @@
                         <div class="col-md-4">Alamat</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="alamat" required="required"
-                                placeholder="Masukkan Alamat" value="" autofocus="on">
+                                placeholder="Masukkan Alamat" value="{{ $kandidat->alamat }}" autofocus="on">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">No HP</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="no_hp" required="required"
-                                placeholder="Masukkan No HP" value="" autofocus="on">
+                                placeholder="Masukkan No HP" value="{{ $kandidat->alamat }}" autofocus="on">
                         </div>
                     </div>
                 </div>
@@ -147,7 +205,7 @@
                         <div class="col-md-4">Email</div>
                         <div class="col-md-8">
                             <input class="form-control" type="text" name="email" required="required"
-                                placeholder="Masukkan Email" value="" autofocus="on">
+                                placeholder="Masukkan Email" value="{{ $kandidat->email }}" autofocus="on">
                         </div>
                     </div>
                 </div>
@@ -161,7 +219,8 @@
                             <div class="col-md-4">Bahasa Pertama</div>
                             <div class="col-md-8">
                                 <input class="form-control" type="text" name="bahasa_pertama" required="required"
-                                    placeholder="Masukkan Bahasa Pertama" value="" autofocus="on">
+                                    placeholder="Masukkan Bahasa Pertama" value="{{ $kandidat->bahasa_pertama }}"
+                                    autofocus="on">
                             </div>
                         </div>
                     </div>
@@ -588,8 +647,6 @@
 
             </div>
         </form>
-
     </section>
 </div>
-
 @endsection

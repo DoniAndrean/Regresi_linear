@@ -81,6 +81,9 @@ Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
 // bahasa
 Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatController@tambahBahasa');
 Route::post('/kandidat/tambah-bahasa-proses', 'App\Http\Controllers\KandidatController@tambahBahasaProses');
+// personal data
+Route::get('/kandidat/personal-data/{id}', 'App\Http\Controllers\KandidatController@personalData');
+Route::post('/kandidat/personal-data-proses', 'App\Http\Controllers\KandidatController@personalDataProses');
 // pendidikan
 Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
 Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
@@ -96,6 +99,7 @@ Route::get('/kandidat/tambah-pengalaman/{id}', 'App\Http\Controllers\KandidatCon
 Route::post('/kandidat/tambah-pengalaman-proses', 'App\Http\Controllers\KandidatController@tambahPengalamanProses');
 // lainnya
 Route::get('/kandidat/tambah-lainnya/{id}', 'App\Http\Controllers\KandidatController@tambahLainnya');
+Route::post('/kandidat/tambah-lainnya-proses', 'App\Http\Controllers\KandidatController@tambahLainnyaProses');
 //route Edit
 Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
 Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');

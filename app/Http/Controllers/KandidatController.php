@@ -63,7 +63,7 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$bahasa = DB::table('bahasa')->where('id_kandidat',$id)->get();
+		$bahasa = DB::table('bahasa')->where('id_kandidat', $id)->get();
 		$data['bahasa'] = $bahasa;
 		// print_r($bahasa);
 
@@ -157,15 +157,15 @@ class KandidatController extends Controller
 		return view('/kandidat/detail', ['model' => $model]);
 	}
 
-	
+
 	public function tambahPendidikan($id)
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
+		$pendidikan = DB::table('pendidikan')->where('id_kandidat', $id)->get();
 		$data['pendidikan'] = $pendidikan;
 		// informal
-		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat', $id)->get();
 		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
@@ -205,12 +205,12 @@ class KandidatController extends Controller
 		// alihkan halaman ke halaman berita
 		return redirect('/kandidat/tambah-pendidikan/' . $request->id_kandidat);
 	}
-	
+
 	public function tambahKeluarga($id)
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$keluarga = DB::table('keluarga')->where('id_kandidat',$id)->get();
+		$keluarga = DB::table('keluarga')->where('id_kandidat', $id)->get();
 		$data['keluarga'] = $keluarga;
 		// print_r($pendidikan);
 
@@ -236,10 +236,10 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$kontak_darurat = DB::table('kontak_darurat')->where('id_kandidat',$id)->get();
+		$kontak_darurat = DB::table('kontak_darurat')->where('id_kandidat', $id)->get();
 		$data['kontak_darurat'] = $kontak_darurat;
 		// informal
-		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
+		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat', $id)->get();
 		$data['pendidikan_informal'] = $pendidikan_informal;
 		// print_r($pendidikan);
 
@@ -265,7 +265,7 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$pengalaman = DB::table('pengalaman')->where('id_kandidat',$id)->get();
+		$pengalaman = DB::table('pengalaman')->where('id_kandidat', $id)->get();
 		$data['pengalaman'] = $pengalaman;
 
 		return view('/kandidat/pengalaman', $data);
@@ -292,13 +292,70 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$pendidikan = DB::table('pendidikan')->where('id_kandidat',$id)->get();
-		$data['pendidikan'] = $pendidikan;
-		// informal
-		$pendidikan_informal = DB::table('pendidikan_informal')->where('id_kandidat',$id)->get();
-		$data['pendidikan_informal'] = $pendidikan_informal;
-		// print_r($pendidikan);
+		$kandidat = DB::table('kandidat')->where('id_kandidat', $id)->get();
+		$data['kandidat'] = $kandidat[0];
+
+		// print_r($kandidat);
+		// exit;
 
 		return view('/kandidat/lainnya', $data);
+	}
+	public function tambahLainnyaProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'expected_basic' => $request->expected_basic,
+			'expected_allowence' => $request->expected_allowence,
+			'total_salary' => $request->total_salary,
+			'your_wishes' => $request->your_wishes,
+			// 'main_duties' => $request->main_duties,
+			// 'reason_for_leaving' => $request->reason_for_leaving,
+		];
+		//print_r($data);
+		DB::table('kandidat')->where('id_kandidat', $request->id_kandidat)->update($data);
+		//$id =	DB::table('kandidat')->insertGetId($data);
+		// echo $id;
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/tambah-lainnya/' . $request->id_kandidat);
+	}
+
+	public function personalData($id)
+	{
+		// memanggil view tambah
+		$data['id'] = $id;
+		$kandidat = DB::table('kandidat')->where('id_kandidat', $id)->get();
+		$data['kandidat'] = $kandidat[0];
+
+		// print_r($kandidat);
+		// exit;
+
+		return view('/kandidat/personal', $data);
+	}
+
+	public function personalDataProses(Request $request)
+	{
+		//array
+		$data = [
+			'id_kandidat' => $request->id_kandidat,
+			'posisi' => $request->posisi,
+			'informasi_lowongan' => $request->informasi_lowongan,
+			'nama' => $request->nama,
+			'umur' => $request->umur,
+			'tempat_lahir' => $request->tempat_lahir,
+			'tanggal_lahir' => $request->tanggal_lahir,
+			'status_perkawinan' => $request->status_perkawinan,
+			'jenis_kelamin' => $request->jenis_kelamin,
+			'berat_badan' => $request->berat_badan,
+			'tinggi_badan' => $request->tinggi_badan,
+			'alamat' => $request->alamat,
+			'no_hp' => $request->no_hp,
+			'email' => $request->email,
+			'bahasa_pertama' => $request->bahasa_pertama
+		];
+
+		DB::table('kandidat')->where('id_kandidat', $request->id_kandidat)->update($data);
+		// alihkan halaman ke halaman berita
+		return redirect('/kandidat/personal-data/' . $request->id_kandidat);
 	}
 }

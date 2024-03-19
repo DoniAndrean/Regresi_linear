@@ -53,26 +53,27 @@
                             <td>
                                 <!-- <div class="btn-group" role="group" aria-label="Basic example">
                                     -->
-                                    <a href="/kandidat/tambah-bahasa/{{ $p->id_kandidat }}" class="btn btn-info ">
-                                        <i class='fa fa-edit'></i> Detail
-                                    </a>
-                                    <a href="/kandidat/edit/{{ $p->id_kandidat }}" class="btn btn-info ">
-                                        <i class='fa fa-edit'></i> Interview
-                                    </a>
+                                <a href="/kandidat/personal-data/{{ $p->id_kandidat }}" class="btn btn-info ">
+                                    <i class='fa fa-edit'></i> Detail
+                                </a>
+                                <a href="/kandidat/edit/{{ $p->id_kandidat }}" class="btn btn-info ">
+                                    <i class='fa fa-edit'></i> Interview
+                                </a>
 
-                                    <a href="/kandidat/hapus/{{ $p->id_kandidat }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">
-                                        <i class='fa fa-trash'></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        @php $no++ @endphp
-                        @endforeach
-                    </table>
-
+                                <a href="/kandidat/hapus/{{ $p->id_kandidat }}" class="btn btn-danger"
+                                    onclick="return confirm('Apakah anda yakin?')">
+                                    <i class='fa fa-trash'></i>
+                                </a>
                 </div>
+                </td>
+                </tr>
+                @php $no++ @endphp
+                @endforeach
+                </table>
+
             </div>
         </div>
-    </section>
+</div>
+</section>
 </div>
 @endsection
