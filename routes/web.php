@@ -33,13 +33,16 @@ Route::get('/profil', 'App\Http\Controllers\HomeController@profil');
 
 //route CRUD Menu
 Route::get('/karyawan', 'App\Http\Controllers\KaryawanController@index');
+
 //route Tambah
 Route::get('/karyawan/tambah', 'App\Http\Controllers\KaryawanController@tambah');
 Route::post('/karyawan/store', 'App\Http\Controllers\KaryawanController@store');
+
 //route Edit
 Route::get('/karyawan/edit/{id}', 'App\Http\Controllers\KaryawanController@edit');
 Route::get('/karyawan/detail/{id}', 'App\Http\Controllers\KaryawanController@detail');
 Route::post('/karyawan/update', 'App\Http\Controllers\KaryawanController@update');
+
 //route Hapus
 Route::get('/karyawan/hapus/{id}', 'App\Http\Controllers\KaryawanController@hapus');
 //end
@@ -60,13 +63,16 @@ Route::get('/permanen', 'App\Http\Controllers\KaryawanController@permanen');
 
 //route CRUD Menu
 Route::get('/cuti', 'App\Http\Controllers\CutiController@index');
+
 //route Tambah
 Route::get('/cuti/tambah', 'App\Http\Controllers\CutiController@tambah');
 Route::post('/cuti/store', 'App\Http\Controllers\CutiController@store');
+
 //route Edit
 Route::get('/cuti/edit/{id}', 'App\Http\Controllers\CutiController@edit');
 Route::get('/cuti/detail/{id}', 'App\Http\Controllers\CutiController@detail');
 Route::post('/cuti/update', 'App\Http\Controllers\CutiController@update');
+
 //route Hapus
 Route::get('/cuti/hapus/{id}', 'App\Http\Controllers\CutiController@hapus');
 Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@status');
@@ -75,35 +81,48 @@ Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@st
 
 //route CRUD Menu
 Route::get('/kandidat', 'App\Http\Controllers\KandidatController@index');
+
 //route Tambah
 Route::get('/kandidat/tambah', 'App\Http\Controllers\KandidatController@tambah');
 Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
+
 // bahasa
 Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatController@tambahBahasa');
 Route::post('/kandidat/tambah-bahasa-proses', 'App\Http\Controllers\KandidatController@tambahBahasaProses');
+
 // personal data
 Route::get('/kandidat/personal-data/{id}', 'App\Http\Controllers\KandidatController@personalData');
 Route::post('/kandidat/personal-data-proses', 'App\Http\Controllers\KandidatController@personalDataProses');
+
 // pendidikan
 Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
 Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
 Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanInformalProses');
+
 // keluarga
 Route::get('/kandidat/tambah-keluarga/{id}', 'App\Http\Controllers\KandidatController@tambahKeluarga');
 Route::post('/kandidat/tambah-keluarga-proses', 'App\Http\Controllers\KandidatController@tambahKeluargaProses');
+
 // kontak-darurat
 Route::get('/kandidat/tambah-kontak-darurat/{id}', 'App\Http\Controllers\KandidatController@tambahKontakDarurat');
 Route::post('/kandidat/tambah-kontak-darurat-proses', 'App\Http\Controllers\KandidatController@tambahKontakDaruratProses');
+
 // pengalaman
 Route::get('/kandidat/tambah-pengalaman/{id}', 'App\Http\Controllers\KandidatController@tambahPengalaman');
 Route::post('/kandidat/tambah-pengalaman-proses', 'App\Http\Controllers\KandidatController@tambahPengalamanProses');
+
 // lainnya
 Route::get('/kandidat/tambah-lainnya/{id}', 'App\Http\Controllers\KandidatController@tambahLainnya');
 Route::post('/kandidat/tambah-lainnya-proses', 'App\Http\Controllers\KandidatController@tambahLainnyaProses');
+
 //route Edit
 Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
 Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');
 Route::post('/kandidat/update', 'App\Http\Controllers\KandidatController@update');
+
 //route Hapus
 Route::get('/kandidat/hapus/{id}', 'App\Http\Controllers\KandidatController@hapus');
+
+//route Rekap Data
+Route::get('/kandidat/rekap/{id}', 'App\Http\Controllers\KandidatController@rekapData');
 //end

@@ -358,4 +358,39 @@ class KandidatController extends Controller
 		// alihkan halaman ke halaman berita
 		return redirect('/kandidat/personal-data/' . $request->id_kandidat);
 	}
+
+	public function rekapData($id)
+	{
+		// Ambil data kandidat berdasarkan id
+		$kandidat = DB::table('kandidat')->where('id_kandidat', $id)->first();
+
+		// Ambil data bahasa lain yang dikuasai oleh kandidat
+		$kandidatBahasa = DB::table('bahasa')
+			->where('id_kandidat', $id)
+			->get();
+
+		// Ambil data keluarga kandidat
+		$keluarga = DB::table('keluarga')
+			->where('id_kandidat', $id)
+			->get();
+
+		// Ambil data pendidikan kandidat
+		$pendidikan = DB::table('pendidikan')
+			->where('id_kandidat', $id)
+			->get();
+
+		// Ambil data pengalaman kerja kandidat
+		$pengalaman = DB::table('pengalaman')
+			->where('id_kandidat', $id)
+			->get();
+
+		// Kirim semua data ke view
+		return view('kandidat/rekap', [
+			'kandidat' => $kandidat,
+			'bahasaLain' => $kandidatBahasa,
+			'keluarga' => $keluarga,
+			'pendidikan' => $pendidikan,
+			'pengalaman' => $pengalaman,
+		]);
+	}
 }
