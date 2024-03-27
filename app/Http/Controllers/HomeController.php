@@ -9,7 +9,15 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		return view('/welcome');
+		$totalKaryawanKontrak = DB::table('karyawan')->where('status_karyawan', 'Kontrak')->count();
+		$totalKaryawanPermanen = DB::table('karyawan')->where('status_karyawan', 'Permanen')->count();
+		$totalKandidat = DB::table('kandidat')->count();
+
+		return view('/welcome', [
+			'totalKaryawanKontrak' => $totalKaryawanKontrak,
+			'totalKaryawanPermanen' => $totalKaryawanPermanen,
+			'totalKandidat' => $totalKandidat
+		]);
 	}
     
 	public function profil()

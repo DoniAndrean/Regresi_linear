@@ -46,6 +46,18 @@ class KaryawanController extends Controller
 	// method untuk insert data ke table berita
 	public function store(Request $request)
 	{
+		$request->validate([
+            'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
+        ]);
+
+		if ($request->has('foto')) {
+			$file = $request->file('foto');
+			$extension = $file->getClientOriginalExtension();
+
+			$filename = time().'.'.$extension;
+			$file->move('uploads/foto', $filename);
+		}
+
 		//array
 		$data = [
 			'id_sap' => $request->id_sap,
@@ -75,8 +87,13 @@ class KaryawanController extends Controller
 			'no_wa' => $request->no_wa,
 			'riwayat_pelatihan' => $request->riwayat_pelatihan,
 			'kelas_bpjs' => $request->kelas_bpjs,
-			'foto' => $request->foto
 		];
+
+		// Jika ada file foto yang diupload, tambahkan path foto baru ke dalam data
+		if ($filename) {
+			$data['foto'] = 'uploads/foto/' . $filename;
+		}
+		
 		$id =	DB::table('karyawan')->insertGetId($data);
 
 		// alihkan halaman ke halaman berita
@@ -93,9 +110,22 @@ class KaryawanController extends Controller
 		// passing data model yang didapat ke view edit.blade.php
 		return view('/karyawan/edit', ['model' => $model]);
 	}
+
 	// update data berita
 	public function update(Request $request)
 	{
+		$request->validate([
+            'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
+        ]);
+
+		if ($request->has('foto')) {
+			$file = $request->file('foto');
+			$extension = $file->getClientOriginalExtension();
+
+			$filename = time().'.'.$extension;
+			$file->move('uploads/foto', $filename);
+		}
+
 		// update data berita
 		$data = [
 			'id_nik' => $request->id_nik,
@@ -124,14 +154,19 @@ class KaryawanController extends Controller
 			'no_wa' => $request->no_wa,
 			'riwayat_pelatihan' => $request->riwayat_pelatihan,
 			'kelas_bpjs' => $request->kelas_bpjs,
-			'foto' => $request->foto
 		];
+
+		// Jika ada file foto yang diupload, tambahkan path foto baru ke dalam data
+		if ($filename) {
+			$data['foto'] = 'uploads/foto/' . $filename;
+		}
 
 		DB::table('karyawan')->where('id_sap', $request->id_sap)->update($data);
 
 		// alihkan halaman ke halaman berita
 		return redirect('/karyawan');
 	}
+
 	// method untuk hapus data berita
 	public function hapus($id)
 	{
