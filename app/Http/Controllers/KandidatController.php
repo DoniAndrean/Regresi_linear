@@ -368,16 +368,21 @@ class KandidatController extends Controller
 		$kandidatBahasa = DB::table('bahasa')
 			->where('id_kandidat', $id)
 			->get();
+			
+		// Ambil data pendidikan kandidat
+		$pendidikan = DB::table('pendidikan')
+			->where('id_kandidat', $id)
+			->get();
 
 		// Ambil data keluarga kandidat
 		$keluarga = DB::table('keluarga')
 			->where('id_kandidat', $id)
 			->get();
 
-		// Ambil data pendidikan kandidat
-		$pendidikan = DB::table('pendidikan')
-			->where('id_kandidat', $id)
-			->get();
+		//Ambil data kontak darurat
+		$kontakDarurat = DB::table('kontak_darurat')
+		->where('id_kandidat', $id)
+		->get();
 
 		// Ambil data pengalaman kerja kandidat
 		$pengalaman = DB::table('pengalaman')
@@ -386,11 +391,12 @@ class KandidatController extends Controller
 
 		// Kirim semua data ke view
 		return view('kandidat/rekap', [
-			'kandidat' => $kandidat,
-			'bahasaLain' => $kandidatBahasa,
-			'keluarga' => $keluarga,
-			'pendidikan' => $pendidikan,
-			'pengalaman' => $pengalaman,
+			'kandidat' 		=> $kandidat,
+			'bahasaLain' 	=> $kandidatBahasa,
+			'pendidikan' 	=> $pendidikan,
+			'keluarga' 		=> $keluarga,
+			'kontakDarurat' => $kontakDarurat,
+			'pengalaman' 	=> $pengalaman,
 		]);
 	}
 }

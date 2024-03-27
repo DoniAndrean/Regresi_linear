@@ -149,10 +149,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Nama</th>
-                                    <th>Hubungan</th>
-                                    <th>Umur</th>
-                                    <th>Alamat</th>
+                                    <th>Bahasa Lain</th>
+                                    <th>Membaca</th>
+                                    <th>Menulis</th>
+                                    <th>Berbicara</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -162,6 +162,30 @@
                                         <td>{{ $bahasa->membaca }}</td>
                                         <td>{{ $bahasa->menulis }}</td>
                                         <td>{{ $bahasa->berbicara }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-12">
+                        <h4>Data Pendidikan</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nama Sekolah</th>
+                                    <th>Jenjang</th>
+                                    <th>Tahun</th>
+                                    <th>GPA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pendidikan as $edu)
+                                    <tr>
+                                        <td>{{ $edu->nama_sekolah }}</td>
+                                        <td>{{ $edu->jenjang }}</td>
+                                        <td>{{ $edu->tahun_from }} - {{ $edu->tahun_to }}</td>
+                                        <td>{{ $edu->gpa }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -193,28 +217,29 @@
                     </div>
 
                     <div class="col-md-12">
-                        <h4>Data Pendidikan</h4>
+                        <h4>Kontak Darurat</h4>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Nama Sekolah</th>
-                                    <th>Jenjang</th>
-                                    <th>Tahun</th>
-                                    <th>GPA</th>
+                                    <th>Nama Kontak Darurat</th>
+                                    <th>Relation</th>
+                                    <th>Age</th>
+                                    <th>Address</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pendidikan as $edu)
+                                @foreach ($kontakDarurat as $kontak)
                                     <tr>
-                                        <td>{{ $edu->nama_sekolah }}</td>
-                                        <td>{{ $edu->jenjang }}</td>
-                                        <td>{{ $edu->tahun_from }} - {{ $edu->tahun_to }}</td>
-                                        <td>{{ $edu->gpa }}</td>
+                                        <td>{{ $kontak->nama_kontak_darurat }}</td>
+                                        <td>{{ $kontak->relation }}</td>
+                                        <td>{{ $kontak->age }}</td>
+                                        <td>{{ $kontak->address }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+
                     <div class="col-md-12">
                         <h4>Data Pengalaman Kerja</h4>
                         <table class="table">
