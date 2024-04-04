@@ -33,10 +33,13 @@
                 style="background: #FFFFFF;border-radius:20px;" class="p-4">
                 {{ csrf_field() }}
                 <div class="row">
-                    <div class="col-12 col-md-4" style="background:#c3c5c4;">
+                    <div class="col-12 col-md-4 py-4" style="background:#c3c5c4;">
                         {{-- <img src="https://i.pinimg.com/564x/8d/be/20/8dbe2091b0bbee50cf55fac6bf58f4ab.jpg" width="100%"> --}}
-                        <img src="{{ asset($model->foto) }}" alt="Foto Karyawan" width="100%">
+                        {{-- <img src="{{ asset('storage/' . $model->foto) }}" alt="Foto Karyawan"> --}}
+                        <div class="photo-profile mx-auto"
+                            style="background-image: url('{{ asset('storage/' . $model->foto) }}')">
 
+                        </div>
                         <div class="col-12">
                             <div class="row mb-3">
                                 <div class="col-md-12 text-center">

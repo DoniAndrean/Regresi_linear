@@ -26,57 +26,7 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
         <a href="/kandidat" class="btn btn-default"> Kembali</a>
-        <div class="pull-right float-end float-right d-flex">
-            <div class="mx-3">
-                <a href="/kandidat/personal-data/{{ $id }}" class="text-black">
-                    <span class=""
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">1.</span>
-                    Personal Data
-                </a>
-            </div>
-            <div class="mx-3">
-                <a href="/kandidat/tambah-bahasa/{{ $id }}" class="text-black">
-                    <span class="text-black"
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">2.</span>
-                    Bahasa
-                </a>
-            </div>
-            <div class="mx-3">
-                <a href="/kandidat/tambah-pendidikan/{{ $id }}">
-                    <span class=""
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">3.</span>
-                    Pendidikan
-                </a>
-            </div>
-            <div class="mx-3">
-                <a href="/kandidat/tambah-keluarga/{{ $id }}">
-                    <span class=""
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">4.</span>
-                    Keluarga
-                </a>
-            </div>
-            <div class="mx-3">
-                <a href="/kandidat/tambah-kontak-darurat/{{ $id }}">
-                    <span class=""
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">5.</span>
-                    Kontak Darurat
-                </a>
-            </div>
-            <div class="mx-3">
-                <a href="/kandidat/tambah-pengalaman/{{ $id }}">
-                    <span class=""
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">6.</span>
-                    Pengalaman
-                </a>
-            </div>
-            <div class="mx-3">
-                <a href="/kandidat/tambah-lainnya/{{ $id }}">
-                    <span class="rounded-circle"
-                        style="border-radius:100px;background: #EABE6C;padding:6px 9px;width:100px;height:50px;">7.</span>
-                    Lainnya
-                </a>
-            </div>
-        </div>
+        @include('kandidat.stepmenu')
 
         <br />
         <br />

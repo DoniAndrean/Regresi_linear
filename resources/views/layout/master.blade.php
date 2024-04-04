@@ -29,6 +29,10 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ url('') }}/backend/plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="{{ url('') }}/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    {{-- Main CSS --}}
+    <link rel="stylesheet" href="{{ asset('style/main.css') }}">
+    {{-- SweetAlert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -164,15 +168,15 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="{{ url('') }}/home" class="nav-link">
+                        <li class="nav-item {{ Request::is('/') ? 'menu-open' : '' }}">
+                            <a href="{{ url('') }}/" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Request::is('profil') ? 'menu-open' : '' }}">
                             <a href="{{ url('') }}/profil" class="nav-link">
                                 <i class="nav-icon fas fa-sitemap"></i>
                                 <p>
@@ -180,7 +184,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Request::is('karyawan*') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
@@ -202,7 +206,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Request::is('kandidat*') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
@@ -240,8 +244,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item {{ Request::is('jadwal-pelatihan*') ? 'menu-open' : '' }}">
+                            <a href="{{ route('jadwal-pelatihan') }}" class="nav-link">
                                 <i class="nav-icon fas fa-graduation-cap"></i>
                                 <p>
                                     Jadwal Pelatihan
@@ -342,6 +346,15 @@
 
     <script>
         $(function() {
+            $('#myTable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
             $("#example1").DataTable({
                 "paging": true,
                 "responsive": true,
@@ -358,8 +371,11 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+
         });
     </script>
+    @stack('scripts')
+
 </body>
 
 </html>
