@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JadwalPelatihanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -127,3 +128,9 @@ Route::get('/kandidat/hapus/{id}', 'App\Http\Controllers\KandidatController@hapu
 //route Rekap Data
 Route::get('/kandidat/rekap/{id}', 'App\Http\Controllers\KandidatController@rekapData');
 //end
+
+
+Route::get('/jadwal-pelatihan', [JadwalPelatihanController::class, 'index'])->name('jadwal-pelatihan');
+Route::get('/jadwal-pelatihan/create', [JadwalPelatihanController::class, 'create'])->name('jadwal-pelatihan.create');
+Route::post('/jadwal-pelatihan', [JadwalPelatihanController::class, 'store'])->name('jadwal-pelatihan.store');
+Route::delete('/jadwal-pelatihan/{id}', [JadwalPelatihanController::class, 'delete'])->name('jadwal-pelatihan.delete');

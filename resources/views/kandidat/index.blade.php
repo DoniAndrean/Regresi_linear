@@ -24,8 +24,8 @@
             <!-- DataTables Example -->
             <div class="card shadow mb-4">
                 <!-- <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
-                            </div> -->
+                                                    <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
+                                                </div> -->
                 <div class="card-body">
                     <a href="{{ url('/kandidat/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
                     <div class="table-responsive">
@@ -52,7 +52,7 @@
                                     <td>{{ $p->tanggal_lahir }}</td>
                                     <td>
                                         <!-- <div class="btn-group" role="group" aria-label="Basic example">
-                                                    -->
+                                                                        -->
                                         <a href="/kandidat/personal-data/{{ $p->id_kandidat }}" class="btn btn-info ">
                                             <i class='fa fa-edit'></i> Detail
                                         </a>
@@ -75,7 +75,6 @@
 
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 @endsection
