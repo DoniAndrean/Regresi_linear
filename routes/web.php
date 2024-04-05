@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
 Route::get('/profil', 'App\Http\Controllers\HomeController@profil');
 

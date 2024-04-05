@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,14 +14,13 @@ class HomeController extends Controller
 		$totalKaryawanKontrak = DB::table('karyawan')->where('status_karyawan', 'Kontrak')->count();
 		$totalKaryawanPermanen = DB::table('karyawan')->where('status_karyawan', 'Permanen')->count();
 		$totalKandidat = DB::table('kandidat')->count();
+		$data['totalKaryawanKontrak'] = $totalKaryawanKontrak;
+		$data['totalKaryawanPermanen'] = $totalKaryawanPermanen;
+		$data['totalKandidat'] = $totalKandidat;
 
-		return view('/welcome', [
-			'totalKaryawanKontrak' => $totalKaryawanKontrak,
-			'totalKaryawanPermanen' => $totalKaryawanPermanen,
-			'totalKandidat' => $totalKandidat
-		]);
+		return view('/welcome', $data);
 	}
-    
+
 	public function profil()
 	{
 		// mengambil data dari table berita
