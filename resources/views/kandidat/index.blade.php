@@ -23,9 +23,6 @@
         <section class="content">
             <!-- DataTables Example -->
             <div class="card shadow mb-4">
-                <!-- <div class="card-header py-3">
-                                                    <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
-                                                </div> -->
                 <div class="card-body">
                     <a href="{{ url('/kandidat/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
                     <div class="table-responsive">
@@ -43,7 +40,7 @@
                             @php $no = 1 @endphp
                             @foreach ($model as $p)
                                 <tr>
-                                    <td>{{ $no }}</td>
+                                    <td>{{ $loop->iteration + 1 }}</td>
                                     <td>{{ $p->posisi }}</td>
                                     <td>{{ $p->informasi_lowongan }}</td>
                                     <td>{{ $p->nama }}</td>
@@ -51,28 +48,35 @@
                                     <td>{{ $p->tempat_lahir }}</td>
                                     <td>{{ $p->tanggal_lahir }}</td>
                                     <td>
-                                        <!-- <div class="btn-group" role="group" aria-label="Basic example">
-                                                                        -->
-                                        <a href="/kandidat/personal-data/{{ $p->id_kandidat }}" class="btn btn-info ">
-                                            <i class='fa fa-edit'></i> Detail
-                                        </a>
-                                        <a href="/kandidat/edit/{{ $p->id_kandidat }}" class="btn btn-info ">
-                                            <i class='fa fa-edit'></i> Interview
+                                        <a href="/kandidat/personal-data/{{ $p->id_kandidat }}" class="btn btn-info "
+                                            title="Detail">
+                                            <i class='fa fa-eye'></i>
                                         </a>
 
                                         <a href="/kandidat/hapus/{{ $p->id_kandidat }}" class="btn btn-danger"
-                                            onclick="return confirm('Apakah anda yakin?')">
+                                            title="Hapus" onclick="return confirm('Apakah anda yakin?')">
                                             <i class='fa fa-trash'></i>
                                         </a>
-                                        <a href="kandidat/rekap/{{ $p->id_kandidat }}" class="btn btn-warning">rekap</a>
+                                        <a href="kandidat/rekap/{{ $p->id_kandidat }}" class="btn btn-warning"
+                                            title="Rekap">
+                                            <i class='fa fa-file'></i>
+                                        </a>
+                                        @if ($p->telah_interview)
+                                            <a href="#" class="btn btn-primary" title="Hasil Interview">
+                                                Lihat Hasil Interview
+                                            </a>
+                                        @else
+                                            <a href="{{ route('interview', encrypt($p->id_kandidat)) }}"
+                                                class="btn btn-success" title="Interview">
+                                                Interview
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
 
                     </div>
-                    </td>
-                    </tr>
-                    @php $no++ @endphp
-                    @endforeach
-                    </table>
-
                 </div>
             </div>
         </section>

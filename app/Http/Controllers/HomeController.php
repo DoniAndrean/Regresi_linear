@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -13,29 +14,21 @@ class HomeController extends Controller
 	{
 		$totalKaryawanKontrak = DB::table('karyawan')->where('status_karyawan', 'Kontrak')->count();
 		$totalKaryawanPermanen = DB::table('karyawan')->where('status_karyawan', 'Permanen')->count();
+		$totalJadwalPelatihan = DB::table('jadwal_pelatihan')->count();
 		$totalKandidat = DB::table('kandidat')->count();
 
 		return view('/welcome', [
 			'totalKaryawanKontrak' => $totalKaryawanKontrak,
 			'totalKaryawanPermanen' => $totalKaryawanPermanen,
-			'totalKandidat' => $totalKandidat
+			'totalKandidat' => $totalKandidat,
+			'totalJadwalPelatihan' => $totalJadwalPelatihan,
 		]);
 	}
 
 	public function profil()
 	{
-		// mengambil data dari table berita
-		//$berita = DB::table('berita')->join('kecamatan', 'kecamatan.id_kecamatan', '=', 'berita.id_kecamatan')->get();
-		// $id_kecamatan = Auth::user()->id_kecamatan;
-
-		// $berita = DB::table('berita')
-		// 	// ->where('id_kecamatan', $id_kecamatan)
-		// 	->orderBy('tanggal_terbit','DESC')
-		// 	->get();
-
-		// mengirim data berita ke view index
-		// return view('/welcome', ['berita' => $berita]);
-		return view('/profil');
+		$model = Karyawan::all();
+		return view('/profil', compact("model"));
 	}
 
 	// method untuk menampilkan view form tambah berita

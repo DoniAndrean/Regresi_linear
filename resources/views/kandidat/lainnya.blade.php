@@ -48,7 +48,7 @@
                                 <div class="col-md-12">Expected Basic</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="expected_basic" required="required"
-                                        placeholder="Masukkan Nama Keluarga" value="{{ $kandidat->expected_basic }}"
+                                        placeholder="Masukkan Nama Keluarga" value="{{ $kandidat->expected_basic ?? '' }}"
                                         autofocus="on">
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                                 <div class="col-md-12">Expected Allowence</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="expected_allowence" required="required"
-                                        placeholder="Masukkan Relation" value="{{ $kandidat->expected_allowence }}"
+                                        placeholder="Masukkan Relation" value="{{ $kandidat->expected_allowence ?? '' }}"
                                         autofocus="on">
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="col-md-12">Total Salary</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="number" name="total_salary" required="required"
-                                        placeholder="Masukkan Relation" value="{{ $kandidat->total_salary }}"
+                                        placeholder="Masukkan Relation" value="{{ $kandidat->total_salary ?? '' }}"
                                         autofocus="on">
                                 </div>
                             </div>
@@ -78,7 +78,8 @@
                                 <div class="col-md-12">Your Wishes</div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="your_wishes" required="required"
-                                        placeholder="Masukkan Relation" value="{{ $kandidat->your_wishes }}" autofocus="on">
+                                        placeholder="Masukkan Relation" value="{{ $kandidat->your_wishes ?? '' }}"
+                                        autofocus="on">
                                 </div>
                             </div>
                         </div>

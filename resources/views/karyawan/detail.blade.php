@@ -36,8 +36,7 @@
                     <div class="col-12 col-md-4 py-4" style="background:#c3c5c4;">
                         {{-- <img src="https://i.pinimg.com/564x/8d/be/20/8dbe2091b0bbee50cf55fac6bf58f4ab.jpg" width="100%"> --}}
                         {{-- <img src="{{ asset('storage/' . $model->foto) }}" alt="Foto Karyawan"> --}}
-                        <div class="photo-profile mx-auto"
-                            style="background-image: url('{{ asset('storage/' . $model->foto) }}')">
+                        <div class="photo-profile mx-auto" style="background-image: url('{{ asset($model->foto) }}')">
 
                         </div>
                         <div class="col-12">

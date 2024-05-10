@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('style/main.css') }}">
     {{-- SweetAlert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -145,7 +146,7 @@
                             alt="Admin Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Imam Ahmad</a>
+                        <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
                     </div>
                 </div>
 
@@ -194,13 +195,15 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ url('') }}/karyawan" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i
+                                            class="{{ Request::is('karyawan') ? 'fas' : 'far' }} fa-circle nav-icon"></i>
                                         <p>Karyawan Kontrak</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('') }}/permanen" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i
+                                            class="{{ Request::is('permanen') ? 'fas' : 'far' }} fa-circle nav-icon"></i>
                                         <p>Karyawan Permanen</p>
                                     </a>
                                 </li>
@@ -224,6 +227,22 @@
                                     <a href="{{ url('') }}/kandidat" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Outsourcing</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item {{ Request::is('soal*') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="bi bi-clipboard-check-fill"></i>
+                                <p style="margin-left: 8px">
+                                    Interview
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('soal') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Master Soal</p>
                                     </a>
                                 </li>
                             </ul>
@@ -267,6 +286,15 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link text-danger">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
                         </li>
                     </ul>
                 </nav>

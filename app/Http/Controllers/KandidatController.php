@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class KandidatController extends Controller
 {
+	private $statusOptions = ["Sudah Kawin", "Belum Kawin", "Cerai Hidup", "Cerai Mati"];
 	public function index()
 	{
 		$model = DB::table('kandidat')
@@ -90,12 +91,10 @@ class KandidatController extends Controller
 	public function edit($id)
 	{
 		// mengambil data berita berdasarkan id yang dipilih
-		$model = DB::table('kandidat')->where('id_kandidat', $id)->get()[0];
-		// print_r($model[0]);
-		// exit();
+		$model = DB::table('kandidat')->where('id_kandidat', $id)->first();
 
 		// passing data model yang didapat ke view edit.blade.php
-		return view('/kandidat/edit', ['model' => $model]);
+		return view('/kandidat/edit', ['model' => $model, "statusOptions" => $this->statusOptions]);
 	}
 	// update data berita
 	public function update(Request $request)
@@ -140,10 +139,10 @@ class KandidatController extends Controller
 	public function hapus($id)
 	{
 		// menghapus data berita berdasarkan id yang dipilih
-		DB::table('karyawan')->where('id_sap', $id)->delete();
+		DB::table('kandidat')->where('id_kandidat', $id)->delete();
 
 		// alihkan halaman ke halaman berita
-		return redirect('/karyawan');
+		return redirect('/kandidat');
 	}
 
 	public function detail($id)
@@ -324,9 +323,9 @@ class KandidatController extends Controller
 	{
 		// memanggil view tambah
 		$data['id'] = $id;
-		$kandidat = DB::table('kandidat')->where('id_kandidat', $id)->get();
-		$data['kandidat'] = $kandidat[0];
-
+		$kandidat = DB::table('kandidat')->where('id_kandidat', $id)->first();
+		$data['kandidat'] = $kandidat;
+		$data["statusOptions"] = $this->statusOptions;
 		// print_r($kandidat);
 		// exit;
 
@@ -368,7 +367,7 @@ class KandidatController extends Controller
 		$kandidatBahasa = DB::table('bahasa')
 			->where('id_kandidat', $id)
 			->get();
-			
+
 		// Ambil data pendidikan kandidat
 		$pendidikan = DB::table('pendidikan')
 			->where('id_kandidat', $id)
@@ -381,8 +380,8 @@ class KandidatController extends Controller
 
 		//Ambil data kontak darurat
 		$kontakDarurat = DB::table('kontak_darurat')
-		->where('id_kandidat', $id)
-		->get();
+			->where('id_kandidat', $id)
+			->get();
 
 		// Ambil data pengalaman kerja kandidat
 		$pengalaman = DB::table('pengalaman')
