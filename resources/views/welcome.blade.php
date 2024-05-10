@@ -35,7 +35,7 @@
                             <div class="icon">
                                 <i class="ion ion-person"></i>
                             </div>
-                            <a href="/karyawan" class="small-box-footer">More info <i
+                            <a href="/permanen" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -76,14 +76,14 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>5</h3>
+                                <h3>{{ $totalJadwalPelatihan }}</h3>
 
                                 <p>Jadwal Pelatihan</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person"></i>
                             </div>
-                            <a href="/karyawan" class="small-box-footer">More info <i
+                            <a href="/jadwal-pelatihan" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

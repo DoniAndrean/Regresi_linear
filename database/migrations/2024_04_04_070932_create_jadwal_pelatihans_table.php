@@ -13,7 +13,7 @@ class CreateJadwalPelatihansTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwal_pelatihans', function (Blueprint $table) {
+        Schema::create('jadwal_pelatihan', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateJadwalPelatihansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwal_pelatihans');
+        Schema::dropIfExists('jadwal_pelatihan');
     }
 }

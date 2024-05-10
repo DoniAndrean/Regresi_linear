@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JadwalPelatihanController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SoalController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,120 +21,114 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'App\Http\Controllers\HomeController@index');
-Route::get('/home', 'App\Http\Controllers\HomeController@index');
-Route::get('/profil', 'App\Http\Controllers\HomeController@profil');
+Route::get("/login", [LoginController::class, 'login'])->name("login")->middleware('guest');
+Route::post("/login", [LoginController::class, 'postLogin'])->name("postLogin");
 
-// //route CRUD Menu
-// Route::get('/pegawai', 'App\Http\Controllers\PegawaiController@index');
-// //route Tambah
-// Route::get('/pegawai/tambah', 'App\Http\Controllers\PegawaiController@tambah');
-// Route::post('/pegawai/store', 'App\Http\Controllers\PegawaiController@store');
-// //route Edit
-// Route::get('/pegawai/edit/{id}', 'App\Http\Controllers\PegawaiController@edit');
-// Route::post('/pegawai/update', 'App\Http\Controllers\PegawaiController@update');
-// //route Hapus
-// Route::get('/pegawai/hapus/{id}', 'App\Http\Controllers\PegawaiController@hapus');
-// //end
+Route::middleware('auth')->group(function () {
+    Route::get('/', 'App\Http\Controllers\HomeController@index');
+    Route::get('/user/generate', [UserController::class, 'generate'])->name("user.generate");
+    Route::get("/logout", [LoginController::class, 'logout'])->name("logout");
 
-//route CRUD Menu
-Route::get('/karyawan', 'App\Http\Controllers\KaryawanController@index');
+    Route::get('/cuti', 'App\Http\Controllers\CutiController@index');
 
-//route Tambah
-Route::get('/karyawan/tambah', 'App\Http\Controllers\KaryawanController@tambah');
-Route::post('/karyawan/store', 'App\Http\Controllers\KaryawanController@store');
+    //route Tambah
+    Route::get('/cuti/tambah', 'App\Http\Controllers\CutiController@tambah');
+    Route::post('/cuti/store', 'App\Http\Controllers\CutiController@store');
 
-//route Edit
-Route::get('/karyawan/edit/{id}', 'App\Http\Controllers\KaryawanController@edit');
-Route::get('/karyawan/detail/{id}', 'App\Http\Controllers\KaryawanController@detail');
-Route::post('/karyawan/update', 'App\Http\Controllers\KaryawanController@update');
+    //route Edit
+    Route::get('/cuti/edit/{id}', 'App\Http\Controllers\CutiController@edit');
+    Route::get('/cuti/detail/{id}', 'App\Http\Controllers\CutiController@detail');
+    Route::post('/cuti/update', 'App\Http\Controllers\CutiController@update');
 
-//route Hapus
-Route::get('/karyawan/hapus/{id}', 'App\Http\Controllers\KaryawanController@hapus');
-//end
+    //route Hapus
+    Route::get('/cuti/hapus/{id}', 'App\Http\Controllers\CutiController@hapus');
+    Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@status');
+    Route::get('/cuti/{id}/approve', 'App\Http\Controllers\CutiController@approve')->name("cuti.approve");
 
-//route CRUD Menu
-Route::get('/permanen', 'App\Http\Controllers\KaryawanController@permanen');
-// //route Tambah
-// Route::get('/permanen/tambah', 'App\Http\Controllers\PermanenController@tambah');
-// Route::post('/permanen/store', 'App\Http\Controllers\PermanenController@store');
-// //route Edit
-// Route::get('/permanen/edit/{id}', 'App\Http\Controllers\PermanenController@edit');
-// Route::get('/permanen/detail/{id}', 'App\Http\Controllers\PermanenController@detail');
-// Route::post('/permanen/update', 'App\Http\Controllers\PermanenController@update');
-// //route Hapus
-// Route::get('/permanen/hapus/{id}', 'App\Http\Controllers\PermanenController@hapus');
-// //end
+    //route CRUD Menu
+    Route::get('/kandidat', 'App\Http\Controllers\KandidatController@index');
 
+    //route Tambah
+    Route::get('/kandidat/tambah', 'App\Http\Controllers\KandidatController@tambah');
+    Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
 
-//route CRUD Menu
-Route::get('/cuti', 'App\Http\Controllers\CutiController@index');
+    // bahasa
+    Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatController@tambahBahasa');
+    Route::post('/kandidat/tambah-bahasa-proses', 'App\Http\Controllers\KandidatController@tambahBahasaProses');
 
-//route Tambah
-Route::get('/cuti/tambah', 'App\Http\Controllers\CutiController@tambah');
-Route::post('/cuti/store', 'App\Http\Controllers\CutiController@store');
+    // personal data
+    Route::get('/kandidat/personal-data/{id}', 'App\Http\Controllers\KandidatController@personalData');
+    Route::post('/kandidat/personal-data-proses', 'App\Http\Controllers\KandidatController@personalDataProses');
 
-//route Edit
-Route::get('/cuti/edit/{id}', 'App\Http\Controllers\CutiController@edit');
-Route::get('/cuti/detail/{id}', 'App\Http\Controllers\CutiController@detail');
-Route::post('/cuti/update', 'App\Http\Controllers\CutiController@update');
+    // pendidikan
+    Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
+    Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
+    Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanInformalProses');
 
-//route Hapus
-Route::get('/cuti/hapus/{id}', 'App\Http\Controllers\CutiController@hapus');
-Route::get('/cuti/status/{id}/{status}', 'App\Http\Controllers\CutiController@status');
-//end
+    // keluarga
+    Route::get('/kandidat/tambah-keluarga/{id}', 'App\Http\Controllers\KandidatController@tambahKeluarga');
+    Route::post('/kandidat/tambah-keluarga-proses', 'App\Http\Controllers\KandidatController@tambahKeluargaProses');
 
+    // kontak-darurat
+    Route::get('/kandidat/tambah-kontak-darurat/{id}', 'App\Http\Controllers\KandidatController@tambahKontakDarurat');
+    Route::post('/kandidat/tambah-kontak-darurat-proses', 'App\Http\Controllers\KandidatController@tambahKontakDaruratProses');
 
-//route CRUD Menu
-Route::get('/kandidat', 'App\Http\Controllers\KandidatController@index');
+    // pengalaman
+    Route::get('/kandidat/tambah-pengalaman/{id}', 'App\Http\Controllers\KandidatController@tambahPengalaman');
+    Route::post('/kandidat/tambah-pengalaman-proses', 'App\Http\Controllers\KandidatController@tambahPengalamanProses');
 
-//route Tambah
-Route::get('/kandidat/tambah', 'App\Http\Controllers\KandidatController@tambah');
-Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
+    // lainnya
+    Route::get('/kandidat/tambah-lainnya/{id}', 'App\Http\Controllers\KandidatController@tambahLainnya');
+    Route::post('/kandidat/tambah-lainnya-proses', 'App\Http\Controllers\KandidatController@tambahLainnyaProses');
 
-// bahasa
-Route::get('/kandidat/tambah-bahasa/{id}', 'App\Http\Controllers\KandidatController@tambahBahasa');
-Route::post('/kandidat/tambah-bahasa-proses', 'App\Http\Controllers\KandidatController@tambahBahasaProses');
+    //route Edit
+    Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
+    Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');
+    Route::post('/kandidat/update', 'App\Http\Controllers\KandidatController@update');
 
-// personal data
-Route::get('/kandidat/personal-data/{id}', 'App\Http\Controllers\KandidatController@personalData');
-Route::post('/kandidat/personal-data-proses', 'App\Http\Controllers\KandidatController@personalDataProses');
+    //route Hapus
+    Route::get('/kandidat/hapus/{id}', 'App\Http\Controllers\KandidatController@hapus');
 
-// pendidikan
-Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
-Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
-Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanInformalProses');
+    //route Rekap Data
+    Route::get('/kandidat/rekap/{id}', 'App\Http\Controllers\KandidatController@rekapData');
+    //end
 
-// keluarga
-Route::get('/kandidat/tambah-keluarga/{id}', 'App\Http\Controllers\KandidatController@tambahKeluarga');
-Route::post('/kandidat/tambah-keluarga-proses', 'App\Http\Controllers\KandidatController@tambahKeluargaProses');
+    Route::get('/karyawan', 'App\Http\Controllers\KaryawanController@index');
 
-// kontak-darurat
-Route::get('/kandidat/tambah-kontak-darurat/{id}', 'App\Http\Controllers\KandidatController@tambahKontakDarurat');
-Route::post('/kandidat/tambah-kontak-darurat-proses', 'App\Http\Controllers\KandidatController@tambahKontakDaruratProses');
+    //route Tambah
+    Route::get('/karyawan/tambah', 'App\Http\Controllers\KaryawanController@tambah');
+    Route::post('/karyawan/store', 'App\Http\Controllers\KaryawanController@store');
 
-// pengalaman
-Route::get('/kandidat/tambah-pengalaman/{id}', 'App\Http\Controllers\KandidatController@tambahPengalaman');
-Route::post('/kandidat/tambah-pengalaman-proses', 'App\Http\Controllers\KandidatController@tambahPengalamanProses');
+    //route Edit
+    Route::get('/karyawan/edit/{id}', 'App\Http\Controllers\KaryawanController@edit');
+    Route::get('/karyawan/detail/{id}', 'App\Http\Controllers\KaryawanController@detail')->name("karyawan.detail");
+    Route::post('/karyawan/update', 'App\Http\Controllers\KaryawanController@update');
 
-// lainnya
-Route::get('/kandidat/tambah-lainnya/{id}', 'App\Http\Controllers\KandidatController@tambahLainnya');
-Route::post('/kandidat/tambah-lainnya-proses', 'App\Http\Controllers\KandidatController@tambahLainnyaProses');
+    //route Hapus
+    Route::get('/karyawan/hapus/{id}', 'App\Http\Controllers\KaryawanController@hapus');
+    //end
 
-//route Edit
-Route::get('/kandidat/edit/{id}', 'App\Http\Controllers\KandidatController@edit');
-Route::get('/kandidat/detail/{id}', 'App\Http\Controllers\KandidatController@detail');
-Route::post('/kandidat/update', 'App\Http\Controllers\KandidatController@update');
+    //route CRUD Menu
+    Route::get('/permanen', 'App\Http\Controllers\KaryawanController@permanen');
+    Route::get('/profil', 'App\Http\Controllers\HomeController@profil');
 
-//route Hapus
-Route::get('/kandidat/hapus/{id}', 'App\Http\Controllers\KandidatController@hapus');
+    Route::get('/jadwal-pelatihan', [JadwalPelatihanController::class, 'index'])->name('jadwal-pelatihan');
+    Route::get('/jadwal-pelatihan/create', [JadwalPelatihanController::class, 'create'])->name('jadwal-pelatihan.create');
+    Route::post('/jadwal-pelatihan', [JadwalPelatihanController::class, 'store'])->name('jadwal-pelatihan.store');
+    Route::delete('/jadwal-pelatihan/{id}', [JadwalPelatihanController::class, 'delete'])->name('jadwal-pelatihan.delete');
 
-//route Rekap Data
-Route::get('/kandidat/rekap/{id}', 'App\Http\Controllers\KandidatController@rekapData');
-//end
+    Route::get('/soal', [SoalController::class, 'index'])->name('soal');
+    Route::get('/soal/create', [SoalController::class, 'create'])->name('soal.create');
+    Route::get('/soal/{id}/edit', [SoalController::class, 'edit'])->name('soal.edit');
+    Route::put('/soal/{id}', [SoalController::class, 'update'])->name('soal.update');
+    Route::post('/soal', [SoalController::class, 'store'])->name('soal.store');
+    Route::delete('/soal/{id}', [SoalController::class, 'delete'])->name('soal.delete');
 
-
-Route::get('/jadwal-pelatihan', [JadwalPelatihanController::class, 'index'])->name('jadwal-pelatihan');
-Route::get('/jadwal-pelatihan/create', [JadwalPelatihanController::class, 'create'])->name('jadwal-pelatihan.create');
-Route::post('/jadwal-pelatihan', [JadwalPelatihanController::class, 'store'])->name('jadwal-pelatihan.store');
-Route::delete('/jadwal-pelatihan/{id}', [JadwalPelatihanController::class, 'delete'])->name('jadwal-pelatihan.delete');
+    Route::get('/interview/{id}', [InterviewController::class, 'show'])->name('interview');
+    Route::post('/interview/{idKandidat}', [InterviewController::class, 'store'])->name('interview.store');
+    // Route::get('/interview/create', [InterviewController::class, 'create'])->name('interview.create');
+    // Route::get('/interview/{id}/edit', [InterviewController::class, 'edit'])->name('interview.edit');
+    // Route::put('/interview/{id}', [InterviewController::class, 'update'])->name('interview.update');
+    // Route::post('/interview', [InterviewController::class, 'store'])->name('interview.store');
+    // Route::delete('/interview/{id}', [InterviewController::class, 'delete'])->name('interview.delete');
+});

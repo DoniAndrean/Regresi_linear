@@ -22,8 +22,8 @@
             <!-- DataTables Example -->
             <div class="card shadow mb-4">
                 <!-- <div class="card-header py-3">
-                                                                <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
-                                                            </div> -->
+                                                                    <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
+                                                                </div> -->
                 <div class="card-body">
                     <a href="{{ route('jadwal-pelatihan.create') }}" class="btn btn-info mb-2"> Tambah</a>
                     <div class="table-responsive">
@@ -45,9 +45,9 @@
                                             <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
                                                 data-target="#myModal{{ $p->id }}">Detail</button>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="/cuti/edit/{{ $p->id }}" class="btn btn-success btn-xs">
+                                                {{-- <a href="/cuti/edit/{{ $p->id }}" class="btn btn-success btn-xs">
                                                     <i class='fa fa-edit'></i>
-                                                </a>
+                                                </a> --}}
 
                                                 <form action="{{ route('jadwal-pelatihan.delete', $p->id) }}" method="POST"
                                                     class="show-delete-confirm">

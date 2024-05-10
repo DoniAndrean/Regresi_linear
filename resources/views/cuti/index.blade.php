@@ -23,9 +23,6 @@
         <section class="content">
 
             <div class="card shadow mb-4">
-                <!-- <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DATA KARYAWAN KONTRAK</h6>
-                </div> -->
                 <div class="card-body">
                     <a href="{{ url('/cuti/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
                     <div class="table-responsive">
@@ -67,14 +64,26 @@
                                             <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
                                                 data-target="#myModal{{ $p->id_cuti }}">Detail</button>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="/cuti/edit/{{ $p->id_cuti }}" class="btn btn-success btn-xs">
-                                                    <i class='fa fa-edit'></i>
-                                                </a>
 
-                                                <a href="/cuti/hapus/{{ $p->id_cuti }}" class="btn btn-danger btn-xs"
-                                                    onclick="return confirm('Apakah anda yakin?')">
-                                                    <i class='fa fa-trash'></i>
-                                                </a>
+                                                @if (Auth::user()->role == 'user')
+                                                    <a href="/cuti/edit/{{ $p->id_cuti }}"
+                                                        class="btn btn-success btn-xs">
+                                                        <i class='fa fa-edit'></i>
+                                                    </a>
+                                                @endif
+                                                @if (Auth::user()->role == 'admin')
+                                                    @if ($p->status_cuti == 'Pengajuan')
+                                                        <a href="{{ route('cuti.approve', $p->id_cuti) }}"
+                                                            class="btn btn-success btn-xs" title="Setujui cuti"
+                                                            onclick="return confirm('Apakah anda yakin?')">
+                                                            <i class="fa fa-check"></i>
+                                                        </a>
+                                                    @endif
+                                                    <a href="/cuti/hapus/{{ $p->id_cuti }}" class="btn btn-danger btn-xs"
+                                                        onclick="return confirm('Apakah anda yakin?')">
+                                                        <i class='fa fa-trash'></i>
+                                                    </a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -129,7 +138,6 @@
                                                         data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     @php $no++ @endphp

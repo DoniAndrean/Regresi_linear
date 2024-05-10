@@ -17,7 +17,10 @@ class KaryawanController extends Controller
 			->get();
 
 		// mengirim data model ke view index
-		return view('/karyawan/index', ['model' => $model]);
+		return view('/karyawan/index', [
+			'model' => $model,
+			"title" => "KONTRAK"
+		]);
 	}
 
 	public function permanen()
@@ -28,7 +31,10 @@ class KaryawanController extends Controller
 			->get();
 
 		// mengirim data model ke view index
-		return view('/karyawan/index', ['model' => $model]);
+		return view('/karyawan/index', [
+			'model' => $model,
+			"title" => "PERMANEN"
+		]);
 	}
 
 	// method untuk menampilkan view form tambah berita
@@ -47,14 +53,14 @@ class KaryawanController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate([
-            'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
-        ]);
+			'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
+		]);
 
 		if ($request->has('foto')) {
 			$file = $request->file('foto');
 			$extension = $file->getClientOriginalExtension();
 
-			$filename = time().'.'.$extension;
+			$filename = time() . '.' . $extension;
 			$file->move('uploads/foto', $filename);
 		}
 
@@ -93,7 +99,7 @@ class KaryawanController extends Controller
 		if ($filename) {
 			$data['foto'] = 'uploads/foto/' . $filename;
 		}
-		
+
 		$id =	DB::table('karyawan')->insertGetId($data);
 
 		// alihkan halaman ke halaman berita
@@ -106,23 +112,35 @@ class KaryawanController extends Controller
 		$model = DB::table('karyawan')->where('id_sap', $id)->get()[0];
 		// print_r($model[0]);
 		// exit();
-
+		$sukus = ["Jawa", "Melayu", "Sunda", "Batak", "Minang", "Tionghoa"];
+		$statuses = ["Sudah Kawin", "Belum Kawin", "Cerai Hidup", "Cerai Mati"];
+		$tanggungans = ["1 Orang", "2 Orang", "3 Orang", "4 Orang", "Belum Menikah"];
+		$departemens = [
+			"GMO", "HRD", "Food And Beverage Service", "Food And Beverage Product",
+			"Front Office & Health Club", "House Keeping", "Eco Camp", "Engineering"
+		];
 		// passing data model yang didapat ke view edit.blade.php
-		return view('/karyawan/edit', ['model' => $model]);
+		return view('/karyawan/edit', [
+			'model' => $model,
+			"sukus" => $sukus,
+			"statuses" => $statuses,
+			"tanggungans" => $tanggungans,
+			"departemens" => $departemens
+		]);
 	}
 
 	// update data berita
 	public function update(Request $request)
 	{
 		$request->validate([
-            'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
-        ]);
+			'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
+		]);
 
 		if ($request->has('foto')) {
 			$file = $request->file('foto');
 			$extension = $file->getClientOriginalExtension();
 
-			$filename = time().'.'.$extension;
+			$filename = time() . '.' . $extension;
 			$file->move('uploads/foto', $filename);
 		}
 

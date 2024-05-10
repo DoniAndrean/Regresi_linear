@@ -11,13 +11,18 @@ class CutiController extends Controller
 {
 	public function index()
 	{
+		$role = Auth::user()->role;
 		$model = DB::table('cuti')
 			->select('*', 'master_cuti.jenis_cuti as jenis_cuti', 'cuti.id_cuti as id_cuti')
 			->join('master_cuti', 'master_cuti.id_cuti', '=', 'cuti.jenis_cuti')
 			->join('karyawan', 'karyawan.id_sap', '=', 'cuti.id_sap')
-			// ->where('status_karyawan', 'Kontrak')
-			->orderBy('karyawan.nama', 'ASC')
-			->get();
+			->orderBy('karyawan.nama', 'ASC');
+
+		if ($role == "karyawan") {
+			$model->where("cuti.id_sap", Auth::user()->karyawan_id);
+		}
+
+		$model = $model->get();
 
 		// mengirim data model ke view index
 		return view('/cuti/index', ['model' => $model]);
@@ -27,13 +32,15 @@ class CutiController extends Controller
 	public function tambah()
 	{
 		$data = [];
-		$model = DB::table('karyawan')
-			->orderBy('nama', 'ASC')
-			->get();
+		$model = DB::table('karyawan');
+		if (Auth::user()->role == "karyawan") {
+			$model->where("karyawan.id_sap", Auth::user()->karyawan_id);
+		}
+
 		$modelMasterCuti = DB::table('master_cuti')
 			->orderBy('jenis_cuti', 'ASC')
 			->get();
-		$data['model'] = $model;
+		$data['model'] = $model->orderBy('nama', 'ASC')->get();
 		$data['modelMasterCuti'] = $modelMasterCuti;
 		return view('/cuti/tambah', $data);
 	}
@@ -43,7 +50,7 @@ class CutiController extends Controller
 	{
 		//array
 		$data = [
-			'id_sap' => $request->id_sap,
+			'id_sap' => Auth::user()->role == "admin" ? $request->id_sap : Auth::user()->karyawan_id,
 			'jenis_cuti' => $request->jenis_cuti,
 			'jumlah_cuti' => $request->jumlah_cuti,
 			'start_cuti' => $request->start_cuti,
@@ -52,7 +59,6 @@ class CutiController extends Controller
 			'status_cuti' => "Pengajuan",
 		];
 		$id =	DB::table('cuti')->insertGetId($data);
-
 		// alihkan halaman ke halaman berita
 		return redirect('/cuti');
 	}
@@ -123,6 +129,15 @@ class CutiController extends Controller
 		];
 
 		DB::table('cuti')->where('id_cuti', $id)->update($data);
+
+		// alihkan halaman ke halaman berita
+		return redirect('/cuti');
+	}
+	public function approve($id)
+	{
+		DB::table('cuti')->where('id_cuti', $id)->update([
+			"status_cuti" => "selesai"
+		]);
 
 		// alihkan halaman ke halaman berita
 		return redirect('/cuti');
