@@ -22,8 +22,17 @@
                     <div>{{ $loop->iteration }}</div>
                     <div>
                         <div>{{ $p->soal }}</div>
-                        <textarea placeholder="Tuliskan jawaban anda..." rows="3" name="jawab[{{ $p->id }}]" style="resize: none"
-                            class="w-100 form-control"></textarea>
+                        <div class="row row-cols-4">
+                            @foreach ($options as $option)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="soal_{{ $p->id }}"
+                                        id="soal_{{ $p->id }}">
+                                    <label class="form-check-label" for="soal_{{ $p->id }}">
+                                        {{ $option }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             @endforeach

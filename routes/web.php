@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JadwalPelatihanController;
+use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\UserController;
@@ -50,6 +52,7 @@ Route::middleware('auth')->group(function () {
 
     //route Tambah
     Route::get('/kandidat/tambah', 'App\Http\Controllers\KandidatController@tambah');
+    Route::get('/kandidat/generate', 'App\Http\Controllers\KandidatController@generate');
     Route::post('/kandidat/store', 'App\Http\Controllers\KandidatController@store');
 
     // bahasa
@@ -91,6 +94,9 @@ Route::middleware('auth')->group(function () {
 
     //route Rekap Data
     Route::get('/kandidat/rekap/{id}', 'App\Http\Controllers\KandidatController@rekapData');
+    //route Interview karyawan
+    Route::get('/kandidat/interview/{id}', 'App\Http\Controllers\KandidatController@interview');
+    Route::post('/kandidat/interview/{id}', 'App\Http\Controllers\KandidatController@interviewStore');
     //end
 
     Route::get('/karyawan', 'App\Http\Controllers\KaryawanController@index');
@@ -126,9 +132,27 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/interview/{id}', [InterviewController::class, 'show'])->name('interview');
     Route::post('/interview/{idKandidat}', [InterviewController::class, 'store'])->name('interview.store');
-    // Route::get('/interview/create', [InterviewController::class, 'create'])->name('interview.create');
-    // Route::get('/interview/{id}/edit', [InterviewController::class, 'edit'])->name('interview.edit');
-    // Route::put('/interview/{id}', [InterviewController::class, 'update'])->name('interview.update');
-    // Route::post('/interview', [InterviewController::class, 'store'])->name('interview.store');
-    // Route::delete('/interview/{id}', [InterviewController::class, 'delete'])->name('interview.delete');
 });
+
+Route::get("form-kandidat/", [FormController::class, "index"])->name("form");
+Route::post("form-kandidat/input-kode", [FormController::class, "inputKode"])->name("form.inputKode");
+Route::get("/form-kandidat/{id}/personal", [FormController::class, "personal"])->name("form.personal");
+Route::post("/form-kandidat/{id}/personal", [FormController::class, "personalStore"])->name("form.personal.store");
+
+Route::get("/form-kandidat/{id}/bahasa", [FormController::class, "bahasa"])->name("form.bahasa");
+Route::post("/form-kandidat/{id}/bahasa", [FormController::class, "bahasaStore"])->name("form.bahasa.store");
+
+Route::get("/form-kandidat/{id}/pendidikan", [FormController::class, "pendidikan"])->name("form.pendidikan");
+Route::post("/form-kandidat/{id}/pendidikan", [FormController::class, "pendidikanStore"])->name("form.pendidikan.store");
+
+Route::get("/form-kandidat/{id}/keluarga", [FormController::class, "keluarga"])->name("form.keluarga");
+Route::post("/form-kandidat/{id}/keluarga", [FormController::class, "keluargaStore"])->name("form.keluarga.store");
+
+Route::get("/form-kandidat/{id}/kontak", [FormController::class, "kontak"])->name("form.kontak");
+Route::post("/form-kandidat/{id}/kontak", [FormController::class, "kontakStore"])->name("form.kontak.store");
+
+Route::get("/form-kandidat/{id}/pengalaman", [FormController::class, "pengalaman"])->name("form.pengalaman");
+Route::post("/form-kandidat/{id}/pengalaman", [FormController::class, "pengalamanStore"])->name("form.pengalaman.store");
+
+Route::get("/form-kandidat/{id}/lainnya", [FormController::class, "lainnya"])->name("form.lainnya");
+Route::post("/form-kandidat/{id}/lainnya", [FormController::class, "lainnyaStore"])->name("form.lainnya.store");

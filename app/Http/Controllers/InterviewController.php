@@ -9,13 +9,33 @@ use Illuminate\Http\Request;
 
 class InterviewController extends Controller
 {
+    private static $options = [
+        [
+            "label" => "Limited",
+            "value" => 1,
+        ],
+        [
+            "label" => "Some",
+            "value" => 2,
+        ],
+        [
+            "label" => "Strong",
+            "value" => 3,
+        ],
+        [
+            "label" => "Very Strong",
+            "value" => 4,
+        ],
+    ];
+
     public function show($encryptId)
     {
         $id = decrypt($encryptId);
         $kandidat = Kandidat::where("id_kandidat", $id)->first();
         $model = Interview::where("id_kandidat", $id)->get();
         $soal = MasterSoal::all();
-        return view("interview.show", compact("model", "kandidat", "soal"));
+        $options = self::$options;
+        return view("interview.show", compact("model", "kandidat", "soal", "options"));
     }
     public function store(Request $request, $idKandidat)
     {

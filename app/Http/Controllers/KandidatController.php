@@ -3,12 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Interview;
+use App\Models\Kandidat;
+use App\Models\MasterSoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class KandidatController extends Controller
 {
+	private static $options = [
+		[
+			"label" => "Limited",
+			"value" => 1,
+		],
+		[
+			"label" => "Some",
+			"value" => 2,
+		],
+		[
+			"label" => "Strong",
+			"value" => 3,
+		],
+		[
+			"label" => "Very Strong",
+			"value" => 4,
+		],
+	];
 	private $statusOptions = ["Sudah Kawin", "Belum Kawin", "Cerai Hidup", "Cerai Mati"];
 	public function index()
 	{
@@ -21,6 +42,11 @@ class KandidatController extends Controller
 		return view('/kandidat/index', ['model' => $model]);
 	}
 
+	public function generate()
+	{
+		Kandidat::create();
+		return redirect()->back();
+	}
 	// method untuk menampilkan view form tambah berita
 	public function tambah()
 	{
@@ -397,5 +423,30 @@ class KandidatController extends Controller
 			'kontakDarurat' => $kontakDarurat,
 			'pengalaman' 	=> $pengalaman,
 		]);
+	}
+
+	public function interview($id)
+	{
+		$model = Kandidat::where("id_kandidat", $id)->first();
+		$interview = Interview::where("id_kandidat", $id)->get();
+		$masterSoal = MasterSoal::all();
+		$options = self::$options;
+		return view("kandidat.interview", compact('model', 'masterSoal', 'interview', 'options'));
+	}
+	public function interviewStore(Request $request, $id)
+	{
+		// dd($request->all());
+
+		foreach ($request->soal as $key => $value) {
+			Interview::create([
+				"id_kandidat" => $id,
+				"id_soal" => $key,
+				"jawaban" => $value,
+			]);
+		}
+		Kandidat::where("id_kandidat", $id)->update([
+			"telah_interview" => true
+		]);
+		return redirect("/kandidat");
 	}
 }
