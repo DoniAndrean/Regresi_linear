@@ -32,7 +32,7 @@
                         <div>
                             <label for="soal">Soal</label>
                             <input class="form-control  @error('soal') is-invalid @enderror" type="text" name="soal"
-                                required="required">
+                                required="required" autofocus>
                             @error('soal')
                                 <div class="invalid-feedback">{{ $message }} </div>
                             @enderror

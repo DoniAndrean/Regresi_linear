@@ -14,22 +14,26 @@ class CreateKandidatsTable extends Migration
     public function up()
     {
         Schema::create('kandidat', function (Blueprint $table) {
-            $table->id('id_kandidat');
-            $table->string("posisi", 50);
-            $table->string("informasi_lowongan", 50);
-            $table->string("nama", 50);
-            $table->integer("umur");
-            $table->string("tempat_lahir", 50);
-            $table->string("tanggal_lahir", 50);
-            $table->string("status_perkawinan", 50);
-            $table->string("jenis_kelamin", 50);
-            $table->integer("berat_badan");
-            $table->integer("tinggi_badan");
-            $table->text("alamat");
-            $table->string("no_hp", 50);
-            $table->string("email", 50);
-            $table->string("bahasa_pertama", 50);
+            $table->id('id_kandidat')->nullable();
+            $table->string("posisi", 50)->nullable();
+            $table->string("informasi_lowongan", 50)->nullable();
+            $table->string("nama", 50)->nullable();
+            $table->integer("umur")->nullable();
+            $table->string("tempat_lahir", 50)->nullable();
+            $table->string("tanggal_lahir", 50)->nullable();
+            $table->string("status_perkawinan", 50)->nullable();
+            $table->string("jenis_kelamin", 50)->nullable();
+            $table->integer("berat_badan")->nullable();
+            $table->integer("tinggi_badan")->nullable();
+            $table->text("alamat")->nullable();
+            $table->string("no_hp", 50)->nullable();
+            $table->string("email", 50)->nullable();
+            $table->string("bahasa_pertama", 50)->nullable();
             $table->boolean("telah_interview")->default(false);
+            $table->string("expected_basic")->nullable();
+            $table->string("expected_allowence")->nullable();
+            $table->string("total_salary")->nullable();
+            $table->string("your_wishes")->nullable();
             $table->timestamps();
         });
     }

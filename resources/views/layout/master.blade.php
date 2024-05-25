@@ -31,6 +31,11 @@
     <link rel="stylesheet" href="{{ url('') }}/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     {{-- Main CSS --}}
     <link rel="stylesheet" href="{{ asset('style/main.css') }}">
+
+    <!-- jQuery -->
+    <script src="{{ url('') }}/backend/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ url('') }}/backend/plugins/jquery-ui/jquery-ui.min.js"></script>
     {{-- SweetAlert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -323,10 +328,6 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="{{ url('') }}/backend/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{ url('') }}/backend/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
@@ -370,7 +371,7 @@
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="{{ url('') }}/backend/dist/js/demo.js"></script> -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ url('') }}/backend/dist/js/pages/dashboard.js"></script>
+    {{-- <script src="{{ url('') }}/backend/dist/js/pages/dashboard.js"></script> --}}
 
     <script>
         $(function() {

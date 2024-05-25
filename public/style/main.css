@@ -27,3 +27,44 @@
 .gap-2 {
     gap: 8px;
 }
+
+.btn-copy {
+    cursor: pointer !important;
+}
+
+.size-screen {
+    width: 100vw;
+    height: 100vh;
+}
+
+.wrapper-form-kandidat {
+    background-color: #e9ecef;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-next-page {
+    position: fixed;
+    bottom: 5vh;
+    right: 24px;
+}
+
+.card .heading {
+    font-size: 24px;
+    font-weight: 500;
+    color: #475569;
+}
+
+.w-max {
+    width: max-content;
+}
+
+.form-fit {
+    width: 50vw;
+}
+
+.soal-wrapper {
+    width: 40vw;
+}

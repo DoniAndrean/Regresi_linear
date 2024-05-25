@@ -349,10 +349,10 @@
                                         <input class="form-control" type="text" name="bahasa_lain"
                                             placeholder="Masukkan Umur" value="" autofocus="on">
                                         <!-- <select name="write" id="" class="form-control">
-              @for ($i = date('Y'); $i >= 2000; $i--)
+                  @for ($i = date('Y'); $i >= 2000; $i--)
     <option>{{ $i }}</option>
     @endfor
-             </select> -->
+                 </select> -->
                                     </div>
                                 </div>
                             </div>
@@ -363,10 +363,10 @@
                                         <input class="form-control" type="text" name="bahasa_lain"
                                             placeholder="Masukkan Alamat" value="" autofocus="on">
                                         <!-- <select name="write" id="" class="form-control">
-              @for ($i = date('Y'); $i >= 2000; $i--)
+                  @for ($i = date('Y'); $i >= 2000; $i--)
     <option>{{ $i }}</option>
     @endfor
-             </select> -->
+                 </select> -->
                                     </div>
                                 </div>
                             </div>
