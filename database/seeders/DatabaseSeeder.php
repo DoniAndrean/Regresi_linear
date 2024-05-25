@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PegawaiSeeder::class,
             PendidikanSeeder::class,
             PengalamanSeeder::class,
+            SoalSeeder::class
         ]);
 
         User::create([

@@ -433,10 +433,16 @@ class KandidatController extends Controller
 		$options = self::$options;
 		return view("kandidat.interview", compact('model', 'masterSoal', 'interview', 'options'));
 	}
+	public function interviewEdit($id)
+	{
+		$model = Kandidat::where("id_kandidat", $id)->first();
+		$interview = Interview::where("id_kandidat", $id)->get();
+		$masterSoal = MasterSoal::all();
+		$options = self::$options;
+		return view("kandidat.interview-edit", compact('model', 'masterSoal', 'interview', 'options'));
+	}
 	public function interviewStore(Request $request, $id)
 	{
-		// dd($request->all());
-
 		foreach ($request->soal as $key => $value) {
 			Interview::create([
 				"id_kandidat" => $id,
@@ -447,6 +453,16 @@ class KandidatController extends Controller
 		Kandidat::where("id_kandidat", $id)->update([
 			"telah_interview" => true
 		]);
+		return redirect("/kandidat");
+	}
+
+	public function interviewUpdate(Request $request, $id)
+	{
+		foreach ($request->soal as $key => $value) {
+			Interview::where("id_kandidat", $id)->where("id_soal", $key)->update([
+				"jawaban" => $value,
+			]);
+		}
 		return redirect("/kandidat");
 	}
 }

@@ -96,6 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/kandidat/rekap/{id}', 'App\Http\Controllers\KandidatController@rekapData');
     //route Interview karyawan
     Route::get('/kandidat/interview/{id}', 'App\Http\Controllers\KandidatController@interview');
+    Route::get('/kandidat/interview/{id}/edit', 'App\Http\Controllers\KandidatController@interviewEdit');
+    Route::put('/kandidat/interview/{id}', 'App\Http\Controllers\KandidatController@interviewUpdate');
     Route::post('/kandidat/interview/{id}', 'App\Http\Controllers\KandidatController@interviewStore');
     //end
 
