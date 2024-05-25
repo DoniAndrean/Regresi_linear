@@ -11,9 +11,10 @@ https://www.malasngoding.com/seeding-dan-faker-pada-laravel/
 <p>php artisan db:seed --class=PegawaiSeeder</p>
 
 
+php artisan migrate
+php artisan migrate:fresh --seed
 
-
-
+http://localhost:8000/form-kandidat
 
 
 ## mysql error
