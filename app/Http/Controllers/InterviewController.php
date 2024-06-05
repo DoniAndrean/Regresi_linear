@@ -32,13 +32,14 @@ class InterviewController extends Controller
     {
         $id = decrypt($encryptId);
         $kandidat = Kandidat::where("id_kandidat", $id)->first();
-        $model = Interview::where("id_kandidat", $id)->get();
+        $interview = Interview::where("id_kandidat", $id)->get();
         $soal = MasterSoal::all();
         $options = self::$options;
-        return view("interview.show", compact("model", "kandidat", "soal", "options"));
+        return view("interview.show", compact("interview", "kandidat", "soal", "options"));
     }
     public function store(Request $request, $idKandidat)
     {
+        dd($request->all());
         foreach ($request->jawab as $key => $value) {
             Interview::create([
                 "id_kandidat" => $idKandidat,

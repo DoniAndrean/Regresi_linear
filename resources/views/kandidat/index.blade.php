@@ -26,6 +26,8 @@
                 <div class="card-body">
                     {{-- <a href="{{ url('/kandidat/tambah') }}" class="btn btn-info mb-2"> Tambah</a> --}}
                     <a href="{{ url('/kandidat/generate') }}" class="btn btn-info mb-2"> Tambah Antrian</a>
+                    <a href="{{ url('/form-kandidat') }}" target="_blank" class="btn btn-success mb-2">Pengisian
+                        Data Karyawan</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
@@ -70,8 +72,8 @@
                                             <i class='fa fa-file'></i>
                                         </a> --}}
                                         @if ($p->telah_interview)
-                                            <a href="/kandidat/interview/{{ $p->id_kandidat }}" class="btn btn-primary"
-                                                title="Hasil Interview">
+                                            <a href="/kandidat/interview/{{ $p->id_kandidat }}/edit"
+                                                class="btn btn-primary" title="Hasil Interview">
                                                 Lihat Hasil Interview
                                             </a>
                                         @else
