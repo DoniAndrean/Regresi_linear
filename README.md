@@ -3,7 +3,10 @@
 ## Mysql
 mysqld --console --skip-grant-tables --skip-external-locking
 
-##
+## ip
+ipconfig
+
+## antar pc
 php artisan serve --host=0.0.0.0 --port=8000
 
 ### CRUD
