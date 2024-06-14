@@ -3,6 +3,9 @@
 ## Mysql
 mysqld --console --skip-grant-tables --skip-external-locking
 
+##
+php artisan serve --host=0.0.0.0 --port=8000
+
 ### CRUD
 <!-- Untuk buat contoller -->
 https://www.malasngoding.com/tutorial-membuat-crud-dengan-laravel/
