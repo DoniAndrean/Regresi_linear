@@ -22,10 +22,14 @@ class JadwalPelatihanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "waktu" => "required"
+            "nama_pelatihan" => "required",
+            "waktu" => "required",
         ]);
 
-        JadwalPelatihan::create(["waktu" => $request->waktu]);
+        JadwalPelatihan::create([
+            "nama_pelatihan" => $request->nama_pelatihan,
+            "waktu" => $request->waktu,
+        ]);
 
         return redirect()->route("jadwal-pelatihan");
     }
