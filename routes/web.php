@@ -28,9 +28,12 @@ Route::post("/login", [LoginController::class, 'postLogin'])->name("postLogin");
 
 Route::middleware('auth')->group(function () {
     Route::get('/', 'App\Http\Controllers\HomeController@index');
-    Route::get('/user/generate', [UserController::class, 'generate'])->name("user.generate");
     Route::get("/logout", [LoginController::class, 'logout'])->name("logout");
 
+    Route::middleware('admin-only')->group(function () {
+        Route::get('/user/generate', [UserController::class, 'generate'])->name("user.generate");
+        Route::get('users', [UserController::class, 'index'])->name("users");
+    });
     Route::get('/cuti', 'App\Http\Controllers\CutiController@index');
 
     //route Tambah

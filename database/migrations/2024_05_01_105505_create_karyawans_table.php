@@ -42,6 +42,7 @@ class CreateKaryawansTable extends Migration
             $table->string('no_hp', 13);
             $table->string('no_wa', 13);
             $table->string('riwayat_pelatihan', 500);
+            $table->integer("kuota_cuti")->default(12);
             $table->timestamps();
         });
     }

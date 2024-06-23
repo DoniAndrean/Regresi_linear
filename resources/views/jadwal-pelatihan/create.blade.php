@@ -30,6 +30,18 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div>
+                            <label for="nama_pelatihan">Nama Pelatihan</label>
+                            <input class="form-control  @error('nama_pelatihan') is-invalid @enderror" type="text"
+                                name="nama_pelatihan" required="required">
+                            @error('nama_pelatihan')
+                                <div class="invalid-feedback">{{ $message }} </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
                             <label for="waktu">Waktu Pelatihan</label>
                             <input class="form-control  @error('waktu') is-invalid @enderror" type="datetime-local"
                                 name="waktu" required="required">

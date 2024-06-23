@@ -23,4 +23,10 @@ class UserController extends Controller
 
         return back();
     }
+
+    public function index()
+    {
+        $model = User::all();
+        return view("users.index", compact('model'));
+    }
 }

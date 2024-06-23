@@ -231,7 +231,7 @@
                                 <li class="nav-item">
                                     <a href="{{ url('') }}/kandidat" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Outsourcing</p>
+                                        <p>Permanen</p>
                                     </a>
                                 </li>
                             </ul>
@@ -276,22 +276,24 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Hak Akses
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Admin</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (Auth::user()->role === 'admin')
+                            <li class="nav-item">
+                                <a href="{{ route('users') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>
+                                        Users
+                                    </p>
+                                </a>
+                                {{-- <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/tables/simple.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Admin</p>
+                                        </a>
+                                    </li>
+                                </ul> --}}
+                            </li>
+                        @endif
                         <hr>
                         <li class="nav-item">
                             <a href="{{ route('logout') }}" class="nav-link text-danger">
