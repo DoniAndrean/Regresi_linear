@@ -249,7 +249,6 @@
                             <div class="col-md-8">
                                 <input class="form-control" type="text" name="nama_sekolahasal" required="required"
                                     placeholder="Masukkan Nama Sekolah/Universitas" value="" autofocus="on">
-                                <!-- <textarea class="form-control" type="text" name="nama_sekolahasal" required="required" placeholder="Masukkan Nama Sekolah/Universitas" value="" autofocus="on"> -->
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -316,7 +315,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">Email Kantor</div>
                             <div class="col-md-8">
-                                <input class="form-control" type="email" name="email_kantor" required="required"
+                                <input class="form-control" type="email" name="email_kantor"
                                     placeholder="Masukkan Email" value="" autofocus="on">
                             </div>
                         </div>
