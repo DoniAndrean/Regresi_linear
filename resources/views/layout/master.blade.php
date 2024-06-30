@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ url('') }}/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     {{-- Main CSS --}}
     <link rel="stylesheet" href="{{ asset('style/main.css') }}">
+    @stack('styles')
 
     <!-- jQuery -->
     <script src="{{ url('') }}/backend/plugins/jquery/jquery.min.js"></script>
@@ -370,10 +371,6 @@
     <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ url('') }}/backend/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="{{ url('') }}/backend/dist/js/demo.js"></script> -->
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    {{-- <script src="{{ url('') }}/backend/dist/js/pages/dashboard.js"></script> --}}
 
     <script>
         $(function() {

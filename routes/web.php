@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
     // pendidikan
     Route::get('/kandidat/tambah-pendidikan/{id}', 'App\Http\Controllers\KandidatController@tambahPendidikan');
     Route::post('/kandidat/tambah-pendidikan-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanProses');
-    Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@tambahPendidikanInformalProses');
+    Route::post('/kandidat/tambah-pendidikan-informal-proses', 'App\Http\Controllers\KandidatController@');
 
     // keluarga
     Route::get('/kandidat/tambah-keluarga/{id}', 'App\Http\Controllers\KandidatController@tambahKeluarga');
@@ -149,6 +149,7 @@ Route::post("/form-kandidat/{id}/bahasa", [FormController::class, "bahasaStore"]
 
 Route::get("/form-kandidat/{id}/pendidikan", [FormController::class, "pendidikan"])->name("form.pendidikan");
 Route::post("/form-kandidat/{id}/pendidikan", [FormController::class, "pendidikanStore"])->name("form.pendidikan.store");
+Route::post("/form-kandidat/{id}/institusi", [FormController::class, "institusiStore"])->name("form.institusi.store");
 
 Route::get("/form-kandidat/{id}/keluarga", [FormController::class, "keluarga"])->name("form.keluarga");
 Route::post("/form-kandidat/{id}/keluarga", [FormController::class, "keluargaStore"])->name("form.keluarga.store");

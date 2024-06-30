@@ -154,7 +154,7 @@
             </form>
             <br>
             {{-- informal --}}
-            <form action="/kandidat/tambah-pendidikan-informal-proses" method="POST" enctype="multipart/form-data"
+            <form action="{{ route('form.institusi.store', $id) }}" method="POST" enctype="multipart/form-data"
                 style="background: #FFFFFF;border-radius:20px;" class="p-4">
                 {{ csrf_field() }}
                 <input class="form-control" type="hidden" name="id_kandidat" required="required"

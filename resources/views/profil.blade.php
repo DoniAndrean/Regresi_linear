@@ -1,6 +1,9 @@
 @extends('layout/master')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('style/profil.css') }}">
+@endpush
 @section('konten')
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="width: max-content;min-width: calc(100vw - 250px);">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -20,77 +23,133 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content pb-2">
-            <div class="container-fluid">
-                <div class="d-flex flex-column gap-2">
-                    <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'GM')->first())->id_sap ?? 'null') }}"
-                        class="struktur-card">
-                        <div>General Manager</div>
-                        <div>{{ optional($model->where('posisi', 'GM')->first())->nama }}</div>
+        <section class="content pb-2 mt-5 position-relative px-4">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <div class="position-relative" style="width: max-content;translate: -124px 0;">
+                    <a class="position-card" style="position: absolute;top: 0;right:0;translate: 50% -100%"
+                        href="{{ route('karyawan.detail', optional($model->where('posisi', 'GM')->first())->id_sap ?? 'null') }}">
+                        <div class="position">General Manager</div>
+                        <div class="text-secondary">{{ optional($model->where('posisi', 'GM')->first())->nama }}</div>
                     </a>
-                    <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Executive Secretary')->first())->id_sap ?? 'null') }}"
-                        class="struktur-card ml-4">
-                        <div>Executive Secretary</div>
-                        <div>{{ optional($model->where('posisi', 'Executive Secretary')->first())->nama }}</div>
+                    <a class="position-card" style="position: absolute;bottom: 0;left:0;translate: -100% 50%"
+                        href="{{ route('karyawan.detail', optional($model->where('posisi', 'Executive Secretary')->first())->id_sap ?? 'null') }}">
+                        <div class="position">Executive Secretary</div>
+                        <div class="text-secondary">
+                            {{ optional($model->where('posisi', 'Executive Secretary')->first())->nama }}</div>
                     </a>
-                    <div class="d-flex flex-column gap-2 ml-4">
-                        <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'GMO Head')->first())->id_sap ?? 'null') }}"
-                            class="struktur-card ml-4">
-                            <div>GMO Head</div>
-                            <div>{{ optional($model->where('posisi', 'GMO Head')->first())->nama }}</div>
-                        </a>
-                        <div class="d-flex flex-column gap-2 ml-4">
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Front Office')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>Front Office</div>
-                                <div>{{ optional($model->where('posisi', 'Front Office')->first())->nama }}</div>
-                            </a>
-                            <div class="d-flex flex-column gap-2 ml-4">
-                                <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Transport')->first())->id_sap ?? 'null') }}"
-                                    class="struktur-card ml-4">
-                                    <div>Transport</div>
-                                    <div>{{ optional($model->where('posisi', 'Transport')->first())->nama }}</div>
-                                </a>
-                                <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Health Club')->first())->id_sap ?? 'null') }}"
-                                    class="struktur-card ml-4">
-                                    <div>Health Club</div>
-                                    <div>{{ optional($model->where('posisi', 'Health Club')->first())->nama }}</div>
-                                </a>
+                    <div class="sudut-kanan-bawah" style="width: 48px; height: 64px"></div>
+                </div>
+                <div class="bar-vertical" style="height: 56px;position: relative;left:-102px"></div>
+                <div class="position-relative">
+                    <div class="position-relative" style="height:48px;">
+                        <div class="border-ltr"
+                            style="height: 100%; width:88%;; position: absolute; left:50%; translate:-50% 0"></div>
+                    </div>
+                    <div class="d-flex" style="gap: 36px;">
+                        <a class="position-card"
+                            href="{{ route('karyawan.detail', optional($model->where('posisi', 'GMO Head')->first())->id_sap ?? 'null') }}">
+                            <div class="position">GMO Head</div>
+                            <div class="text-secondary">{{ optional($model->where('posisi', 'GMO Head')->first())->nama }}
                             </div>
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'House Keeping')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>House Keeping</div>
-                                <div>{{ optional($model->where('posisi', 'House Keeping')->first())->nama }}</div>
+                        </a>
+                        <div class="position-relative">
+                            <div class="bar-vertical"
+                                style="height: 48px;position: absolute;left:50%;top:0;translate:-50% -100%">
+                            </div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'Front Office')->first())->id_sap ?? 'null') }}">
+                                <div class="position">Front Office</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'Front Office')->first())->nama }}</div>
                             </a>
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Engineering')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>Engineering</div>
-                                <div>{{ optional($model->where('posisi', 'Engineering')->first())->nama }}</div>
+                            <div class="position-absolute" style="bottom:0;left:50%;translate:-50% 100%">
+                                <div class="position-relative">
+                                    <div class="bar-vertical"
+                                        style="height: 48px;position: relative;left:50%;top:0;translate:-50% 0">
+                                    </div>
+                                    <div class="border-ltr"
+                                        style="width: 60%;height:48px;position: relative; left:50%;translate: -50% 0">
+                                    </div>
+                                    <div class="d-flex" style="gap: 36px">
+                                        <a class="position-card"
+                                            href="{{ route('karyawan.detail', optional($model->where('posisi', 'Transport')->first())->id_sap ?? 'null') }}">
+                                            <div class="position">Transport</div>
+                                            <div class="text-secondary">
+                                                {{ optional($model->where('posisi', 'Transport')->first())->nama }}</div>
+                                        </a>
+                                        <a class="position-card"
+                                            href="{{ route('karyawan.detail', optional($model->where('posisi', 'Health Club')->first())->id_sap ?? 'null') }}">
+                                            <div class="position">Health Club</div>
+                                            <div class="text-secondary">
+                                                {{ optional($model->where('posisi', 'Health Club')->first())->nama }}
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-relative">
+                            <div class="bar-vertical"
+                                style="height: 48px;position: absolute;left:50%;top:0;translate:-50% -100%"></div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'House Keeping')->first())->id_sap ?? 'null') }}">
+                                <div class="position">House Keeping</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'House Keeping')->first())->nama }}</div>
                             </a>
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'F&B Product')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>F&B Product</div>
-                                <div>{{ optional($model->where('posisi', 'F&B Product')->first())->nama }}</div>
+                        </div>
+                        <div class="position-relative">
+                            <div class="bar-vertical"
+                                style="height: 48px;position: absolute;left:50%;top:0;translate:-50% -100%"></div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'Engineering')->first())->id_sap ?? 'null') }}">
+                                <div class="position">Engineering</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'Engineering')->first())->nama }}</div>
                             </a>
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'F&B Service')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>F&B Service</div>
-                                <div>{{ optional($model->where('posisi', 'F&B Service')->first())->nama }}</div>
+                        </div>
+                        <div class="position-relative">
+                            <div class="bar-vertical"
+                                style="height: 48px;position: absolute;left:50%;top:0;translate:-50% -100%"></div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'F&B Product')->first())->id_sap ?? 'null') }}">
+                                <div class="position">F&B Product</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'F&B Product')->first())->nama }}</div>
                             </a>
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Eco Campy')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>Eco Campy</div>
-                                <div>{{ optional($model->where('posisi', 'Eco Campy')->first())->nama }}</div>
+                        </div>
+                        <div class="position-relative">
+                            <div class="bar-vertical"
+                                style="height: 48px;position: absolute;left:50%;top:0;translate:-50% -100%"></div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'F&B Service')->first())->id_sap ?? 'null') }}">
+                                <div class="position">F&B Service</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'F&B Service')->first())->nama }}</div>
                             </a>
-                            <a href="{{ route('karyawan.detail', optional($model->where('posisi', 'Human Resource')->first())->id_sap ?? 'null') }}"
-                                class="struktur-card ml-4">
-                                <div>Human Resource</div>
-                                <div>{{ optional($model->where('posisi', 'Human Resource')->first())->nama }}</div>
+                        </div>
+                        <div class="position-relative">
+                            <div class="bar-vertical"
+                                style="height: 48px;position: absolute;left:50%;top:0;translate:-50% -100%"></div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'Eco Campy')->first())->id_sap ?? 'null') }}">
+                                <div class="position">Eco Campy</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'Eco Campy')->first())->nama }}</div>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="position-card"
+                                href="{{ route('karyawan.detail', optional($model->where('posisi', 'Human Resource')->first())->id_sap ?? 'null') }}">
+                                <div class="position">Human Resource</div>
+                                <div class="text-secondary">
+                                    {{ optional($model->where('posisi', 'Human Resource')->first())->nama }}
+                                </div>
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
-
     </div>
 @endsection

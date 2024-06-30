@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cuti;
+use App\Models\KuotaCuti;
+use App\Models\MasterCuti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +16,7 @@ class CutiController extends Controller
 	{
 		$role = Auth::user()->role;
 		$model = DB::table('cuti')
-			->select('*', 'master_cuti.jenis_cuti as jenis_cuti', 'cuti.id_cuti as id_cuti')
+			->select('*', 'master_cuti.jenis_cuti as jenis_cuti', 'cuti.id_cuti as id_cuti', 'cuti.jenis_cuti as jenis_id')
 			->join('master_cuti', 'master_cuti.id_cuti', '=', 'cuti.jenis_cuti')
 			->join('karyawan', 'karyawan.id_sap', '=', 'cuti.id_sap')
 			->orderBy('karyawan.nama', 'ASC');
@@ -23,7 +26,10 @@ class CutiController extends Controller
 		}
 
 		$model = $model->get();
-
+		foreach ($model as  $cuti) {
+			$kuota = KuotaCuti::where("kuota_cuti.jenis_cuti", $cuti->jenis_id)->where("kuota_cuti.karyawan_id", $cuti->id_sap)->first();
+			$cuti->kuota_cuti = $kuota->jumlah;
+		}
 		// mengirim data model ke view index
 		return view('/cuti/index', ['model' => $model]);
 	}
@@ -59,6 +65,11 @@ class CutiController extends Controller
 			'status_cuti' => "Pengajuan",
 		];
 		$id =	DB::table('cuti')->insertGetId($data);
+		$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", Auth::user()->karyawan_id)->first();
+		if (!$kuotaCuti) {
+			$masterCuti = MasterCuti::where("id_cuti", $request->jenis_cuti)->first();
+			KuotaCuti::create(["jenis_cuti" => $request->jenis_cuti, "karyawan_id" => Auth::user()->karyawan_id, "jumlah" => $masterCuti->jumlah]);
+		}
 		// alihkan halaman ke halaman berita
 		return redirect('/cuti');
 	}
@@ -135,11 +146,14 @@ class CutiController extends Controller
 	}
 	public function approve($id)
 	{
-		DB::table('cuti')->where('id_cuti', $id)->update([
+		$cuti = Cuti::where('id_cuti', $id)->first();
+		$kuota = KuotaCuti::where("jenis_cuti", $cuti->jenis_cuti)->where("karyawan_id", $cuti->id_sap)->first();
+		$kuota->jumlah = $kuota->jumlah - $cuti->jumlah_cuti;
+		$kuota->update();
+		Cuti::where('id_cuti', $id)->update([
 			"status_cuti" => "selesai"
 		]);
 
-		// alihkan halaman ke halaman berita
 		return redirect('/cuti');
 	}
 }

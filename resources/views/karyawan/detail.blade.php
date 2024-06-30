@@ -34,10 +34,9 @@
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-12 col-md-4 py-4" style="background:#c3c5c4;">
-                        {{-- <img src="https://i.pinimg.com/564x/8d/be/20/8dbe2091b0bbee50cf55fac6bf58f4ab.jpg" width="100%"> --}}
-                        {{-- <img src="{{ asset('storage/' . $model->foto) }}" alt="Foto Karyawan"> --}}
-                        <div class="photo-profile mx-auto" style="background-image: url('{{ asset($model->foto) }}')">
-
+                        <div class="photo-profile mx-auto" style="overflow: hidden">
+                            <img src="{{ asset($model->foto) }}" style="width: 100%;"
+                                onerror="this.onerror=null; this.src='{{ asset('assets/pp_placeholder.jpg') }}';" />
                         </div>
                         <div class="col-12">
                             <div class="row mb-3">
@@ -223,3 +222,9 @@
         </section>
     </div>
 @endsection
+{{-- @push('scripts')
+    <script>
+        const photoProfile = $(".photo-profile")
+        photoProfile.on
+    </script>
+@endpush --}}

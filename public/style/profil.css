@@ -1,0 +1,41 @@
+.position-card {
+    width: max-content;
+    border: 1px solid black;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    flex-direction: column;
+    padding: 8px 16px;
+    min-width: 168px;
+    text-decoration: none;
+}
+
+.position-card:hover {
+    background-color: white;
+    transition: .2s;
+}
+
+.position-card .position {
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 600;
+    color: #444444;
+    text-align: center;
+}
+
+.sudut-kanan-bawah {
+    border-right: 4px double black;
+    border-bottom: 4px double black;
+}
+
+.bar-vertical {
+    width: 4px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.border-ltr {
+    border-top: 4px double black;
+    border-right: 4px double black;
+    border-left: 4px double black;
+}

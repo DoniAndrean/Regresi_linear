@@ -33,6 +33,7 @@
                                     <th>Karyawan</th>
                                     <th>Departemen</th>
                                     <th>Jenis Cuti</th>
+                                    <th>Sisa Cuti</th>
                                     <th>Jumlah Cuti</th>
                                     <th>Start Cuti</th>
                                     <th>End Cuti</th>
@@ -48,6 +49,11 @@
                                         <td>{{ $p->nama }}</td>
                                         <td>{{ $p->departemen }}</td>
                                         <td>{{ $p->jenis_cuti }}</td>
+                                        <td class="text-center">
+                                            <span class="btn btn-xs btn-info rounded-circle" style="min-width:20px;">
+                                                {{ $p->kuota_cuti }}
+                                            </span>
+                                        </td>
                                         <td class="text-center">
                                             <span class="btn btn-xs btn-info rounded-circle" style="min-width:20px;">
                                                 {{ $p->jumlah_cuti }}

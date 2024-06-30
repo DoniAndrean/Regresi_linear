@@ -47,8 +47,8 @@
 
 .btn-next-page {
     position: fixed;
-    bottom: 5vh;
-    right: 24px;
+    top: 124px;
+    right: 36px;
 }
 
 .card .heading {
