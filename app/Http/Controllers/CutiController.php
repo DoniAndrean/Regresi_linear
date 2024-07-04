@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cuti;
+use App\Models\Karyawan;
 use App\Models\KuotaCuti;
 use App\Models\MasterCuti;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -44,10 +45,15 @@ class CutiController extends Controller
 		if (Auth::user()->role == "karyawan") {
 			$model->where("karyawan.id_sap", Auth::user()->karyawan_id);
 		}
-
+		$karyawan = Karyawan::where("id_sap", Auth::user()->karyawan_id)->first();
 		$modelMasterCuti = DB::table('master_cuti')
-			->orderBy('jenis_cuti', 'ASC')
-			->get();
+			->orderBy('jenis_cuti', 'ASC');
+		if (Auth::user()->role === "karyawan") {
+			if ($karyawan->jenis_kelamin) {
+				$modelMasterCuti->where("id_cuti", "!=", 3);
+			}
+		}
+		$modelMasterCuti = $modelMasterCuti->get();
 		$data['model'] = $model->orderBy('nama', 'ASC')->get();
 		$data['modelMasterCuti'] = $modelMasterCuti;
 		return view('/cuti/tambah', $data);
@@ -67,7 +73,11 @@ class CutiController extends Controller
 			'status_cuti' => "Pengajuan",
 		];
 		$id =	DB::table('cuti')->insertGetId($data);
-		$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", Auth::user()->karyawan_id)->first();
+		if (Auth::user()->role == "admin") {
+			$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", $request->id_sap)->first();
+		} else {
+			$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", Auth::user()->karyawan_id)->first();
+		}
 		if (!$kuotaCuti) {
 			$masterCuti = MasterCuti::where("id_cuti", $request->jenis_cuti)->first();
 			KuotaCuti::create(["jenis_cuti" => $request->jenis_cuti, "karyawan_id" => Auth::user()->karyawan_id, "jumlah" => $masterCuti->jumlah]);

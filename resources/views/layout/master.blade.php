@@ -206,13 +206,13 @@
                                         <p>Karyawan Kontrak</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ url('') }}/permanen" class="nav-link">
                                         <i
                                             class="{{ Request::is('permanen') ? 'fas' : 'far' }} fa-circle nav-icon"></i>
                                         <p>Karyawan Permanen</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
                         <li class="nav-item {{ Request::is('kandidat*') ? 'menu-open' : '' }}">
@@ -229,30 +229,26 @@
                                         <p>Karyawan</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('') }}/kandidat" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Permanen</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
-                        <li class="nav-item {{ Request::is('soal*') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link">
-                                <i class="bi bi-clipboard-check-fill"></i>
-                                <p style="margin-left: 8px">
-                                    Interview
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('soal') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Master Soal</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (Auth::user()->role === 'admin')
+                            <li class="nav-item {{ Request::is('soal*') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link">
+                                    <i class="bi bi-clipboard-check-fill"></i>
+                                    <p style="margin-left: 8px">
+                                        Interview
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('soal') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Master Soal</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -269,14 +265,16 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item {{ Request::is('jadwal-pelatihan*') ? 'menu-open' : '' }}">
-                            <a href="{{ route('jadwal-pelatihan') }}" class="nav-link">
-                                <i class="nav-icon fas fa-graduation-cap"></i>
-                                <p>
-                                    Jadwal Pelatihan
-                                </p>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role === 'admin')
+                            <li class="nav-item {{ Request::is('jadwal-pelatihan*') ? 'menu-open' : '' }}">
+                                <a href="{{ route('jadwal-pelatihan') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-graduation-cap"></i>
+                                    <p>
+                                        Jadwal Pelatihan
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
                         @if (Auth::user()->role === 'admin')
                             <li class="nav-item">
                                 <a href="{{ route('users') }}" class="nav-link">
@@ -285,14 +283,6 @@
                                         Users
                                     </p>
                                 </a>
-                                {{-- <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/tables/simple.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Admin</p>
-                                        </a>
-                                    </li>
-                                </ul> --}}
                             </li>
                         @endif
                         <hr>
