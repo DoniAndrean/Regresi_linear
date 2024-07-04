@@ -33,8 +33,9 @@ class CutiController extends Controller
 			$kuota = KuotaCuti::where("kuota_cuti.jenis_cuti", $cuti->jenis_id)->where("kuota_cuti.karyawan_id", $cuti->id_sap)->first();
 			$cuti->kuota_cuti = $kuota->jumlah;
 		}
+		$jenisCuti = MasterCuti::all();
 		// mengirim data model ke view index
-		return view('/cuti/index', ['model' => $model]);
+		return view('/cuti/index', ['model' => $model, "jenisCuti" => $jenisCuti]);
 	}
 
 	// method untuk menampilkan view form tambah berita
