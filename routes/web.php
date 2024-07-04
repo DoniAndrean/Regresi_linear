@@ -35,7 +35,8 @@ Route::middleware('auth')->group(function () {
         Route::get('users', [UserController::class, 'index'])->name("users");
     });
     Route::get('/cuti', 'App\Http\Controllers\CutiController@index');
-
+    // Route Download
+    Route::get('/cuti/download', 'App\Http\Controllers\CutiController@download');
     //route Tambah
     Route::get('/cuti/tambah', 'App\Http\Controllers\CutiController@tambah');
     Route::post('/cuti/store', 'App\Http\Controllers\CutiController@store');

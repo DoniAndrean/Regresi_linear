@@ -25,6 +25,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <a href="{{ url('/cuti/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
+                    <a href="{{ url('/cuti/download') }}" class="btn btn-success mb-2"> Download</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="example2" width="100%" cellspacing="0">
                             <thead>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Cuti;
 use App\Models\KuotaCuti;
 use App\Models\MasterCuti;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -155,5 +157,21 @@ class CutiController extends Controller
 		]);
 
 		return redirect('/cuti');
+	}
+
+	public function download()
+	{
+		$model = DB::table('cuti')
+			->select('*', 'master_cuti.jenis_cuti as jenis_cuti', 'cuti.id_cuti as id_cuti', 'cuti.jenis_cuti as jenis_id')
+			->join('master_cuti', 'master_cuti.id_cuti', '=', 'cuti.jenis_cuti')
+			->join('karyawan', 'karyawan.id_sap', '=', 'cuti.id_sap')
+			->orderBy('karyawan.nama', 'ASC')->get();
+		foreach ($model as $cuti) {
+			$kuota = KuotaCuti::where("kuota_cuti.jenis_cuti", $cuti->jenis_id)->where("kuota_cuti.karyawan_id", $cuti->id_sap)->first();
+			$cuti->kuota_cuti = $kuota->jumlah;
+		}
+		$pdf = Pdf::loadView("pdf.cuti", compact('model'));
+		$now = Carbon::now()->translatedFormat('d-F-Y');
+		return $pdf->download('hr_cuti_' . $now . '.pdf');
 	}
 }
