@@ -47,8 +47,8 @@
 
 .btn-next-page {
     position: fixed;
-    bottom: 5vh;
-    right: 24px;
+    top: 124px;
+    right: 36px;
 }
 
 .card .heading {
@@ -67,4 +67,14 @@
 
 .soal-wrapper {
     width: 40vw;
+}
+
+.filter {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    position: relative;
+    top: 28px;
+    height: 20px;
+    z-index: 20;
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterCutisTable extends Migration
+class CreateKuotaCutisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMasterCutisTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_cuti', function (Blueprint $table) {
-            $table->id('id_cuti');
-            $table->string('jenis_cuti', 100);
-            $table->integer('jumlah')->default(12);
-            $table->string('keterangan', 100)->nullable();
+        Schema::create('kuota_cuti', function (Blueprint $table) {
+            $table->id();
+            $table->string("jenis_cuti");
+            $table->string("karyawan_id");
+            $table->integer("jumlah");
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMasterCutisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_cuti');
+        Schema::dropIfExists('kuota_cuti');
     }
 }

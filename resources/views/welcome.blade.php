@@ -127,85 +127,18 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <ul class="todo-list" data-widget="todo-list">
-                                <li>
-                                    <!-- drag handle -->
-                                    <span class="handle">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </span>
-                                    <!-- checkbox -->
-                                    <div class="icheck-primary d-inline ml-2">
-                                        <input type="checkbox" value="" name="todo1" id="todoCheck1" checked>
-                                        <label for="todoCheck1"></label>
-                                    </div>
-                                    <!-- todo text -->
-                                    <span class="text">11-01-24 - Training Hospitality</span>
-                                    <!-- General tools such as edit or delete-->
-                                    <div class="tools">
-                                        <i class="fas fa-edit"></i>
-                                        <i class="fas fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="handle">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </span>
-                                    <div class="icheck-primary d-inline ml-2">
-                                        <input type="checkbox" value="" name="todo2" id="todoCheck2">
-                                        <label for="todoCheck2"></label>
-                                    </div>
-                                    <span class="text">18-01-24 - Training Complimentary</span>
-                                    <div class="tools">
-                                        <i class="fas fa-edit"></i>
-                                        <i class="fas fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="handle">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </span>
-                                    <div class="icheck-primary d-inline ml-2">
-                                        <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                                        <label for="todoCheck3"></label>
-                                    </div>
-                                    <span class="text">22-01-24 - Training Table Manner</span>
-                                    <div class="tools">
-                                        <i class="fas fa-edit"></i>
-                                        <i class="fas fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="handle">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </span>
-                                    <div class="icheck-primary d-inline ml-2">
-                                        <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                                        <label for="todoCheck4"></label>
-                                    </div>
-                                    <span class="text">23-01-24 - Training Hospitality 2</span>
-                                    <div class="tools">
-                                        <i class="fas fa-edit"></i>
-                                        <i class="fas fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="handle">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </span>
-                                    <div class="icheck-primary d-inline ml-2">
-                                        <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                                        <label for="todoCheck5"></label>
-                                    </div>
-                                    <span class="text">29-01-24 - Training Complimentary 2</span>
-                                    <div class="tools">
-                                        <i class="fas fa-edit"></i>
-                                        <i class="fas fa-trash-o"></i>
-                                    </div>
-                                </li>
+                                @foreach ($pelatihan as $item)
+                                    <li>
+                                        <span class="handle">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </span>
+                                        <span class="text"
+                                            style="{{ $item->is_done ? 'text-decoration: line-through;color:grey' : '' }}">
+                                            {{ $item->waktu }} - {{ $item->nama_pelatihan }}
+                                        </span>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- /.card-body -->

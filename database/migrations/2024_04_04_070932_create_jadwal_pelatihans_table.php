@@ -16,6 +16,7 @@ class CreateJadwalPelatihansTable extends Migration
         Schema::create('jadwal_pelatihan', function (Blueprint $table) {
             $table->id();
             $table->string("nama_pelatihan");
+            $table->boolean("is_done")->default(false);
             $table->dateTime("waktu");
             $table->timestamps();
         });

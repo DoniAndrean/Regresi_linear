@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\JadwalPelatihan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,12 +17,13 @@ class HomeController extends Controller
 		$totalKaryawanPermanen = DB::table('karyawan')->where('status_karyawan', 'Permanen')->count();
 		$totalJadwalPelatihan = DB::table('jadwal_pelatihan')->count();
 		$totalKandidat = DB::table('kandidat')->count();
-
+		$pelatihan = JadwalPelatihan::all();
 		return view('/welcome', [
 			'totalKaryawanKontrak' => $totalKaryawanKontrak,
 			'totalKaryawanPermanen' => $totalKaryawanPermanen,
 			'totalKandidat' => $totalKandidat,
 			'totalJadwalPelatihan' => $totalJadwalPelatihan,
+			'pelatihan' => $pelatihan
 		]);
 	}
 

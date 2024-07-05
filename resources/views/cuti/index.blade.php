@@ -1,3 +1,20 @@
+@php
+    use Carbon\Carbon;
+    $bulan = [
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember',
+    ];
+@endphp
 @extends('layout/master')
 @section('konten')
     <div class="content-wrapper">
@@ -25,14 +42,40 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <a href="{{ url('/cuti/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="example2" width="100%" cellspacing="0">
+                    <a href="{{ url('/cuti/download') }}" class="btn btn-success mb-2"> Download</a>
+                    <div class="table-responsive mt-3">
+                        <div class="filter">
+                            <label class="d-flex gap-3 align-items-center" style="gap: 8px;width: max-content">
+                                <span style="font-weight: 400">
+                                    Bulan:
+                                </span>
+                                <select id="bulan-filter" class="custom-select form-select form-select-sm">
+                                    <option value="" selected>Semua</option>
+                                    @foreach ($bulan as $item)
+                                        <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            <label class="d-flex gap-3 align-items-center" style="gap: 8px;width: max-content">
+                                <div style="font-weight: 400;min-width: max-content">
+                                    Jenis Cuti:
+                                </div>
+                                <select id="jenis-filter" class="custom-select form-select form-select-sm">
+                                    <option value="" selected>Semua</option>
+                                    @foreach ($jenisCuti as $jenis)
+                                        <option value="{{ $jenis->jenis_cuti }}">{{ $jenis->jenis_cuti }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+                        </div>
+                        <table class="table table-bordered" id="cutiTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Karyawan</th>
                                     <th>Departemen</th>
                                     <th>Jenis Cuti</th>
+                                    <th>Sisa Cuti</th>
                                     <th>Jumlah Cuti</th>
                                     <th>Start Cuti</th>
                                     <th>End Cuti</th>
@@ -50,14 +93,22 @@
                                         <td>{{ $p->jenis_cuti }}</td>
                                         <td class="text-center">
                                             <span class="btn btn-xs btn-info rounded-circle" style="min-width:20px;">
+                                                {{ $p->kuota_cuti }}
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="btn btn-xs btn-info rounded-circle" style="min-width:20px;">
                                                 {{ $p->jumlah_cuti }}
                                             </span>
                                         </td>
-                                        <td><span
-                                                class="btn btn-xs btn-secondary">{{ date('d-m-Y', strtotime($p->start_cuti)) }}</span>
+                                        <td>
+                                            <span class="btn btn-xs btn-secondary">
+                                                {{ Carbon::parse($p->start_cuti)->translatedFormat('d F Y') }}
+                                            </span>
                                         </td>
-                                        <td><span
-                                                class="btn btn-xs btn-warning">{{ date('d-m-Y', strtotime($p->end_cuti)) }}</span>
+                                        <td><span class="btn btn-xs btn-warning">
+                                                {{ Carbon::parse($p->end_cuti)->translatedFormat('d F Y') }}
+                                            </span>
                                         </td>
                                         <td>{{ $p->alasan_cuti }}</td>
                                         <td>
@@ -151,3 +202,27 @@
         </section>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            const cutiTable = $('#cutiTable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            $('#bulan-filter').on('change', function() {
+                var searchTerm = $(this).val();
+                console.log(searchTerm);
+                cutiTable.column(7).search(searchTerm).draw();
+            });
+            $('#jenis-filter').on('change', function() {
+                var searchTerm = $(this).val();
+                cutiTable.column(3).search(searchTerm).draw();
+            });
+        })
+    </script>
+@endpush

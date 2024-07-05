@@ -97,6 +97,21 @@ class FormController extends Controller
 
         return redirect()->route("form.pendidikan", $id);
     }
+    public function institusiStore(Request $request, $id)
+    {
+        $data = [
+            'id_kandidat' => $request->id_kandidat,
+            'institusi' => $request->institusi,
+            'major' => $request->major,
+            'tahun_from' => $request->tahun_from,
+            'tahun_to' => $request->tahun_to,
+            'gpa' => $request->gpa,
+        ];
+
+        DB::table('pendidikan_informal')->insertGetId($data);
+
+        return redirect()->route("form.pendidikan", $id);
+    }
     public function keluarga($id)
     {
         $keluarga = Keluarga::where('id_kandidat', $id)->get();

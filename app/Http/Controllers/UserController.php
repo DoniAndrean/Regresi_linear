@@ -16,7 +16,7 @@ class UserController extends Controller
                 "karyawan_id" => $employee->id_sap,
                 "nama" => $employee->nama,
                 "email" => $employee->email_kantor,
-                "password" => bcrypt("1"),
+                "password" => bcrypt($employee->id_sap),
                 "role" => "karyawan"
             ]);
         }
