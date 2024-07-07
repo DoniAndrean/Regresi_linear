@@ -24,10 +24,12 @@
             <!-- DataTables Example -->
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between mb-2">
-                        <a href="{{ url('/karyawan/tambah') }}" class="btn btn-info">Tambah</a>
-                        <a href="{{ route('user.generate') }}" class="btn btn-success">Generate User</a>
-                    </div>
+                    @if (Auth::user()->role === 'admin')
+                        <div class="d-flex justify-content-between mb-2">
+                            <a href="{{ url('/karyawan/tambah') }}" class="btn btn-info">Tambah</a>
+                            <a href="{{ route('user.generate') }}" class="btn btn-success">Generate User</a>
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>

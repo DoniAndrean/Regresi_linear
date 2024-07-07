@@ -443,11 +443,12 @@ class KandidatController extends Controller
 	}
 	public function interviewStore(Request $request, $id)
 	{
-		foreach ($request->soal as $key => $value) {
+		foreach ($request->soal as $key => $item) {
 			Interview::create([
 				"id_kandidat" => $id,
 				"id_soal" => $key,
-				"jawaban" => $value,
+				"jawaban" => $item["value"],
+				"detail" => $item["detail"],
 			]);
 		}
 		Kandidat::where("id_kandidat", $id)->update([
@@ -458,9 +459,10 @@ class KandidatController extends Controller
 
 	public function interviewUpdate(Request $request, $id)
 	{
-		foreach ($request->soal as $key => $value) {
+		foreach ($request->soal as $key => $item) {
 			Interview::where("id_kandidat", $id)->where("id_soal", $key)->update([
-				"jawaban" => $value,
+				"jawaban" => $item["value"],
+				"detail" => $item["detail"],
 			]);
 		}
 		return redirect("/kandidat");

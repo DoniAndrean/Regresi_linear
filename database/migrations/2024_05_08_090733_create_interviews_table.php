@@ -18,6 +18,7 @@ class CreateInterviewsTable extends Migration
             $table->string("id_kandidat");
             $table->string("id_soal");
             $table->string("jawaban")->nullable();
+            $table->text("detail")->nullable();
             $table->timestamps();
         });
     }

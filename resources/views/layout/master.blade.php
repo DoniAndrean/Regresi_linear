@@ -43,13 +43,14 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    @include('sweetalert::alert')
     <div class="wrapper">
 
         <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
+        {{-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="{{ url('') }}/backend/dist/img/Logo.png" alt="AdminLTELogo"
                 height="60" width="60">
-        </div>
+        </div> --}}
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -145,11 +146,13 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
+
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{ url('') }}/backend/dist/img/admin.jpg" class="img-circle elevation-2"
-                            alt="Admin Image">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex px-3">
+                    <div class="photo-profile" style="width: 36px;height:36px;overflow: hidden;">
+                        <img src="{{ asset(optional(Auth::user()->karyawan)->foto) }}" alt="Foto Profile"
+                            style="width: 100%;"
+                            onerror="this.onerror=null; this.src='{{ asset('assets/pp_placeholder.jpg') }}';">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
@@ -206,31 +209,33 @@
                                         <p>Karyawan Kontrak</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="{{ url('') }}/permanen" class="nav-link">
                                         <i
                                             class="{{ Request::is('permanen') ? 'fas' : 'far' }} fa-circle nav-icon"></i>
                                         <p>Karyawan Permanen</p>
                                     </a>
-                                </li> --}}
-                            </ul>
-                        </li>
-                        <li class="nav-item {{ Request::is('kandidat*') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>
-                                    Kandidat
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('') }}/kandidat" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Karyawan</p>
-                                    </a>
                                 </li>
                             </ul>
                         </li>
+                        @if (Auth::user()->role == 'admin')
+                            <li class="nav-item {{ Request::is('kandidat*') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-user-plus"></i>
+                                    <p>
+                                        Kandidat
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ url('') }}/kandidat" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Karyawan</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                         @if (Auth::user()->role === 'admin')
                             <li class="nav-item {{ Request::is('soal*') ? 'menu-open' : '' }}">
                                 <a href="#" class="nav-link">
@@ -305,21 +310,11 @@
         @yield('konten')
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2024 <a href="https://adminlte.io">HRIS</a>.</strong>
-    </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
+    @if (!isset($nofooter))
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2024 <a href="https://adminlte.io">HRIS</a>.</strong>
+        </footer>
+    @endif
 
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>

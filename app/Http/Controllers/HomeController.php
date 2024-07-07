@@ -30,7 +30,8 @@ class HomeController extends Controller
 	public function profil()
 	{
 		$model = Karyawan::all();
-		return view('/profil', compact("model"));
+		$nofooter = true;
+		return view('/profil', compact("model", "nofooter"));
 	}
 
 	// method untuk menampilkan view form tambah berita

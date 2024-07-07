@@ -1,5 +1,4 @@
 @extends('layout.master')
-
 @section('konten')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -39,8 +38,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">SAP</div>
                             <div class="col-md-8">
-                                <select class="option form-control" name="id_sap" required="required"
-                                    {{ Auth::user()->role == 'karyawan' ? 'disabled' : '' }}>
+                                <select class="option form-control" name="id_sap" required="required">
                                     <option value="">--Pilih Karyawan--</option>
                                     @foreach ($model as $key => $value)
                                         <option value="{{ $value->id_sap }}" selected>{{ $value->nama }}</option>
@@ -53,9 +51,21 @@
                             <div class="col-md-8">
                                 <select class="option form-control" name="jenis_cuti" required="required">
                                     <option value="">--Pilih Jenis Cuti--</option>
-                                    @foreach ($modelMasterCuti as $key => $value)
-                                        <option value="{{ $value->id_cuti }}">{{ $value->jenis_cuti }}</option>
-                                    @endforeach
+                                    @if (Auth::user()->role === 'admin')
+                                        @foreach ($modelMasterCuti as $key => $value)
+                                            @if ($value->id_cuti === 2)
+                                                @if (in_array(Auth::user()->karyawan->level_karyawan, ['GM', 'Head Of Department', 'Assistant Head Department']))
+                                                    <option value="{{ $value->id_cuti }}">{{ $value->jenis_cuti }}</option>
+                                                @endif
+                                            @else
+                                                <option value="{{ $value->id_cuti }}">{{ $value->jenis_cuti }}</option>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        @foreach ($modelMasterCuti as $key => $value)
+                                            <option value="{{ $value->id_cuti }}">{{ $value->jenis_cuti }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>

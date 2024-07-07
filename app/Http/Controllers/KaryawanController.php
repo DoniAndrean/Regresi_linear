@@ -12,10 +12,11 @@ class KaryawanController extends Controller
 	public function index()
 	{
 		$model = DB::table('karyawan')
-			->where('status_karyawan', 'Kontrak')
-			// ->orderBy('tanggal_terbit', 'DESC')
-			->get();
-
+			->where('status_karyawan', 'Kontrak');
+		if (Auth::user()->role !== "admin") {
+			$model->where("id_sap", Auth::user()->karyawan_id);
+		}
+		$model = $model->get();
 		// mengirim data model ke view index
 		return view('/karyawan/index', [
 			'model' => $model,
@@ -26,9 +27,11 @@ class KaryawanController extends Controller
 	public function permanen()
 	{
 		$model = DB::table('karyawan')
-			->where('status_karyawan', 'Permanen')
-			// ->orderBy('tanggal_terbit', 'DESC')
-			->get();
+			->where('status_karyawan', 'Permanen');
+		if (Auth::user()->role !== "admin") {
+			$model->where("id_sap", Auth::user()->karyawan_id);
+		}
+		$model = $model->get();
 
 		// mengirim data model ke view index
 		return view('/karyawan/index', [

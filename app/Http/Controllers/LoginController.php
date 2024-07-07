@@ -18,10 +18,10 @@ class LoginController extends Controller
     public function postLogin(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required'],
             'password' => ['required'],
         ]);
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('karyawan_id', $request->username)->first();
         if (!empty($user) && Hash::check($request->password, $user->password)) {
             Auth::login($user, $request->ingat_saya);
             return redirect()->intended('/');

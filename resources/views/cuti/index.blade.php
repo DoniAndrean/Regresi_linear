@@ -1,18 +1,18 @@
 @php
     use Carbon\Carbon;
     $bulan = [
-        'Januari',
-        'Februari',
-        'Maret',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Agustus',
-        'September',
-        'Oktober',
-        'November',
-        'Desember',
+        ['value' => 1, 'label' => 'Januari'],
+        ['value' => 2, 'label' => 'Februari'],
+        ['value' => 3, 'label' => 'Maret'],
+        ['value' => 4, 'label' => 'April'],
+        ['value' => 5, 'label' => 'Mei'],
+        ['value' => 6, 'label' => 'Juni'],
+        ['value' => 7, 'label' => 'Juli'],
+        ['value' => 8, 'label' => 'Agustus'],
+        ['value' => 9, 'label' => 'September'],
+        ['value' => 10, 'label' => 'Oktober'],
+        ['value' => 11, 'label' => 'November'],
+        ['value' => 12, 'label' => 'Desember'],
     ];
 @endphp
 @extends('layout/master')
@@ -38,11 +38,10 @@
 
         <!-- Main content -->
         <section class="content">
-
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <a href="{{ url('/cuti/tambah') }}" class="btn btn-info mb-2"> Tambah</a>
-                    <a href="{{ url('/cuti/download') }}" class="btn btn-success mb-2"> Download</a>
+                    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#modaldownload"> Download</button>
                     <div class="table-responsive mt-3">
                         <div class="filter">
                             <label class="d-flex gap-3 align-items-center" style="gap: 8px;width: max-content">
@@ -52,7 +51,7 @@
                                 <select id="bulan-filter" class="custom-select form-select form-select-sm">
                                     <option value="" selected>Semua</option>
                                     @foreach ($bulan as $item)
-                                        <option value="{{ $item }}">{{ $item }}</option>
+                                        <option value="{{ $item['label'] }}">{{ $item['label'] }}</option>
                                     @endforeach
                                 </select>
                             </label>
@@ -197,6 +196,54 @@
                         </table>
 
                     </div>
+
+                </div>
+            </div>
+            {{-- Modal Download --}}
+            <div class="modal" id="modaldownload" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <form action="{{ url('/cuti/download') }}" method="GET" class="modal-content">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title">Download Data Cuti</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="d-flex" style="gap: 12px">
+                                <label style="gap: 8px;width: 100%">
+                                    <span style="font-weight: 400">
+                                        Bulan:
+                                    </span>
+                                    <select name="bulan" id="bulan-filter"
+                                        class="custom-select form-select form-select-sm">
+                                        <option value="" selected>Semua</option>
+                                        @foreach ($bulan as $item)
+                                            <option value="{{ $item['value'] }}">{{ $item['label'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                                <label style="gap: 8px;width: 100%">
+                                    <div style="font-weight: 400;min-width: max-content">
+                                        Jenis Cuti:
+                                    </div>
+                                    <select name="jenis" id="jenis-filter"
+                                        class="custom-select form-select form-select-sm">
+                                        <option value="" selected>Semua</option>
+                                        @foreach ($jenisCuti as $jenis)
+                                            <option value="{{ $jenis->id_cuti }}">{{ $jenis->jenis_cuti }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Download</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

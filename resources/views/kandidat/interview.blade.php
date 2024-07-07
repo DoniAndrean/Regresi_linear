@@ -29,7 +29,8 @@
                             <div class="row row-cols-4 ml-3">
                                 @foreach ($options as $option)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="soal[{{ $soal->id }}]"
+                                        <input class="form-check-input" type="radio"
+                                            name="soal[{{ $soal->id }}][value]"
                                             id="soal_{{ $soal->id }}_{{ $option['value'] }}"
                                             value="{{ $option['value'] }}">
                                         <label class="form-check-label"
@@ -38,6 +39,9 @@
                                         </label>
                                     </div>
                                 @endforeach
+                            </div>
+                            <div style="padding-left: 16px;margin-top: 12px">
+                                <textarea name="soal[{{ $soal->id }}][detail]" id="detail" class="form-control" rows="3"></textarea>
                             </div>
                         </div>
                         <hr>

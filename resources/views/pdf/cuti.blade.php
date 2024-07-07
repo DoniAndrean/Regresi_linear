@@ -14,12 +14,20 @@
         }
 
         .header {
-            text-align: center;
+            position: relative;
             margin-bottom: 20px;
+            width: 100px;
         }
 
         .header img {
             width: 100px;
+        }
+
+        .header h2 {
+            position: absolute;
+            right: 0;
+            transform: translateX(100%) translateY(12px);
+            width: 250px
         }
 
         table {
@@ -52,7 +60,9 @@
 
 <body>
     <div class="header">
-        <img src="{{ public_path('images/logo.png') }}" alt="Logo">
+        <img src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('assets/logo.webp'))) }}"
+            alt="Logo">
+        <h2>Data Cuti Karyawan</h2>
     </div>
     <table>
         <thead>

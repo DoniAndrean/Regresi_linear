@@ -56,21 +56,23 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $totalKandidat }}<sup style="font-size: 20px"></sup></h3>
+                    @if (Auth::user()->role === 'admin')
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ $totalKandidat }}<sup style="font-size: 20px"></sup></h3>
 
-                                <p>Kandidat</p>
+                                    <p>Kandidat</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    @endif
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
@@ -142,10 +144,12 @@
                             </ul>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer clearfix">
-                            <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add
-                                item</button>
-                        </div>
+                        @if (Auth::user()->role === 'admin')
+                            <div class="card-footer clearfix">
+                                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i>
+                                    Tambah Pelatihan</button>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <!-- ./col -->

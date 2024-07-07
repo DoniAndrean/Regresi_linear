@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CutiController extends Controller
 {
@@ -46,10 +47,12 @@ class CutiController extends Controller
 		if (Auth::user()->role == "karyawan") {
 			$model->where("karyawan.id_sap", Auth::user()->karyawan_id);
 		}
-		$karyawan = Karyawan::where("id_sap", Auth::user()->karyawan_id)->first();
+
 		$modelMasterCuti = DB::table('master_cuti')
 			->orderBy('jenis_cuti', 'ASC');
+
 		if (Auth::user()->role === "karyawan") {
+			$karyawan = Karyawan::where("id_sap", Auth::user()->karyawan_id)->first();
 			if ($karyawan->jenis_kelamin) {
 				$modelMasterCuti->where("id_cuti", "!=", 3);
 			}
@@ -74,14 +77,10 @@ class CutiController extends Controller
 			'status_cuti' => "Pengajuan",
 		];
 		$id =	DB::table('cuti')->insertGetId($data);
-		if (Auth::user()->role == "admin") {
-			$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", $request->id_sap)->first();
-		} else {
-			$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", Auth::user()->karyawan_id)->first();
-		}
+		$kuotaCuti = KuotaCuti::where("jenis_cuti", $request->jenis_cuti)->where("karyawan_id", $request->id_sap)->first();
 		if (!$kuotaCuti) {
 			$masterCuti = MasterCuti::where("id_cuti", $request->jenis_cuti)->first();
-			KuotaCuti::create(["jenis_cuti" => $request->jenis_cuti, "karyawan_id" => Auth::user()->karyawan_id, "jumlah" => $masterCuti->jumlah]);
+			KuotaCuti::create(["jenis_cuti" => $request->jenis_cuti, "karyawan_id" => $request->id_sap, "jumlah" => $masterCuti->jumlah]);
 		}
 		// alihkan halaman ke halaman berita
 		return redirect('/cuti');
@@ -170,13 +169,29 @@ class CutiController extends Controller
 		return redirect('/cuti');
 	}
 
-	public function download()
+	public function download(Request $request)
 	{
 		$model = DB::table('cuti')
-			->select('*', 'master_cuti.jenis_cuti as jenis_cuti', 'cuti.id_cuti as id_cuti', 'cuti.jenis_cuti as jenis_id')
+			->select(
+				'*',
+				'master_cuti.jenis_cuti as jenis_cuti',
+				'cuti.id_cuti as id_cuti',
+				'cuti.jenis_cuti as jenis_id',
+			)
 			->join('master_cuti', 'master_cuti.id_cuti', '=', 'cuti.jenis_cuti')
 			->join('karyawan', 'karyawan.id_sap', '=', 'cuti.id_sap')
-			->orderBy('karyawan.nama', 'ASC')->get();
+			->orderBy('karyawan.nama', 'ASC');
+		if ($request->jenis) {
+			$model->where("cuti.jenis_cuti", $request->jenis);
+		}
+		if ($request->bulan) {
+			$model->whereMonth("start_cuti", $request->bulan);
+		}
+		$model = $model->get();
+		if (count($model) === 0) {
+			Alert::info('Data Cuti Kosong', 'Tidak ada data cuti sesuai filter yang ditentukan');
+			return redirect()->back();
+		}
 		foreach ($model as $cuti) {
 			$kuota = KuotaCuti::where("kuota_cuti.jenis_cuti", $cuti->jenis_id)->where("kuota_cuti.karyawan_id", $cuti->id_sap)->first();
 			$cuti->kuota_cuti = $kuota->jumlah;
