@@ -29,6 +29,7 @@
                                 <tr>
                                     <th style="width: 24px;">No</th>
                                     <th>Nama</th>
+                                    <th>ID Karyawan</th>
                                     <th>Role</th>
                                     <th>Email</th>
                                     <th>Aksi</th>
@@ -40,6 +41,7 @@
                                     <tr>
                                         <td style="width: 24px;" class="text-center">{{ $no }}</td>
                                         <td>{{ $p->nama }}</td>
+                                        <td>{{ $p->karyawan_id }}</td>
                                         <td>{{ $p->role }}</td>
                                         <td>{{ $p->email }}</td>
                                         <td>

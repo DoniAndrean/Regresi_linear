@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Karyawan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
     public function generate()
     {
+
         $employees = Karyawan::whereDoesntHave('user')->get();
         foreach ($employees as  $employee) {
             User::create([
@@ -20,8 +22,8 @@ class UserController extends Controller
                 "role" => "karyawan"
             ]);
         }
-
-        return back();
+        Alert::success('Berhasil!', 'Berhasil Generate ' . count($employees) . " Pengguna baru dari data karyawan");
+        return redirect("/users");
     }
 
     public function index()

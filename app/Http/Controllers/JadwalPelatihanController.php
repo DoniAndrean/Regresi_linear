@@ -26,14 +26,24 @@ class JadwalPelatihanController extends Controller
             "waktu" => "required",
         ]);
 
-        JadwalPelatihan::create([
-            "nama_pelatihan" => $request->nama_pelatihan,
-            "waktu" => $request->waktu,
-        ]);
-
+        JadwalPelatihan::create($request->all());
         return redirect()->route("jadwal-pelatihan");
     }
-
+    public function edit($id)
+    {
+        $model = JadwalPelatihan::findOrFail($id);
+        return view("jadwal-pelatihan.edit", compact("model"));
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            "nama_pelatihan" => "required",
+            "waktu" => "required",
+        ]);
+        $model = JadwalPelatihan::findOrFail($id);
+        $model->update($request->all());
+        return redirect()->route("jadwal-pelatihan");
+    }
     public function delete($id)
     {
         JadwalPelatihan::findOrFail($id)->delete();

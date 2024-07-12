@@ -15,6 +15,12 @@ class KaryawanSeeder extends Seeder
     public function run()
     {
         Karyawan::create([
+            'id_sap' => 1001,
+            'id_nik' => '14050214',
+            'nama' => 'Admin Imam',
+            'id_badge' => 1001,
+        ]);
+        Karyawan::create([
             'id_sap' => 10000001,
             'id_nik' => '14050214',
             'nama' => 'Ferdi Iirawan',

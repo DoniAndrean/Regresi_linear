@@ -1,5 +1,4 @@
 @extends('layout.master')
-
 @section('konten')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -146,13 +145,20 @@
                         <div class="row mb-3">
                             <div class="col-md-4">Level Karyawan</div>
                             <div class="col-md-8">
-                                <select class="option form-control" name="level_karyawan"
-                                    value="{{ $model->level_karyawan }}" required="required">
-                                    <option value="General Manager">General Manager</option>
-                                    <option value="Head Of Department">Head Of Department</option>
-                                    <option value="Assistant Head Department">Assistant Head Department</option>
-                                    <option value="Supervisor">Supervisor</option>
-                                    <option value="Rank n File">Rank n File</option>
+                                <select class="option form-control" name="level_karyawan" required>
+                                    <option value="GM" {{ $model->level_karyawan === 'GM' ? 'selected' : '' }}>General
+                                        Manager</option>
+                                    <option value="Head Of Department"
+                                        {{ $model->level_karyawan === 'Head Of Department' ? 'selected' : '' }}>Head Of
+                                        Department</option>
+                                    <option value="Assistant Head Department"
+                                        {{ $model->level_karyawan === 'Assistant Head Department' ? 'selected' : '' }}>
+                                        Assistant Head Department</option>
+                                    <option value="Supervisor"
+                                        {{ $model->level_karyawan === 'Supervisor' ? 'selected' : '' }}>Supervisor</option>
+                                    <option value="Rank n File"
+                                        {{ $model->level_karyawan === 'Rank n File' ? 'selected' : '' }}>Rank n File
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -276,7 +282,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">Riwayat Pelatihan</div>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" name="riwayat_pelatihan" required="required"
+                                <input class="form-control" type="text" name="riwayat_pelatihan"
                                     placeholder="Masukkan Riwayat Pelatihan" value="{{ $model->riwayat_pelatihan }}"
                                     autofocus="on">
                             </div>

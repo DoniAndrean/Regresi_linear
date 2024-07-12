@@ -126,6 +126,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/jadwal-pelatihan', [JadwalPelatihanController::class, 'index'])->name('jadwal-pelatihan');
     Route::get('/jadwal-pelatihan/create', [JadwalPelatihanController::class, 'create'])->name('jadwal-pelatihan.create');
+    Route::get('/jadwal-pelatihan/{id}/edit', [JadwalPelatihanController::class, 'edit'])->name('jadwal-pelatihan.edit');
+    Route::put('/jadwal-pelatihan/{id}', [JadwalPelatihanController::class, 'update'])->name('jadwal-pelatihan.update');
     Route::post('/jadwal-pelatihan', [JadwalPelatihanController::class, 'store'])->name('jadwal-pelatihan.store');
     Route::delete('/jadwal-pelatihan/{id}', [JadwalPelatihanController::class, 'delete'])->name('jadwal-pelatihan.delete');
 

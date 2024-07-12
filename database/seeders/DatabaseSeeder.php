@@ -29,10 +29,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "nama" => "Admin",
+            "nama" => "Admin Imam",
             "email" => "admin@gmail.com",
             "password" => bcrypt("1"),
-            "role" => "admin"
+            "role" => "admin",
+            "karyawan_id" => 1001
         ]);
         User::create([
             "karyawan_id" => 10000001,

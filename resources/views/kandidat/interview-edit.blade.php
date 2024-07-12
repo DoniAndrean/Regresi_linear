@@ -23,6 +23,9 @@
                     @csrf
                     @method('put')
                     @foreach ($masterSoal as $soal)
+                        @php
+                            $idSoal = $soal->id;
+                        @endphp
                         <div class="form-group mb-5">
                             <div class="mb-3" style="font-size: 18px;font-weight: 500">
                                 {{ $loop->iteration }}. {{ $soal->soal }}
@@ -31,10 +34,10 @@
                                 @foreach ($options as $option)
                                     @php
                                         $optValue = $option['value'];
-                                        $idSoal = $soal->id;
                                     @endphp
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="soal[{{ $soal->id }}]"
+                                        <input class="form-check-input" type="radio"
+                                            name="soal[{{ $soal->id }}][value]"
                                             id="soal_{{ $soal->id }}_{{ $option['value'] }}"
                                             value="{{ $option['value'] }}"
                                             {{ $interview->first(function ($item) use ($optValue, $idSoal) {
@@ -48,6 +51,9 @@
                                         </label>
                                     </div>
                                 @endforeach
+                            </div>
+                            <div style="padding-left: 16px;margin-top: 12px">
+                                <textarea name="soal[{{ $soal->id }}][detail]" id="detail" class="form-control" rows="3">{{ $interview->where('id_soal', $idSoal)->first()->detail }}</textarea>
                             </div>
                         </div>
                         <hr>
