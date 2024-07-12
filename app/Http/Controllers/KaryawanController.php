@@ -57,6 +57,7 @@ class KaryawanController extends Controller
 	{
 		$request->validate([
 			'foto' => 'nullable|mimes:png,jpg,jpeg,webp',
+			'ktp' => 'nullable|mimes:png,jpg,jpeg,webp',
 		]);
 
 		if ($request->has('foto')) {
@@ -65,6 +66,13 @@ class KaryawanController extends Controller
 
 			$filename = time() . '.' . $extension;
 			$file->move('uploads/foto', $filename);
+		}
+		if ($request->has('ktp')) {
+			$file = $request->file('ktp');
+			$extension = $file->getClientOriginalExtension();
+
+			$filenamektp= time() . '.' . $extension;
+			$file->move('uploads/ktp', $filenamektp);
 		}
 
 		//array
@@ -101,6 +109,9 @@ class KaryawanController extends Controller
 		// Jika ada file foto yang diupload, tambahkan path foto baru ke dalam data
 		if ($filename) {
 			$data['foto'] = 'uploads/foto/' . $filename;
+		}
+		if ($filenamektp) {
+			$data['ktp'] = 'uploads/ktp/' . $filenamektp;
 		}
 
 		$id =	DB::table('karyawan')->insertGetId($data);
