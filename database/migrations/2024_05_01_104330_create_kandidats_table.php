@@ -14,7 +14,7 @@ class CreateKandidatsTable extends Migration
     public function up()
     {
         Schema::create('kandidat', function (Blueprint $table) {
-            $table->id('id_kandidat')->nullable();
+            $table->id('id_kandidat');
             $table->string("posisi", 50)->nullable();
             $table->string("informasi_lowongan", 50)->nullable();
             $table->string("nama", 50)->nullable();

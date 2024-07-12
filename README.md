@@ -1,4 +1,9 @@
 ## Programming School by Flashsoft Indonesia
+## Install
+git clone https://github.com/flvshsoft/hr-imam.git
+composer install
+php artisan migrate:fresh --seed
+php artisan server
 
 ## Mysql
 mysqld --console --skip-grant-tables --skip-external-locking
