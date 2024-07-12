@@ -21,7 +21,7 @@ class LoginController extends Controller
             'username' => ['required'],
             'password' => ['required'],
         ]);
-        $user = User::where('karyawan_id', $request->username)->first();
+        $user = User::where('karyawan_id', $request->username)->orWhere('email', $request->username)->first();
         if (!empty($user) && Hash::check($request->password, $user->password)) {
             Auth::login($user, $request->ingat_saya);
             return redirect()->intended('/');
