@@ -288,11 +288,11 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-4">Kelas BPJS</div>
+                            <div class="col-md-4">Upload Foto KTP</div>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" name="kelas_bpjs" required="required"
-                                    placeholder="Masukkan Kelas BPJS" value="{{ $model->kelas_bpjs }}"
-                                    value="{{ $model->kelas_bpjs }}" autofocus="on">
+                                <input class="form-control" type="text" name="ktp" required="required"
+                                    placeholder="Upload Foto KTP" value="{{ $model->ktp }}"
+                                    value="{{ $model->ktp }}" autofocus="on">
                             </div>
                         </div>
                         <div class="row mb-3">
